@@ -1,0 +1,7 @@
+.App{
+    text-align: center;
+    text-transform:uppercase;
+    color: blue;
+    font-style: italic;
+    border-bottom: 2px solid black;
+}
