@@ -1,13 +1,15 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
+import AboutUs from "./components/pages/AboutUs";
+import { Container } from '@mui/material'
 
 function App() {
   return (
-    <>
-     
-      <div className="para">
+    <>        
        <Navbar/>
-      </div>
+       <Container>
+       <AboutUs />
+       </Container>     
     </>
   );
 }
