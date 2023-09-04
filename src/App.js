@@ -1,5 +1,5 @@
 import "./App.css";
-// import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar";
 import DetailsFilling from "./components/pages/DetailsFilling";
 import {BrowserRouter} from "react-router-dom";
 
@@ -9,7 +9,7 @@ function App() {
     <>
     <BrowserRouter>
       <div className="para">
-       {/* <Navbar/> */}
+       <Navbar/>
        <DetailsFilling/>
       </div>
       </BrowserRouter>
