@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
-import AboutUs from "./components/pages/AboutUs";
+// import AboutUs from "./components/pages/AboutUs";
 import { Container } from '@mui/material'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>        
        <Navbar/>
        <Container>
-       <AboutUs />
+       {/* <AboutUs /> */}
        </Container>     
     </>
   );
