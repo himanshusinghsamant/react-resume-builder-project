@@ -3,11 +3,10 @@ import Container from "@mui/material/Container";
 import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
 
-
-const Template_4 = () => {
+const Template_2 = () => {
   return (
     <div>
-        <Container
+       <Container
         sx={{
           marginTop: "80px",
           display: "flex",
@@ -15,35 +14,36 @@ const Template_4 = () => {
           height:'600px'
         }}
       >
-        <Box sx={{ height: "550px", backgroundColor: "#ebffdd", width: "40%", border:'1px solid grey' }}>
+        <Box sx={{ height: "550px", backgroundColor: "#f2f2fb", width: "40%" }}>
           <Box
             sx={{
               height: "80px",
-              backgroundColor: "white",
+              backgroundColor: "blue",
               position: "relative",
             }}
           >
-            <div style={{ padding: "10px 10px", marginLeft:'30%'  }}>
+            <div style={{ padding: "10px 10px" }}>
               <div style={{ display: "flex" }}>
-                <Typography sx={{ fontSize: "25px", letterSpacing: 6 , color:'black'}}>
+                <Typography sx={{ fontSize: "25px", letterSpacing: 6 , color:'white'}}>
                   DANI
                 </Typography>
                 <Typography
                   sx={{
                     fontSize: "25px",
+                    color: "grey",
                     letterSpacing: 6,
                     marginLeft: "10px",
-                    color:'grey'
+                    color:'yellow'
                   }}
                 >
                   SCHWAIGER
                 </Typography>
               </div>
-              <Typography sx={{ letterSpacing: 10, fontSize: "12px", color:'black' }}>
+              <Typography sx={{ letterSpacing: 10, fontSize: "12px", color:'white' }}>
                 WEB DEVELOPER
               </Typography>
             </div>
-            <Box sx={{ position: "absolute", top: "10px", left: "20px" }}>
+            <Box sx={{ position: "absolute", top: "10px", right: "20px" }}>
               <img
                 style={{ width: "60px", height: "60px", borderRadius: "50%" }}
                 src={
@@ -136,4 +136,4 @@ const Template_4 = () => {
   )
 }
 
-export default Template_4
+export default Template_2

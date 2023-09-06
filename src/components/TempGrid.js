@@ -1,0 +1,49 @@
+import React from "react";
+import { Box } from "@mui/material";
+import Button from "@mui/material/Button";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+const TempGrid = (props) => {
+
+    const [showButton, setShowButton] = useState(false)
+    const handleMouseOver=()=>{
+        setShowButton(true)
+    }
+    const handleMouseOut=()=>{
+        setShowButton(false)
+    }
+
+  return (
+    <div>
+      <Box 
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      sx={{ cursor: "pointer", position: "relative" ,borderRadius:'10px'}}>
+        <img
+          style={{ height: "300px", width: "250px", borderRadius:'10px', boxShadow:'0px 0px 10px 2px grey' }}
+          src={props.img.image}
+          alt="tempImg"
+        />
+       {showButton &&  (<Button
+       component = {Link}
+       to={'/details-filling-page/personal-details'}
+          sx={{
+            position: "absolute",
+            zIndex: "150",
+            top: "200px",
+            left: "47px",
+          }}
+          variant="contained"
+        >
+          Use Template
+        </Button>
+        )}
+       {showButton && ( <Box sx={{backgroundColor:'black', zIndex:'100', height:'300px', width:'250px',position:'absolute', top:'0px', opacity:'.5',borderRadius:'10px'}}>
+        </Box>)}
+      </Box>
+    </div>
+  );
+};
+
+export default TempGrid;

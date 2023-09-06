@@ -7,20 +7,9 @@ import PersonalInfo from "../formsDetails/PersonalInfo";
 import WorkExperience from "../formsDetails/WorkExperience";
 import Education from "../formsDetails/Education";
 import KeySkills from "../formsDetails/KeySkills";
-// import styled from "@mui/material/styles";
-
-
-// const useStyles = styled((theme) => ({
-//   activeNavLink: {
-//     color: 'blue', // Customize the color as needed
-//   },
-// }));
-
 
 
 const DetailsFilling = () => {
-
-  // const classes = useStyles()
 
   return (
     <div>
@@ -45,14 +34,12 @@ const DetailsFilling = () => {
                 color: "gray",
                 textDecoration: "none",
               }}
-             
+              exact
+             component={NavLink}
+             to='/details-filling-page/personal-details'
             >
-              <NavLink to={'personal-details'} 
-              style={{textDecoration:'none',color:'inherit'}}
-              // activeClassName = {classes.activeNavLink}
-              >
+             
               Personal Details
-              </NavLink>
             </Paper>
             <Paper
               sx={{
@@ -62,13 +49,12 @@ const DetailsFilling = () => {
                 color: "gray",
                 textDecoration: "none",
               }}
-            
+              exact
+            component={NavLink}
+            to='/details-filling-page/work-experience'
             >
-              <NavLink to={'work-experience'} 
-              style={{textDecoration:'none',color:'inherit'}}
-              >
+             
               Work Experience
-              </NavLink>
             </Paper>
             <Paper
               sx={{
@@ -79,7 +65,7 @@ const DetailsFilling = () => {
                 textDecoration: "none",
               }}
               component={NavLink}
-              to="/education"
+              to="/details-filling-page/education"
             >
               Education
             </Paper>
@@ -92,15 +78,15 @@ const DetailsFilling = () => {
                 textDecoration: "none",
               }}
               component={NavLink}
-              to="/Key-skills"
+              to="/details-filling-page/key-skills"
             >
               Key skills
             </Paper>
           </Stack>
         </Box>
         <Routes>
-          <Route exact path="personal-details" element={<PersonalInfo />} />
-          <Route exact path="work-experience" element={<WorkExperience />} />
+          <Route exact path="/personal-details" element={<PersonalInfo />} />
+          <Route exact path="/work-experience" element={<WorkExperience />} />
           <Route exact path="/education" element={<Education />} />
           <Route exact path="/key-skills" element={<KeySkills />} />
         </Routes>

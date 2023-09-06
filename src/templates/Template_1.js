@@ -1,49 +1,48 @@
-import React from 'react'
+import React from "react";
 import Container from "@mui/material/Container";
 import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
 
-
-const Template_4 = () => {
+const Templates = () => {
   return (
     <div>
-        <Container
+      <Container
         sx={{
           marginTop: "80px",
           display: "flex",
           justifyContent: "center",
-          height:'600px'
+          height: "600px",
         }}
       >
-        <Box sx={{ height: "550px", backgroundColor: "#ebffdd", width: "40%", border:'1px solid grey' }}>
+        <Box sx={{ height: "550px", backgroundColor: "#fbf4f5", width: "40%" }}>
           <Box
             sx={{
               height: "80px",
-              backgroundColor: "white",
+              backgroundColor: "#f4c9c9",
               position: "relative",
             }}
           >
-            <div style={{ padding: "10px 10px", marginLeft:'30%'  }}>
+            <div style={{ padding: "10px 10px" }}>
               <div style={{ display: "flex" }}>
-                <Typography sx={{ fontSize: "25px", letterSpacing: 6 , color:'black'}}>
+                <Typography sx={{ fontSize: "25px", letterSpacing: 6 }}>
                   DANI
                 </Typography>
                 <Typography
                   sx={{
                     fontSize: "25px",
+                    color: "grey",
                     letterSpacing: 6,
                     marginLeft: "10px",
-                    color:'grey'
                   }}
                 >
                   SCHWAIGER
                 </Typography>
               </div>
-              <Typography sx={{ letterSpacing: 10, fontSize: "12px", color:'black' }}>
+              <Typography sx={{ letterSpacing: 10, fontSize: "12px" }}>
                 WEB DEVELOPER
               </Typography>
             </div>
-            <Box sx={{ position: "absolute", top: "10px", left: "20px" }}>
+            <Box sx={{ position: "absolute", top: "40px", right: "20px" }}>
               <img
                 style={{ width: "60px", height: "60px", borderRadius: "50%" }}
                 src={
@@ -54,9 +53,7 @@ const Template_4 = () => {
             </Box>
           </Box>
 
-          <Box
-            sx={{ padding: "10px", display: "flex" }}
-          >
+          <Box sx={{ padding: "10px", display: "flex" }}>
             <div style={{ width: "45%" }}>
               <Typography sx={{ fontSize: "10px" }}>
                 Email. abcd@gmail.com
@@ -73,7 +70,7 @@ const Template_4 = () => {
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>PinCode. 271881</Typography>
             </div>
-            <hr style={{color:'#f4f4f7'}} />
+            <hr style={{ color: "#f4f4f7" }} />
             <div style={{ width: "45%" }}>
               <Typography>PROFILE</Typography>
               <p style={{ fontSize: "10px" }}>
@@ -83,10 +80,10 @@ const Template_4 = () => {
               </p>
             </div>
           </Box>
-          <hr style={{color:'#f4f4f7'}} />
-          <Box sx={{ padding: "10px", display:'flex' }}>
+          <hr style={{ color: "#f4f4f7" }} />
+          <Box sx={{ padding: "10px", display: "flex" }}>
             <div style={{ width: "45%" }}>
-              <Typography sx={{marginBottom:'20px'}}>EXPERIENCE</Typography>
+              <Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
               <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
                 Web developer
               </Typography>
@@ -99,10 +96,10 @@ const Template_4 = () => {
               <span style={{ fontSize: "10px", fontWeight: "bold" }}>2023</span>
             </div>
 
-            <hr style={{color:'#f4f4f7'}}/>
-            <Box sx={{width:'45%'}}>
+            <hr style={{ color: "#f4f4f7" }} />
+            <Box sx={{ width: "45%" }}>
               <div>
-                <Typography  sx={{marginBottom:'20px'}}>EDUCATION</Typography>
+                <Typography sx={{ marginBottom: "20px" }}>EDUCATION</Typography>
                 <Typography sx={{ fontSize: "12px" }}>
                   Bachelor of Science
                 </Typography>
@@ -118,22 +115,54 @@ const Template_4 = () => {
                 </span>
               </div>
 
-              <hr style={{color:'#f4f4f7'}} />
-              <div style={{marginTop:'20px'}}>
-                <Typography  sx={{marginBottom:'20px'}}>SKILLS</Typography>
-                  <Stack sx={{marginLeft:'10px'}} spacing={1}>
-                   <li style={{fontSize:'11px', fontWeight:'bold',paddingLeft:'10px'}}>Python</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>JavaScript</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>HTML, CSS</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>ReactJs</li>
-                  </Stack>
+              <hr style={{ color: "#f4f4f7" }} />
+              <div style={{ marginTop: "20px" }}>
+                <Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
+                <Stack sx={{ marginLeft: "10px" }} spacing={1}>
+                  <li
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: "bold",
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    Python
+                  </li>
+                  <li
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: "bold",
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    JavaScript
+                  </li>
+                  <li
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: "bold",
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    HTML, CSS
+                  </li>
+                  <li
+                    style={{
+                      fontSize: "11px",
+                      fontWeight: "bold",
+                      paddingLeft: "10px",
+                    }}
+                  >
+                    ReactJs
+                  </li>
+                </Stack>
               </div>
             </Box>
           </Box>
         </Box>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Template_4
+export default Templates;
