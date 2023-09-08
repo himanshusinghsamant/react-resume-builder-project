@@ -2,8 +2,48 @@ import React from "react";
 import { Button, Divider, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
+import { useFieldArray, useForm } from "react-hook-form";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { educationDetailsAction } from "../../Redux/Index";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Education = () => {
+
+  const EducationDetails = useSelector((state)=> state.eduDetail.eduDetails)
+  const dispatch = useDispatch()
+
+  console.log(EducationDetails)
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      eduDetails: [
+        {
+          Type: "",
+          University: "",
+          Degree: "",
+          StartYear: "",
+          EndYear: "",
+        },
+      ],
+    },
+  });
+
+  const { fields, remove, append } = useFieldArray({
+    name: "eduDetails",
+    control,
+  });
+
+  const onSubmit=(data)=>{
+    console.log(data.eduDetails)
+    dispatch(educationDetailsAction(data.eduDetails))
+  }
+
   return (
     <div>
       <>
@@ -26,47 +66,79 @@ const Education = () => {
 
           <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
 
-          <div>
-          <TextField
-              label="Type "
-              type="text"
-              varient="outlined"
-              sx={{
-                width: "60%",
-                m: 1,
-              }}
-            />
-            <TextField
-              label="University "
-              type="text"
-              varient="outlined"
-              sx={{
-                width: "300px",
-                m: 1,
-               
-              }}
-            />
-            <TextField
-              label="Degree"
-              type="text"
-              varient="outlined"
-              sx={{ width: "300px", m: 1 }}
-            />
-            <TextField
-              label="Start Year"
-              type="number"
-              varient="outlined"
-              sx={{ width: "300px", m: 1 }}
-            />
-            <TextField
-              label="End Year"
-              type="number"
-              varient="outlined"
-              sx={{ width: "300px", m: 1 }}
-            />
-          </div>
+          {fields.map((fields, index) => {
+            return (
+              <div key={fields.id}>
+                <Typography
+                sx={{color:'grey', fontWeight:'bold', marginRight:'85%', marginTop:'40px'}} 
+                >Details\ - {index + 1}</Typography>
+                <TextField
+                  label="Type "
+                  type="text"
+                  varient="outlined"
+                  sx={{
+                    width: "60%",
+                    m: 1,
+                  }}
+                  {...register(`eduDetails.${index}.Type`)}
+                />
+
+                <TextField
+                  label="University "
+                  type="text"
+                  varient="outlined"
+                  sx={{
+                    width: "300px",
+                    m: 1,
+                  }}
+                  {...register(`eduDetails.${index}.University`)}
+                />
+                <TextField
+                  label="Degree"
+                  type="text"
+                  varient="outlined"
+                  sx={{ width: "300px", m: 1 }}
+                  {...register(`eduDetails.${index}.Degree`)}
+                />
+                <TextField
+                  label="StartYear"
+                  type="number"
+                  varient="outlined"
+                  sx={{ width: "300px", m: 1 }}
+                  {...register(`eduDetails.${index}.StartYear`)}
+                />
+                <TextField
+                  label="EndYear"
+                  type="number"
+                  varient="outlined"
+                  sx={{ width: "300px", m: 1 }}
+                  {...register(`eduDetails.${index}.EndYear`)}
+                />
+                {index > 0 && (
+                  <Button
+                  sx={{margin:'20px 0px 30px 0px'}}
+                  color="error"
+                  variant='outlined'
+                  endIcon={<DeleteIcon/>}
+                   onClick={() => remove(index)}>Remove</Button>
+                )}
+              </div>
+            );
+          })}
           <Box sx={{ width: "100%", mt: "10px", mb: "30px" }}>
-            <Button variant="text" sx={{ fontWeight: "bold" }}>
+            <Button
+              onClick={() =>
+                append({
+                  Type: "",
+                  University: "",
+                  Degree: "",
+                  StartYear: "",
+                  EndYear: "",
+                })
+              }
+              variant="text"
+              sx={{ fontWeight: "bold" }}
+            >
               Add more
             </Button>
           </Box>
@@ -83,6 +155,7 @@ const Education = () => {
             Back
           </Button>
           <Button
+          onClick={handleSubmit(onSubmit)}
             variant="contained"
             sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
           >

@@ -6,11 +6,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import AboutUs from "./components/pages/AboutUs";
 import MyResume from './components/pages/MyResumes'
+import {Provider} from 'react-redux'
+import store from "./Redux/Store";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+      <Provider store = {store}>
         <div className="para">
           <Navbar />
           <Routes>
@@ -24,6 +27,7 @@ function App() {
             <Route exact path="/about-us" element={<AboutUs />} />
           </Routes>
         </div>
+        </Provider>
       </BrowserRouter>
     </>
   );

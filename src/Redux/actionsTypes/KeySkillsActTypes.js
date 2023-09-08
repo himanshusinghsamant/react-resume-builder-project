@@ -1,0 +1,2 @@
+export const KEY_SKILLS_DETAILS = 'KEY_SKILLS_DETAILS'
+
