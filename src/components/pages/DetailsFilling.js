@@ -14,7 +14,7 @@ const DetailsFilling = () => {
   return (
     <div>
       <Container sx={{ display:{md:'flex'}, mt:'70px'}}>
-        <Box sx={{ width: "300px", height: "auto", mr:{md:'5%'}, ml:'20px',ml:{md:'0px'}}}>
+        <Box sx={{ width: "300px", height: "auto", mr:{md:'5%'},ml:{md:'0px'}}}>
           <Stack
             spacing={2}
             sx={{
