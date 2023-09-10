@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { keySkillsAction } from "../../Redux/Index";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 // const FormValues = {
@@ -17,6 +18,7 @@ import { useSelector } from "react-redux";
 
 const KeySkills = () => {
 
+  const Navigate = useNavigate()
   const dispatch = useDispatch()
   const skillsDetails = useSelector((state)=> state.skills.skillDetails)
 
@@ -25,7 +27,7 @@ const KeySkills = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
     control,
   } = useForm({
     defaultValues: {
@@ -41,6 +43,7 @@ const KeySkills = () => {
   const onSubmit = (data) => {
     // console.log(data);
     dispatch(keySkillsAction(data.keySkills))
+    Navigate('/preview')
   };
 
   return (
@@ -115,6 +118,7 @@ const KeySkills = () => {
               Back
             </Button>
             <Button
+            disabled={!isDirty || !isValid}
               onClick={handleSubmit(onSubmit)}
               variant="contained"
               sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}

@@ -3,8 +3,18 @@ import { Box } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+// import { useSelector } from "react-redux";
+import { setTemplateAction } from "../Redux/Index";
+
+
 
 const TempGrid = (props) => {
+
+  const {rTemp, id} = props.img
+  const tempValues = {rTemp, id}
+  
+  const dispatch = useDispatch()
 
     const [showButton, setShowButton] = useState(false)
     const handleMouseOver=()=>{
@@ -12,6 +22,10 @@ const TempGrid = (props) => {
     }
     const handleMouseOut=()=>{
         setShowButton(false)
+    }
+
+    const onSubmit=()=>{
+      dispatch(setTemplateAction(tempValues))
     }
 
   return (
@@ -26,6 +40,7 @@ const TempGrid = (props) => {
           alt="tempImg"
         />
        {showButton &&  (<Button
+       onClick={onSubmit}
        component = {Link}
        to={'/details-filling-page/personal-details'}
           sx={{

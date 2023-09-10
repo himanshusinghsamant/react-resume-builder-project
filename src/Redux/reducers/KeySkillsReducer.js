@@ -1,7 +1,7 @@
 import { KEY_SKILLS_DETAILS } from "../actionsTypes/KeySkillsActTypes";
 
 const initialState = {
-    skillDetails :[]
+    skillDetails :null
 }
 
 export const keySkillsReducer=(state=initialState, action)=>{
@@ -9,7 +9,7 @@ export const keySkillsReducer=(state=initialState, action)=>{
         case KEY_SKILLS_DETAILS:
             return {
                 ...state,
-                skillDetails:[...state.skillDetails, action.payload]
+                skillDetails: action.payload
             }
     
         default:
