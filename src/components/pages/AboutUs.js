@@ -22,9 +22,9 @@ const AboutUs = () => {
   return (
     <>
    <Container>
-   <Grid container direction="row" alignItems="center" sx={{mt:8,}}>
+   <Grid sx={{display:'flex'}} container direction="row" alignItems="center" sx={{mt:8,}}>
         <Grid item xs={12} sm={6} order={{xs:2,sm:1}}>
-            <Typography variant="h2" color="inherit" sx={{mb:5, fontFamily:'Segoe UI'}}  >
+            <Typography variant="h3" color="inherit" sx={{mb:5, fontFamily:'Segoe UI'}}  >
                 Resume Builder
             </Typography>
             <Typography variant='h8'  color="inherit" textTransform={'capitalize'}>
@@ -34,11 +34,11 @@ const AboutUs = () => {
             </Typography>
         </Grid>
         <Grid container item xs={12} sm={6} justifyContent="center" order={{xs:1,sm:2}}>
-            <Box component="img" src='./images/About.png' height={500} />
+            <Box  sx={{width:'40vw',display:'flex'}} component="img" src='./images/About.png' />
         </Grid>
     </Grid>
 
-    <Box sx={{display:'flex'}}>
+    <Box sx={{display:'flex', flexDirection:"right"}}>
     {SocialMediaImg && SocialMediaImg.map((img)=>{
         return (<MediaIcons img ={img} key={img.id}/>)
     })}

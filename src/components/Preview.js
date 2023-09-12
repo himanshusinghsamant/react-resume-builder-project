@@ -22,8 +22,8 @@ const Preview = () => {
     width: 400,
     bgcolor: "background.paper",
     border: "2px solid #000",
-    boxShadow: "0px 0px 400px 300px grey",
-    p: 4,
+    boxShadow: "0px 0px 500px 700px black",
+   p: 4,
     zIndex: "200",
     borderRadius:'20px'
   };
@@ -39,7 +39,7 @@ const Preview = () => {
 
   setTimeout(() => {
     setDisplayMsg(false);
-  }, 2000);
+  }, 5000);
 
   return (
     <div>
@@ -47,10 +47,10 @@ const Preview = () => {
         <div>
           <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-              Text in a modal
+             Your Resume Successfully Created
             </Typography>
-            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            <Typography id="modal-modal-description" sx={{ mt: 2,mb: 5 }}>
+              This is an Preview Version of your Resume.
             </Typography>
           </Box>
         </div>

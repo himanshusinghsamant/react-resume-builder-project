@@ -65,7 +65,7 @@ const PersonalInfo = () => {
             alt="Travis Howard"
             src="/static/images/avatar/2.jpg"
           />
-          <Button variant="contained"  borderRadius='50' color="success" sx={{height:'25px',mt:2, }}>
+          <Button variant="contained"  borderRadius='100' color="success" sx={{height:'25px',mt:2,  }}>
             Upload profile
           </Button>
         </Box>
