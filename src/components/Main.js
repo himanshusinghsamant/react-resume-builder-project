@@ -8,11 +8,11 @@ const Main = () => {
     <div>
       <Box sx={{ marginTop: "100px", marginLeft: "100px" }}>
         <Typography
-          sx={{ fontSize: "30px", fontWeight: "bold", letterSpacing: 6 }}
+          sx={{ fontSize: "30px", fontWeight: "bold", ":hover":{color:'grey'} }}
         >
-          Templates
+          TEMPLATES
         </Typography>
-        <Typography sx={{color:'grey', }}>Select a template to get started</Typography>
+        <Typography sx={{color:'grey', }}>Select Template To Get Started</Typography>
       </Box>
       <Container
         sx={{

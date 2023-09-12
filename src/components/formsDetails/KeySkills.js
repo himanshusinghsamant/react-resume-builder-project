@@ -55,7 +55,7 @@ const KeySkills = () => {
               height: "auto",
               m: 3,
               p: 3,
-              boxShadow: "0 0 400px 1px",
+              boxShadow: "0 0 20px 1px",
               textAlign: "center",
               borderRadius: "10px",
             }}

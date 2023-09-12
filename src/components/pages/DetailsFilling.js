@@ -21,7 +21,7 @@ const DetailsFilling = () => {
               width: "300px",
               backgroundColor: "white",
               borderRadius: "10px",
-              boxShadow: "0 10px 30px 1px grey",
+              boxShadow: "0 0 20px 0.1px ",
               p: "20px",
               mt: "20px",
             }}

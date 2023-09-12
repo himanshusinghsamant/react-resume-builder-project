@@ -7,9 +7,11 @@ import { useSelector } from "react-redux";
 import { useForm, useFieldArray } from "react-hook-form";
 import { workExpAction } from "../../Redux/Index";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useNavigate } from "react-router-dom";
 
 
 const WorkExperience = () => {
+  const navigate = useNavigate();
   const {
     control,
     register,
@@ -54,7 +56,7 @@ const WorkExperience = () => {
             height: "auto",
             m: 3,
             p: 3,
-            boxShadow: "0 0 400px 1px",
+            boxShadow: "0 0 20px 1px",
             textAlign: "center",
             borderRadius: "10px",
           }}
@@ -128,11 +130,13 @@ const WorkExperience = () => {
           <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
           <Button
             variant="contained"
+          
             sx={{
               backgroundColor: "black",
               mt: "10px",
               fontWeight: "bold",
               mr: "10px",
+              
             }}
           >
             Back

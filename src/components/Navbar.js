@@ -41,12 +41,14 @@ const NavBar = () => {
             <Tabs
               sx={{ marginLeft: "auto" }}
               value={value}
+              
               onChange={(e, value) => setValue(value)}
               indicatorColor="secondary"
+            
             >
               <Tab component={Link} exact to={'/'} label="Resume Templates" />
-              <Tab component={Link} to={'/my-resumes'} label="My Resumes" />
-              <Tab component={Link} to={'/about-us'} label="About Us" />
+              <Tab component={Link} to={'/my-resumes'} label="My Resumes"   sx={{":hover":{color:"skyblue"}}} />
+              <Tab component={Link} to={'/about-us'} label="About Us"   sx={{":hover":{color:"skyblue"}}} />
             </Tabs>
           </>
         )}

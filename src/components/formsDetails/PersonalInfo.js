@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { Avatar, TextField } from "@mui/material";
+import { Avatar, TextField ,inputProps} from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useEffect } from "react";
@@ -10,7 +10,12 @@ import { useDispatch } from "react-redux";
 import { personalInfoAction } from "../../Redux/Index";
 import { useSelector } from "react-redux";
 
+
+
 const PersonalInfo = () => {
+
+
+
 
   const personalData = useSelector((state)=> state.personalInfo.personalInfoValues)
   const dispatch = useDispatch()
@@ -27,8 +32,14 @@ const PersonalInfo = () => {
   },[personalData])
 
 
+
+
+
+
   return (
+
     <>
+
       <Box
         container
         component="form"
@@ -37,7 +48,7 @@ const PersonalInfo = () => {
           height: "auto",
           m: 3,
           p: 3,
-          boxShadow: "0 0 400px 1px",
+          boxShadow: "0 0 20px 0.1px",
           textAlign: "center",
           borderRadius: "10px",
         }}
@@ -55,7 +66,7 @@ const PersonalInfo = () => {
             alt="Travis Howard"
             src="/static/images/avatar/2.jpg"
           />
-          <Button variant="contained" color="success" sx={{height:'25px'}}>
+          <Button variant="contained"  borderRadius='50' color="success" sx={{height:'25px',mt:2, }}>
             Upload profile
           </Button>
         </Box>
@@ -91,11 +102,12 @@ const PersonalInfo = () => {
 
 
           <TextField
-            label="MobileNo"
+          erorText="Please enter only 12 digits number"
+            label="Mobile No"
             type="number"
             varient="outlined"
-            sx={{ width: "300px", m: 1 }}
-            {...register('MobileNo', {required:'mobile no. is required!'})}
+            sx={{ width: "300px", m: 1 ,maxLenth:'10'}}
+            {...register('MobileNo', {required:'mobile no. is required!' })}
           />
             {errors.MobileNo && <p style={{color:'red'}}>{errors.MobileNo.message}</p>}
 
@@ -103,7 +115,7 @@ const PersonalInfo = () => {
             label="Address"
             type="text"
             varient="outlined"
-            sx={{ width: "85.2%", m: 1 }}
+            sx={{ width: "88%",  }}
             {...register('Address', {required:'address is required!'})}
           />
             {errors.Address && <p style={{color:'red'}}>{errors.Address.message}</p>}
@@ -151,6 +163,7 @@ const PersonalInfo = () => {
 
         <Button
           variant="contained"
+          disabled
           sx={{
             backgroundColor: "black",
             mt: "10px",
