@@ -1,7 +1,7 @@
 import { WORK_EXPERIENCE } from "../actionsTypes/WorkExpActTypes";
 
 const initialState = {
-    workData:[]
+    workData:null
 }
 
 export const WorkExpReducer = (state=initialState, action)=>{
@@ -9,7 +9,7 @@ export const WorkExpReducer = (state=initialState, action)=>{
         case WORK_EXPERIENCE:
             return {
                 ...state,
-                workData :[...state.workData, action.payload]
+                workData : action.payload
             }
     
         default:

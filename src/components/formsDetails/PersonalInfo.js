@@ -19,14 +19,13 @@ const PersonalInfo = () => {
 
   const personalData = useSelector((state)=> state.personalInfo.personalInfoValues)
   const dispatch = useDispatch()
-  const {register, handleSubmit, formState:{errors} } = useForm()
-  console.log(handleSubmit)
+  const {register, handleSubmit, formState:{errors, isDirty, isValid} } = useForm()
 
   const onSubmit=(data)=>{
     // console.log(data)
     dispatch(personalInfoAction(data))
   }
-
+ 
   useEffect(()=>{
     console.log(personalData)
   },[personalData])
@@ -175,7 +174,8 @@ const PersonalInfo = () => {
         </Button>
         <Button
         // component={Link}
-        // to='/details-filling-page/work-experience'        
+        // to='/details-filling-page/work-experience'    
+        disabled={!isDirty || !isValid}    
         onClick={handleSubmit(onSubmit)}
         type="submit"
           variant="contained"

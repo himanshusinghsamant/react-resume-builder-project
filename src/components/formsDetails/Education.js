@@ -19,7 +19,7 @@ const Education = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
   } = useForm({
     defaultValues: {
       eduDetails: [
@@ -40,7 +40,6 @@ const Education = () => {
   });
 
   const onSubmit=(data)=>{
-    console.log(data.eduDetails)
     dispatch(educationDetailsAction(data.eduDetails))
   }
 
@@ -155,6 +154,7 @@ const Education = () => {
             Back
           </Button>
           <Button
+          disabled={!isDirty || !isValid}
           onClick={handleSubmit(onSubmit)}
             variant="contained"
             sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
