@@ -42,7 +42,6 @@ const Education = () => {
   });
 
   const onSubmit=(data)=>{
-    console.log(data.eduDetails)
     dispatch(educationDetailsAction(data.eduDetails))
   }
 
@@ -163,9 +162,9 @@ const Education = () => {
             Back
           </Button>
           <Button
-          onClick={handleSubmit(onSubmit)}
           disabled={!isDirty || !isValid}
-            variant="contained"
+          onClick={handleSubmit(onSubmit)}
+          variant="contained"
             sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
           >
             Next

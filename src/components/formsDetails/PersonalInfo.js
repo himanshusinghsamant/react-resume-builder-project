@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { TextField } from "@mui/material";
+import { TextField, InputAdornment } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { personalInfoAction } from "../../Redux/Index";
 import { useSelector } from "react-redux";
 import { Dialog } from 'primereact/dialog';
-import Avatar from 'react-avatar-edit'
+import Avatar from 'react-avatar-edit';
 
 
 
@@ -35,13 +35,15 @@ const PersonalInfo = () => {
   const personalData = useSelector((state)=> state.personalInfo.personalInfoValues)
   const dispatch = useDispatch()
   const {register, handleSubmit, formState:{errors, isDirty, isValid} } = useForm()
+
   console.log(handleSubmit)
+
 
   const onSubmit=(data)=>{
     // console.log(data)
     dispatch(personalInfoAction(data))
   }
-
+ 
   useEffect(()=>{
     console.log(personalData)
   },[personalData])
@@ -95,7 +97,7 @@ const PersonalInfo = () => {
           >
             <div>             
                   <Avatar width={400} height={300} onClose={onClose} onCrop={onCrop} />
-                  <Button variant="contained" onClick={saveImage}>Save</Button>             
+                  <Button autoFocus variant="contained" onClick={saveImage}>Save</Button>             
             </div>
           </Dialog>
         </Box>
@@ -133,6 +135,9 @@ const PersonalInfo = () => {
             label="MobileNo"
             type="number"
             varient="outlined"
+            InputProps={{
+              startAdornment:<InputAdornment position="start">+91 </InputAdornment>
+            }}
             sx={{ width: "300px", m: 1 }}
             {...register('MobileNo', {required:'mobile no. is required!'})}
           />
@@ -202,9 +207,9 @@ const PersonalInfo = () => {
         </Button>
         <Button
         // component={Link}
-        // to='/details-filling-page/work-experience'        
-        onClick={handleSubmit(onSubmit)}
-        disabled={!isDirty || !isValid}
+        // to='/details-filling-page/work-experience'    
+        disabled={!isDirty || !isValid}    
+        onClick={handleSubmit(onSubmit)}        
         type="submit"
           variant="contained"
           sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}

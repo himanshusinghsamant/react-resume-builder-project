@@ -14,7 +14,7 @@ const WorkExperience = () => {
     control,
     register,
     handleSubmit,
-    formState: { errors ,isDirty, isValid},
+    formState: { errors, isDirty, isValid },
   } = useForm({
     defaultValues:{
       WorkExperience:[
@@ -143,8 +143,8 @@ const WorkExperience = () => {
             Back
           </Button>
           <Button
+          disabled={!isDirty || !isValid}
             onClick={handleSubmit(onSubmit)}
-            disabled={!isDirty || !isValid}
             variant="contained"
             sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
           >

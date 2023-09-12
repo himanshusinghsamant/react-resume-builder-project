@@ -2,7 +2,7 @@ import { EDUCATION_DETAILS } from "../actionsTypes/EducationActTypes";
 
 
 const initialState ={
-    eduDetails : []
+    eduDetails : null
 }
 
 export const educationDetReducer =(state = initialState, action)=>{
@@ -10,7 +10,7 @@ export const educationDetReducer =(state = initialState, action)=>{
         case EDUCATION_DETAILS:
             return {
                 ...state,
-                eduDetails:[...state.eduDetails,action.payload]
+                eduDetails:action.payload
             }
     
         default:

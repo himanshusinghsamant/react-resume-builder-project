@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import AboutUs from "./components/pages/AboutUs";
 import MyResume from './components/pages/MyResumes'
+import Preview from "./components/Preview";
 import {Provider} from 'react-redux'
 import store from "./Redux/Store";
 
@@ -18,6 +19,7 @@ function App() {
           <Navbar />
           <Routes>
             <Route exact path="/" element={<Main />} />
+            <Route exact path="/preview" element={<Preview/>} />
             <Route
               exact
               path="/details-filling-page/*"
