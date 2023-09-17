@@ -1,50 +1,86 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import { Box } from "@mui/system";
-import { DeleteOutlined } from "@mui/icons-material";
-import { DownloadOutlined } from "@mui/icons-material";
 import Fab from '@mui/material/Fab';
+import { DownloadDoneOutlined } from "@mui/icons-material";
+import { DeleteForeverOutlined } from "@mui/icons-material";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import { useState } from "react";
-import { removeResumeAction } from "../../Redux/Index";
-import { useDispatch } from "react-redux";
+import { TextField} from "@mui/material";
+import { useMyContext } from "../../context/Context";
+
 
 const MyResumes = () => {
-  const dispatch = useDispatch()
-  const SavedResume = useSelector((state) => state.saveResume.saveResumeTemp);
-  const [resumeList, setResumeList] = useState(SavedResume)
 
-  function handleDelete(index){
-    let dispatchAction = dispatch(removeResumeAction(index))
-    setResumeList(dispatchAction)
+  const [downFileName, setDownFileName] = useState('');
 
+  const { resumeTemplate} = useMyContext()
+
+  function handleDelete(){
+    localStorage.clear()
+    window.location.reload()
   }
-    console.log(resumeList);
+
+  function onChange(e) {
+    setDownFileName(e.target.value)
+  }
+    
+  async function handleDownloadFile() {
+    const content = document.getElementById('resume-Temp')
+    html2canvas(content)
+    .then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "px", "a4");
+      var ratio = canvas.width/canvas.height;
+      var width = pdf.internal.pageSize.getWidth();
+      var height = width/ ratio;
+      pdf.addImage(imgData, "JPEG", 0, 0, width, height);
+      // pdf.output('dataurlnewwindow');
+      pdf.save(`${downFileName}.pdf`);
+
+      setDownFileName('')
+    })
+    .catch(function (error) {
+      console.log(error)
+    });
+  }
+
+
 
 
   return (
     <div>
-      {resumeList.length === 0 && <h1 style={{ marginTop: "100px" }}>This is my resumes component</h1>}
-      {Array.isArray(resumeList) ? 
-       resumeList.map((resume, index) => {
-        return (
-          <Box sx={{position:'relative'}}>
-            {resume.rTemp}
-          <Box sx={{display:'flex', flexDirection:'column', position:'absolute', top:'50px', right:'20%', height:'150px', justifyContent:'space-around'}}>
-          <Fab
-          onClick={()=>handleDelete(index)}
-           variant="extended" size="medium" color="error">
-              <DeleteOutlined sx={{ mr: 1 }} />
-              DELETE
-            </Fab>
-            <Fab variant="extended" size="medium" color="primary">
-              <DownloadOutlined sx={{ mr: 1 }} />
+      {!resumeTemplate ? <h1 style={{ marginTop: "100px" }}>No resume is selected to show!</h1>: <>
+      
+      <Box key={resumeTemplate.id} sx={{position:'relative', marginTop:'100px'}}>
+            <Box id="resume-Temp">
+            {resumeTemplate.rTemp}
+            </Box>
+          <Box sx={{display:'flex', flexDirection:'column', position:'absolute', top:'50px', right:'10%', height:'200px', justifyContent:'space-around'}}>
+   
+          <TextField
+                onChange={onChange}
+                variant="outlined"
+                label="EnterFileName"
+                type={"text"}
+              />
+            <Fab
+             onClick={handleDownloadFile}
+             variant="extended" size="medium" color="primary">
+              <DownloadDoneOutlined sx={{ mr: 2 }} />
               DOWNLOAD
             </Fab>
+            <Fab
+             onClick={handleDelete}
+             variant="extended" size="medium" color="primary">
+              <DeleteForeverOutlined sx={{ mr: 2 }}/>
+               DELETE
+            </Fab>
           </Box>
-          </Box>
-        );
-      })
-       : <h2 style={{color:'red',marginTop:'200px', textAlign:'center'}}> <h1>Something is wrong /-</h1> resumeList is not an array!</h2>}
+          </Box>;
+      </>}
+
+    
     </div>
   );
 };

@@ -7,9 +7,13 @@ import { useSelector } from "react-redux";
 import { useForm, useFieldArray } from "react-hook-form";
 import { workExpAction } from "../../Redux/Index";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useNavigate } from "react-router-dom";
 
 
 const WorkExperience = () => {
+  
+  const Navigate = useNavigate()
+
   const {
     control,
     register,
@@ -39,6 +43,7 @@ const WorkExperience = () => {
   const onSubmit = (data) => {
     // console.log(data.WorkExperience)
     dispatch(workExpAction(data.WorkExperience));
+    Navigate('/details-filling-page/key-skills')
   };
 
   console.log(workData)
@@ -128,6 +133,7 @@ const WorkExperience = () => {
           <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
           <Button
             variant="contained"
+            onClick={()=>Navigate('/details-filling-page/education')}
             sx={{
               backgroundColor: "black",
               mt: "10px",

@@ -108,6 +108,7 @@ const KeySkills = () => {
             <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
             <Button
               variant="contained"
+              onClick={()=>Navigate('/details-filling-page/work-experience')}
               sx={{
                 backgroundColor: "black",
                 mt: "10px",

@@ -4,8 +4,8 @@ import { WorkExpReducer } from './reducers/WorkExpReducer';
 import {educationDetReducer} from './reducers/EducationDetailsReducer'
 import { keySkillsReducer } from './reducers/KeySkillsReducer';
 import { setTemplateReducer } from './reducers/SetTemplateReducer';
-import { saveResumeTempReducer } from './reducers/SetTemplateReducer';
 import { removeResumeReducer } from './reducers/SetTemplateReducer';
+import localStorageReducer from './reducers/LocalStorageReducer';
 
 
 const rootReducer = combineReducers({
@@ -14,8 +14,8 @@ const rootReducer = combineReducers({
     eduDetail: educationDetReducer,
     skills: keySkillsReducer,
     template: setTemplateReducer,
-    saveResume: saveResumeTempReducer,
-    removeResume: removeResumeReducer
+    removeResume: removeResumeReducer,
+    localStorage: localStorageReducer,
 })
 
 export default rootReducer;

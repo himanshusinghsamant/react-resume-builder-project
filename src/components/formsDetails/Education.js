@@ -7,14 +7,17 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { educationDetailsAction } from "../../Redux/Index";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+// import { useState } from "react";
+// import { useEffect } from "react";
 
 const Education = () => {
 
   const EducationDetails = useSelector((state)=> state.eduDetail.eduDetails)
   const dispatch = useDispatch()
+  const Navigate = useNavigate()
 
-  console.log(EducationDetails)
-
+    
   const {
     register,
     handleSubmit,
@@ -24,15 +27,16 @@ const Education = () => {
     defaultValues: {
       eduDetails: [
         {
-          Type: "",
-          University: "",
-          Degree: "",
-          StartYear: "",
-          EndYear: "",
+          Type: '',
+          University: '',
+          Degree: '',
+          StartYear:'',
+          EndYear: '',
         },
       ],
     },
   });
+
 
   const { fields, remove, append } = useFieldArray({
     name: "eduDetails",
@@ -41,6 +45,8 @@ const Education = () => {
 
   const onSubmit=(data)=>{
     dispatch(educationDetailsAction(data.eduDetails))
+    Navigate('/details-filling-page/work-experience')
+
   }
 
   return (
@@ -143,6 +149,7 @@ const Education = () => {
           </Box>
           <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
           <Button
+          onClick={()=>Navigate('/details-filling-page/personal-details')}
             variant="contained"
             sx={{
               backgroundColor: "black",

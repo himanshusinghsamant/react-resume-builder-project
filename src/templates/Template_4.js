@@ -15,7 +15,7 @@ const Template_4 = () => {
           height:'600px'
         }}
       >
-        <Box sx={{ height: "550px", backgroundColor: "#ebffdd", width: "40%", border:'1px solid grey' }}>
+        <Box sx={{ height: "100vh", backgroundColor: "#ebffdd", width: "40%", border:'1px solid grey' }}>
           <Box
             sx={{
               height: "80px",

@@ -3,22 +3,37 @@ import { Avatar, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useEffect } from "react";
-// import { useState } from "react";
 import { useForm } from "react-hook-form";
-// import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { personalInfoAction } from "../../Redux/Index";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const PersonalInfo = () => {
 
+  const Navigate = useNavigate()
   const personalData = useSelector((state)=> state.personalInfo.personalInfoValues)
   const dispatch = useDispatch()
-  const {register, handleSubmit, formState:{errors, isDirty, isValid} } = useForm()
+
+
+  const preloadData = {
+    FirstName: personalData.FirstName,
+    LastName: personalData.LastName,
+    Email: personalData.Email,
+    MobileNo: personalData.MobileNo,
+    Address: personalData.Address,
+    City : personalData.City,
+    State: personalData.State,
+    PinCode: personalData.PinCode,
+    Objective: personalData.Objective,
+  }
+
+  const {register, handleSubmit, formState:{errors, isDirty, isValid} } = useForm({defaultValues:preloadData})
 
   const onSubmit=(data)=>{
-    // console.log(data)
+    console.log(data)
     dispatch(personalInfoAction(data))
+    Navigate('/details-filling-page/education')
   }
  
   useEffect(()=>{
@@ -148,7 +163,7 @@ const PersonalInfo = () => {
         {errors.Objective && <p style={{color:'red'}}>{errors.Objective.message}</p>}
 
 
-        <Button
+        {/* <Button
           variant="contained"
           sx={{
             backgroundColor: "black",
@@ -158,10 +173,8 @@ const PersonalInfo = () => {
           }}
         >
           Back
-        </Button>
+        </Button> */}
         <Button
-        // component={Link}
-        // to='/details-filling-page/work-experience'    
         disabled={!isDirty || !isValid}    
         onClick={handleSubmit(onSubmit)}
         type="submit"

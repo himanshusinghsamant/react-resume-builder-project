@@ -1,20 +1,28 @@
-import React from 'react'
+import React from "react";
 import Container from "@mui/material/Container";
 import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
+import { useSelector } from "react-redux";
 
 const Template_2 = () => {
+  const PersonalInfoData = useSelector(
+    (state) => state.personalInfo.personalInfoValues
+  );
+  const workExpData = useSelector((state) => state.workExp.workData);
+  const educationData = useSelector((state) => state.eduDetail.eduDetails);
+  const skillsData = useSelector((state) => state.skills.skillDetails);
+
   return (
     <div>
-       <Container
+      <Container
         sx={{
           marginTop: "80px",
           display: "flex",
           justifyContent: "center",
-          height:'600px'
+          height: "600px",
         }}
       >
-        <Box sx={{ height: "550px", backgroundColor: "#f2f2fb", width: "40%" }}>
+        <Box sx={{ height: "100vh", backgroundColor: "#f2f2fb", width: "40%" }}>
           <Box
             sx={{
               height: "80px",
@@ -24,8 +32,10 @@ const Template_2 = () => {
           >
             <div style={{ padding: "10px 10px" }}>
               <div style={{ display: "flex" }}>
-                <Typography sx={{ fontSize: "25px", letterSpacing: 6 , color:'white'}}>
-                  DANI
+                <Typography
+                  sx={{ fontSize: "25px", letterSpacing: 6, color: "white" }}
+                >
+                  {PersonalInfoData.FirstName}
                 </Typography>
                 <Typography
                   sx={{
@@ -33,13 +43,14 @@ const Template_2 = () => {
                     color: "grey",
                     letterSpacing: 6,
                     marginLeft: "10px",
-                    color:'yellow'
                   }}
                 >
-                  SCHWAIGER
+                  {PersonalInfoData.LastName}
                 </Typography>
               </div>
-              <Typography sx={{ letterSpacing: 10, fontSize: "12px", color:'white' }}>
+              <Typography
+                sx={{ letterSpacing: 10, fontSize: "12px", color: "white" }}
+              >
                 WEB DEVELOPER
               </Typography>
             </div>
@@ -54,86 +65,111 @@ const Template_2 = () => {
             </Box>
           </Box>
 
-          <Box
-            sx={{ padding: "10px", display: "flex" }}
-          >
+          <Box sx={{ padding: "10px", display: "flex" }}>
             <div style={{ width: "45%" }}>
               <Typography sx={{ fontSize: "10px" }}>
-                Email. abcd@gmail.com
+                {PersonalInfoData.Email}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                M.No. 7964646477
+                M.No. {PersonalInfoData.MobileNo}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                Add. kanpur uttarpradesh
+                Add. {PersonalInfoData.Address}
               </Typography>
-              <Typography sx={{ fontSize: "10px" }}>City. Kanpur</Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                State. Uttar Pradesh
+                City. {PersonalInfoData.City}
               </Typography>
-              <Typography sx={{ fontSize: "10px" }}>PinCode. 271881</Typography>
+              <Typography sx={{ fontSize: "10px" }}>
+                State. {PersonalInfoData.State}
+              </Typography>
+              <Typography sx={{ fontSize: "10px" }}>
+                PinCode. {PersonalInfoData.PinCode}
+              </Typography>
             </div>
-            <hr style={{color:'#f4f4f7'}} />
+            <hr style={{ color: "#f4f4f7" }} />
             <div style={{ width: "45%" }}>
               <Typography>PROFILE</Typography>
-              <p style={{ fontSize: "10px" }}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla
-                itaque cupiditate dolore! Consequatur quae aut quo, natus
-                asperiores nihil dolores.
-              </p>
+              <p style={{ fontSize: "10px" }}>{PersonalInfoData.Objective}</p>
             </div>
           </Box>
-          <hr style={{color:'#f4f4f7'}} />
-          <Box sx={{ padding: "10px", display:'flex' }}>
-            <div style={{ width: "45%" }}>
-              <Typography sx={{marginBottom:'20px'}}>EXPERIENCE</Typography>
-              <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
-                Web developer
-              </Typography>
-              <Typography sx={{ fontSize: "10px" }}>
-                AlmaBetter Institution Lorem ipsum dolor sit
-              </Typography>
-              <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                2020 -
-              </span>
-              <span style={{ fontSize: "10px", fontWeight: "bold" }}>2023</span>
+          <hr style={{ color: "#f4f4f7" }} />
+          <Box sx={{ padding: "10px", display: "flex" }}>
+          <div style={{ width: "45%" }}>
+              <Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
+              {workExpData &&
+                workExpData.map((info) => {
+                  return (
+                    <div style={{ marginTop: "10px" }}>
+                      <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
+                        {info.JobTitle}
+                      </Typography>
+                      <Typography sx={{ fontSize: "10px" }}>
+                        {info.OrganizationName}
+                      </Typography>
+                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        {info.StartYear} -
+                      </span>
+                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        {info.EndYear}
+                      </span>
+                    </div>
+                  );
+                })}
             </div>
 
-            <hr style={{color:'#f4f4f7'}}/>
-            <Box sx={{width:'45%'}}>
-              <div>
-                <Typography  sx={{marginBottom:'20px'}}>EDUCATION</Typography>
-                <Typography sx={{ fontSize: "12px" }}>
-                  Bachelor of Science
-                </Typography>
-                <Typography sx={{ fontSize: "10px" }}>
-                  CSJMU Kanpur University
-                </Typography>
-                <Typography sx={{ fontSize: "10px" }}>BSc</Typography>
-                <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                  2020 -
-                </span>
-                <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                  2023
-                </span>
-              </div>
+            <hr style={{ color: "#f4f4f7" }} />
+            <Box sx={{ width: "45%" }}>
+            <Typography sx={{marginBottom:'20px'}}>EDUCATION</Typography>
+             {
+              educationData && educationData.map((info)=>{
+                return(
+                  <div>
+                  <Typography sx={{ marginBottom: "20px" }}>{info.Type}</Typography>
+                  <Typography sx={{ fontSize: "12px" }}>
+                    {info.University}
+                  </Typography>
+                  <Typography sx={{ fontSize: "10px" }}>
+                    {info.Degree}
+                  </Typography>
+                  <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    {info.StartYear} -
+                  </span>
+                  <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    {info.EndYear}
+                  </span>
+                </div>
+                )
+              })
+             }
 
-              <hr style={{color:'#f4f4f7'}} />
-              <div style={{marginTop:'20px'}}>
-                <Typography  sx={{marginBottom:'20px'}}>SKILLS</Typography>
-                  <Stack sx={{marginLeft:'10px'}} spacing={1}>
-                   <li style={{fontSize:'11px', fontWeight:'bold',paddingLeft:'10px'}}>Python</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>JavaScript</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>HTML, CSS</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>ReactJs</li>
-                  </Stack>
+              <hr style={{ color: "#f4f4f7" }} />
+              <div style={{ marginTop: "20px" }}>
+                <Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
+                <Stack sx={{ marginLeft: "10px" }} spacing={1}>
+                {
+                  skillsData && skillsData.map((info)=>{
+                    return (
+                      <li
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: "bold",
+                        paddingLeft: "10px",
+                      }}
+                    >
+                      {info.skills}
+                    </li>
+                    )
+                  })
+                }
+                
+                </Stack>
               </div>
             </Box>
           </Box>
         </Box>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Template_2
+export default Template_2;

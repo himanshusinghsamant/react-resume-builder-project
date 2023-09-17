@@ -23,7 +23,7 @@ const Templates = () => {
           height: "600px",
         }}
       >
-        <Box sx={{ height: "550px", backgroundColor: "#fbf4f5", width: "40%" }}>
+        <Box sx={{ minHeight: "100vh",backgroundColor: "#fbf4f5", width: "40%" }}>
           <Box
             sx={{
               height: "80px",
@@ -91,8 +91,7 @@ const Templates = () => {
           </Box>
           <hr style={{ color: "#f4f4f7" }} />
           <Box sx={{ padding: "10px", display: "flex" }}>
-            <div style={{ width: "45%" }}>
-              {" "}
+          <div style={{ width: "45%" }}>
               <Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
               {workExpData &&
                 workExpData.map((info) => {
@@ -117,6 +116,7 @@ const Templates = () => {
             <hr style={{ color: "#f4f4f7" }} />
 
             <Box sx={{ width: "45%" }}>
+            <Typography sx={{marginBottom:'20px'}}>EDUCATION</Typography>
              {
               educationData && educationData.map((info)=>{
                 return(
@@ -128,7 +128,6 @@ const Templates = () => {
                   <Typography sx={{ fontSize: "10px" }}>
                     {info.Degree}
                   </Typography>
-                  <Typography sx={{ fontSize: "10px" }}>BSc</Typography>
                   <span style={{ fontSize: "10px", fontWeight: "bold" }}>
                     {info.StartYear} -
                   </span>
