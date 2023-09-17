@@ -9,11 +9,13 @@ const Templates = () => {
   const PersonalInfoData = useSelector(
     (state) => state.personalInfo.personalInfoValues
   );
-  const profileData = useSelector((state)=> state.profile.profileInfoValue);
+  const profileData = useSelector((state) =>{
+    // console.log(state.profile.profileInfovalue)
+    return state.profile.profileInfovalue});
   const workExpData = useSelector((state) => state.workExp.workData);
-  const educationData = useSelector((state)=> state.eduDetail.eduDetails)
-  const skillsData = useSelector((state)=> state.skills.skillDetails)
-
+  const educationData = useSelector((state) => state.eduDetail.eduDetails)
+  const skillsData = useSelector((state) => state.skills.skillDetails)
+  // console.log(profileData)
 
   return (
     <div>
@@ -91,7 +93,7 @@ const Templates = () => {
           </Box>
           <hr style={{ color: "#f4f4f7" }} />
           <Box sx={{ padding: "10px", display: "flex" }}>
-          <div style={{ width: "45%" }}>
+            <div style={{ width: "45%" }}>
               <Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
               {workExpData &&
                 workExpData.map((info) => {
@@ -116,49 +118,49 @@ const Templates = () => {
             <hr style={{ color: "#f4f4f7" }} />
 
             <Box sx={{ width: "45%" }}>
-            <Typography sx={{marginBottom:'20px'}}>EDUCATION</Typography>
-             {
-              educationData && educationData.map((info)=>{
-                return(
-                  <div>
-                  <Typography sx={{ marginBottom: "20px" }}>{info.Type}</Typography>
-                  <Typography sx={{ fontSize: "12px" }}>
-                    {info.University}
-                  </Typography>
-                  <Typography sx={{ fontSize: "10px" }}>
-                    {info.Degree}
-                  </Typography>
-                  <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    {info.StartYear} -
-                  </span>
-                  <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    {info.EndYear}
-                  </span>
-                </div>
-                )
-              })
-             }
+              <Typography sx={{ marginBottom: '20px' }}>EDUCATION</Typography>
+              {
+                educationData && educationData.map((info) => {
+                  return (
+                    <div>
+                      <Typography sx={{ marginBottom: "20px" }}>{info.Type}</Typography>
+                      <Typography sx={{ fontSize: "12px" }}>
+                        {info.University}
+                      </Typography>
+                      <Typography sx={{ fontSize: "10px" }}>
+                        {info.Degree}
+                      </Typography>
+                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        {info.StartYear} -
+                      </span>
+                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        {info.EndYear}
+                      </span>
+                    </div>
+                  )
+                })
+              }
 
               <hr style={{ color: "#f4f4f7" }} />
               <div style={{ marginTop: "20px" }}>
                 <Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
                 <Stack sx={{ marginLeft: "10px" }} spacing={1}>
-                {
-                  skillsData && skillsData.map((info)=>{
-                    return (
-                      <li
-                      style={{
-                        fontSize: "11px",
-                        fontWeight: "bold",
-                        paddingLeft: "10px",
-                      }}
-                    >
-                      {info.skills}
-                    </li>
-                    )
-                  })
-                }
-                
+                  {
+                    skillsData && skillsData.map((info) => {
+                      return (
+                        <li
+                          style={{
+                            fontSize: "11px",
+                            fontWeight: "bold",
+                            paddingLeft: "10px",
+                          }}
+                        >
+                          {info.skills}
+                        </li>
+                      )
+                    })
+                  }
+
                 </Stack>
               </div>
             </Box>
