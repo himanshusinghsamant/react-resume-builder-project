@@ -9,6 +9,7 @@ const Templates = () => {
   const PersonalInfoData = useSelector(
     (state) => state.personalInfo.personalInfoValues
   );
+  const profileData = useSelector((state)=> state.profile.profileInfoValue);
   const workExpData = useSelector((state) => state.workExp.workData);
   const educationData = useSelector((state)=> state.eduDetail.eduDetails)
   const skillsData = useSelector((state)=> state.skills.skillDetails)
@@ -55,9 +56,7 @@ const Templates = () => {
             <Box sx={{ position: "absolute", top: "40px", right: "20px" }}>
               <img
                 style={{ width: "60px", height: "60px", borderRadius: "50%" }}
-                src={
-                  "https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
-                }
+                src={profileData}
                 alt="profile-img"
               />
             </Box>
@@ -66,22 +65,22 @@ const Templates = () => {
           <Box sx={{ padding: "10px", display: "flex" }}>
             <div style={{ width: "45%" }}>
               <Typography sx={{ fontSize: "10px" }}>
-              Email : {PersonalInfoData.Email}
+                {PersonalInfoData.Email}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                Mobile No.: {PersonalInfoData.MobileNo}
+                M.No. {PersonalInfoData.MobileNo}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                Address : {PersonalInfoData.Address}
+                Add. {PersonalInfoData.Address}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                City : {PersonalInfoData.City}
+                City. {PersonalInfoData.City}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                State : {PersonalInfoData.State}
+                State. {PersonalInfoData.State}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                PinCode : {PersonalInfoData.PinCode}
+                PinCode. {PersonalInfoData.PinCode}
               </Typography>
             </div>
             <hr style={{ color: "#f4f4f7" }} />
@@ -92,8 +91,7 @@ const Templates = () => {
           </Box>
           <hr style={{ color: "#f4f4f7" }} />
           <Box sx={{ padding: "10px", display: "flex" }}>
-            <div style={{ width: "45%" }}>
-              {" "}
+          <div style={{ width: "45%" }}>
               <Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
               {workExpData &&
                 workExpData.map((info) => {
@@ -116,7 +114,9 @@ const Templates = () => {
                 })}
             </div>
             <hr style={{ color: "#f4f4f7" }} />
+
             <Box sx={{ width: "45%" }}>
+            <Typography sx={{marginBottom:'20px'}}>EDUCATION</Typography>
              {
               educationData && educationData.map((info)=>{
                 return(
@@ -128,7 +128,6 @@ const Templates = () => {
                   <Typography sx={{ fontSize: "10px" }}>
                     {info.Degree}
                   </Typography>
-                  <Typography sx={{ fontSize: "10px" }}>BSc</Typography>
                   <span style={{ fontSize: "10px", fontWeight: "bold" }}>
                     {info.StartYear} -
                   </span>

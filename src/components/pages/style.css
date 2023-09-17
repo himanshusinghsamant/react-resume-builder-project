@@ -1,3 +1,8 @@
 .active{
-    color: red;
+    color: rgb(73, 17, 230);
+}
+
+nav a.active{
+    text-decoration: none;
+    font-weight: bold;
 }

@@ -11,8 +11,8 @@ import { saveResumeTempAction } from "../Redux/Index";
 
 const Preview = () => {
 
-    const Navigate = useNavigate()
-    const dispatch = useDispatch()
+    const Navigate = useNavigate();
+    const dispatch = useDispatch();
 
   const style = {
     position: "fixed",
@@ -30,11 +30,11 @@ const Preview = () => {
 
   const PreviewResume = useSelector((state) => state.template.selectedTemplate);
   const [displayMsg, setDisplayMsg] = useState(true);
-  const [resumeTemplate, setResumetemplate] = useState(PreviewResume);
+  const [resumeTemplate, setResumeTemplate] = useState(PreviewResume);
 
   function handleSaveClick(){
-    dispatch(saveResumeTempAction(resumeTemplate))
-    Navigate('/my-resumes')
+    dispatch(saveResumeTempAction(resumeTemplate));
+    Navigate('/my-resumes');
   }
 
   setTimeout(() => {
@@ -62,9 +62,9 @@ const Preview = () => {
         <Box sx={{ position: "absolute", top: "100px", left:'50px' , zIndex:'100'}}>
         
           <Fab 
-          onClick={()=>{Navigate('/details-filling-page/key-skills')}}
+          onClick={()=>{Navigate('/details-filling-page/personal-details')}}
           sx={{fontWeight:'bold', letterSpacing: 4, marginRight:'15px'}} variant="extended" color="secondary" size="medium">
-            BACK
+            EDIT
           </Fab>
           <Fab
           onClick={handleSaveClick}

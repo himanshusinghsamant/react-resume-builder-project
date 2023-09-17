@@ -27,7 +27,7 @@ const KeySkills = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty, isValid },
+    formState: { isDirty, isValid },
     control,
   } = useForm({
     defaultValues: {
@@ -115,6 +115,7 @@ const KeySkills = () => {
                 fontWeight: "bold",
                 mr: "10px",
               }}
+              onClick={()=>{Navigate('/details-filling-page/work-experience')}}
             >
               Back
             </Button>

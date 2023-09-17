@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Divider, Typography } from "@mui/material";
+import React ,{useState} from "react";
+import { Button, Divider, MenuItem, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useDispatch } from "react-redux";
@@ -7,9 +7,15 @@ import { useSelector } from "react-redux";
 import { useForm, useFieldArray } from "react-hook-form";
 import { workExpAction } from "../../Redux/Index";
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import { useNavigate } from "react-router-dom";
 
 const WorkExperience = () => {
+
+  // eslint-disable-next-line no-unused-vars
+  const [year, setYear] = useState()
+  const yearInfo = ["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","Present"];
+
+  const Navigate = useNavigate();
   const {
     control,
     register,
@@ -39,6 +45,7 @@ const WorkExperience = () => {
   const onSubmit = (data) => {
     // console.log(data.WorkExperience)
     dispatch(workExpAction(data.WorkExperience));
+    Navigate('/details-filling-page/key-skills')
   };
 
   console.log(workData)
@@ -97,16 +104,32 @@ const WorkExperience = () => {
                   type="number"
                   varient="outlined"
                   sx={{ width: "300px", m: 1 }}
-                  {...register('StartYear', {required:'This Field is required!'})}            
-               />
+                  {...register('StartYear', {required:'This Field is required!'})}
+                  onChange={(e) => setYear(e.target.value)}
+                  select                       
+               >
+                 {yearInfo.map(year=> (
+                   <MenuItem value={year} key={year}>
+                     {year}
+                   </MenuItem>
+                 ))}
+               </TextField>
           {errors.StartYear && <p style={{color:'red'}}>{errors.StartYear.message}</p>}
                 <TextField
                   label="EndYear"
                   type="number"
                   varient="outlined"
                   sx={{ width: "300px", m: 1 }}
-                  {...register('EndYear', {required:'This Field is required!'})}            
-                  />
+                  {...register('EndYear', {required:'This Field is required!'})}  
+                  onChange={(e) => setYear(e.target.value)}
+                  select          
+                  >
+                    {yearInfo.map(year=> (
+                      <MenuItem value={year} key={year}>
+                        {year}
+                      </MenuItem>
+                    ))}
+                  </TextField>
              {errors.EndYear && <p style={{color:'red'}}>{errors.EndYear.message}</p>}
                 {index > 0 && (
                   <Button
@@ -139,12 +162,13 @@ const WorkExperience = () => {
               fontWeight: "bold",
               mr: "10px",
             }}
+            onClick={()=>{Navigate('/details-filling-page/education')}}
           >
             Back
           </Button>
           <Button
-          disabled={!isDirty || !isValid}
             onClick={handleSubmit(onSubmit)}
+            disabled={!isDirty || !isValid}
             variant="contained"
             sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
           >

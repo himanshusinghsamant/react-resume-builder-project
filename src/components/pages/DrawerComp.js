@@ -22,7 +22,7 @@ const DrawerComp = () => {
           />
           </Typography>
           <Divider />
-            <List sx={{marginBottom: "410px" }}>
+            <List sx={{marginBottom: "1000px" }}>
                 <ListItemButton  selected={selectedIndex === 0}
           onClick={(event) => handleListItemClick(event, 0)}>                    
                        <Link to="/"><ListItemText primary="Resume Templates" /> </Link>                   

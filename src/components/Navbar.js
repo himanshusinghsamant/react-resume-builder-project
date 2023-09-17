@@ -1,3 +1,4 @@
+import "./pages/style.css";
 import {
   AppBar,
   Toolbar,
@@ -7,7 +8,7 @@ import {
   Tabs,
   Tab,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import React, { useState } from "react";
 import DrawerComp from "./pages/DrawerComp";
 
@@ -44,9 +45,9 @@ const NavBar = () => {
               onChange={(e, value) => setValue(value)}
               indicatorColor="secondary"
             >
-              <Tab component={Link} exact to={'/'} label="Resume Templates" />
-              <Tab component={Link} to={'/my-resumes'} label="My Resumes" />
-              <Tab component={Link} to={'/about-us'} label="About Us" />
+              <Tab component={NavLink} exact to={'/'} label="Resume Templates" />
+              <Tab component={NavLink} exact to={'/my-resumes'} label="My Resumes" />
+              <Tab component={NavLink} exact to={'/about-us'} label="About Us" />
             </Tabs>
           </>
         )}

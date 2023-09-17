@@ -114,6 +114,7 @@ const Template_2 = () => {
 
             <hr style={{color:'#f4f4f7'}}/>
             <Box sx={{width:'45%'}}>
+            <Typography sx={{ marginBottom: "20px" }}>EDUCATION</Typography>
             {
               educationData && educationData.map((info)=>{
                 return(

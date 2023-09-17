@@ -7,8 +7,8 @@ import { useSelector } from 'react-redux';
 
 const Template_3 = () => {
 
-  const PersonalInfoData = useSelector((state)=> state.PersonalInfo.PersonalInfoValues);
-  const workExpData = useSelector((state)=> state.workExp.workData);
+  const PersonalInfoData = useSelector((state) => state.personalInfo.personalInfoValues);
+  const workExpData = useSelector((state) => state.workExp.workData);
   const educationData = useSelector((state)=> state.eduDetail.eduDetails);
   const skillsData = useSelector((state)=> state.skills.skillDetails);
 
@@ -117,18 +117,17 @@ const Template_3 = () => {
 
             <hr style={{color:'#f4f4f7'}}/>
             <Box sx={{width:'45%'}}>
-            {
-              educationData && educationData.map((info)=>{
+              <Typography sx={{ marginBottom: "20px" }}>EDUCATION</Typography>
+            {educationData && educationData.map((info)=>{
                 return(
                   <div>
-                  <Typography sx={{ marginBottom: "20px" }}>{info.Type}</Typography>
                   <Typography sx={{ fontSize: "12px" }}>
-                    {info.University}
+                  {info.Type}
                   </Typography>
                   <Typography sx={{ fontSize: "10px" }}>
-                    {info.Degree}
+                  {info.University}
                   </Typography>
-                  <Typography sx={{ fontSize: "10px" }}>BSc</Typography>
+                  <Typography sx={{ fontSize: "10px" }}>{info.Degree}</Typography>
                   <span style={{ fontSize: "10px", fontWeight: "bold" }}>
                     {info.StartYear} -
                   </span>

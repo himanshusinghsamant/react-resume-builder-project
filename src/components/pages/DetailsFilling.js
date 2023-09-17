@@ -19,7 +19,7 @@ const DetailsFilling = () => {
     <div>
       <Container sx={{ display:{md:'flex'}, mt:'70px'}}>
         <Box sx={{ width: "300px", height: "auto", mr:{md:'5%'},ml:{md:'0px'}}}>
-          <Paper             
+          <Paper        
             sx={{
               width: "300px",
               backgroundColor: "white",
@@ -41,26 +41,10 @@ const DetailsFilling = () => {
                 textDecoration: "none",
               }}
               exact
-             component={NavLink}
+             component={NavLink }
              to='/details-filling-page/personal-details'
              >
              <PersonIcon sx= {{marginRight :"10px"}}/>  Personal Details
-            </Paper>
-            <Paper
-              sx={{
-                cursor: "pointer",
-                display:"flex",
-                textAlign:"center",
-                marginTop:"5px",
-                p: "5px",
-                fontWeight: "bold",
-                color: "gray",
-                textDecoration: "none",
-              }}
-              exact
-            component={NavLink}
-            to='/details-filling-page/work-experience'
-            ><WorkHistoryIcon sx= {{marginRight :"10px"}}/>  Work Experience
             </Paper>
             <Paper
               sx={{
@@ -77,6 +61,22 @@ const DetailsFilling = () => {
               to="/details-filling-page/education"
             ><SchoolIcon sx= {{marginRight :"10px"}}/>  Education
             </Paper>
+            <Paper
+              sx={{
+                cursor: "pointer",
+                display:"flex",
+                textAlign:"center",
+                marginTop:"5px",
+                p: "5px",
+                fontWeight: "bold",
+                color: "gray",
+                textDecoration: "none",
+              }}
+              exact
+            component={NavLink}
+            to='/details-filling-page/work-experience'
+            ><WorkHistoryIcon sx= {{marginRight :"10px"}}/>  Work Experience
+            </Paper>            
             <Paper
               sx={{
                 cursor: "pointer",

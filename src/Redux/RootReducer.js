@@ -6,9 +6,11 @@ import { keySkillsReducer } from './reducers/KeySkillsReducer';
 import { setTemplateReducer } from './reducers/SetTemplateReducer';
 import { saveResumeTempReducer } from './reducers/SetTemplateReducer';
 import { removeResumeReducer } from './reducers/SetTemplateReducer';
+import { profileReducer } from './reducers/ProfileInfoReducer';
 
 
 const rootReducer = combineReducers({
+    profile: profileReducer,
     personalInfo: personalInfoReducer,
     workExp: WorkExpReducer,
     eduDetail: educationDetReducer,

@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { TextField, InputAdornment } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 // import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -9,39 +9,29 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { personalInfoAction } from "../../Redux/Index";
 import { useSelector } from "react-redux";
-import { Dialog } from 'primereact/dialog';
-import Avatar from 'react-avatar-edit';
+import { useNavigate } from "react-router-dom";
+import ProfileSection from "./ProfileSection";
 
 
 
 const PersonalInfo = () => {
 
-  const[dialogs, setdialogs] = useState(false);
-  const[imgCrop, setimgCrop] = useState(false);
-  const [storeImage, setstoreImage] = useState([])
+  const Navigate = useNavigate();
 
-    const onCrop = (view)=>{
-    setimgCrop(view)
-  }
-  const onClose = ()=>{
-    setimgCrop(null)
-  }
-  const saveImage = ()=>{
-    setstoreImage([...storeImage, {imgCrop}])
-    setdialogs(false)
-  }
-  const profileimgShow = storeImage.map(item=>item.imgCrop)
-
+  
   const personalData = useSelector((state)=> state.personalInfo.personalInfoValues)
+  // const profileData = useSelector((state)=> state.profile.profileInfoValue)
   const dispatch = useDispatch()
   const {register, handleSubmit, formState:{errors, isDirty, isValid} } = useForm()
 
-  console.log(handleSubmit)
+  // console.log(handleSubmit)
+  // console.log(profileData)
 
 
   const onSubmit=(data)=>{
     // console.log(data)
     dispatch(personalInfoAction(data))
+    Navigate('/details-filling-page/education')
   }
  
   useEffect(()=>{
@@ -64,42 +54,8 @@ const PersonalInfo = () => {
           borderRadius: "10px",         
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            mb: "25px",
-          }}
-        >
-          <img 
-          style={{
-            width: "150px",
-            height: "150px",
-            borderRadius: "50%",
-            objectFit: "cover",
-          }}
-          src={profileimgShow.length?profileimgShow:null}
-          alt=""/>          
-          <Button onClick={()=> setdialogs(true)} variant="outlined"  sx={{height:'25px',mt:"10px"}}>
-            Upload profile
-          </Button>
-          <Dialog
-          visible={dialogs}
-          style={{ top:"100px", left:"100px", background:"white", position:"absolute", maxWidth: '100%', height: 200 }}
-
-          header={()=>(
-            <p> 
-            Update Profile
-            </p>
-          )}
-          onHide={()=>setdialogs(false)}
-          >
-            <div>             
-                  <Avatar width={400} height={300} onClose={onClose} onCrop={onCrop} />
-                  <Button autoFocus variant="contained" onClick={saveImage}>Save</Button>             
-            </div>
-          </Dialog>
+        <Box>
+          <ProfileSection/>
         </Box>
         <div>
           <TextField
@@ -193,7 +149,7 @@ const PersonalInfo = () => {
         {errors.Objective && <p style={{color:'red'}}>{errors.Objective.message}</p>}
 
 
-        <Button
+        {/* <Button
           variant="contained" 
           disabled
           sx={{
@@ -204,7 +160,7 @@ const PersonalInfo = () => {
           }}
         >
           Back
-        </Button>
+        </Button> */}
         <Button
         // component={Link}
         // to='/details-filling-page/work-experience'    
