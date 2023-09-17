@@ -80,29 +80,34 @@ const WorkExperience = () => {
                     width: "300px",
                     m: 1,
                   }}
-                  {...register(`WorkExperience.${index}.JobTitle`)}
-                />
+                  {...register('JobTitle', {required:'This Field is required!'})}            
+               />
+          {errors.JobTitle && <p style={{color:'red'}}>{errors.JobTitle.message}</p>}
+                 
                 <TextField
                   label="OrganizationName"
                   type="text"
                   varient="outlined"
                   sx={{ width: "300px", m: 1 }}
-                  {...register(`WorkExperience.${index}.OrganizationName`)}
-                />
+                  {...register('OrganizationName', {required:'This Field is required!'})}            
+               />
+          {errors.OrganizationName && <p style={{color:'red'}}>{errors.OrganizationName.message}</p>}
                 <TextField
                   label="StartYear"
                   type="number"
                   varient="outlined"
                   sx={{ width: "300px", m: 1 }}
-                  {...register(`WorkExperience.${index}.StartYear`)}
-                />
+                  {...register('StartYear', {required:'This Field is required!'})}            
+               />
+          {errors.StartYear && <p style={{color:'red'}}>{errors.StartYear.message}</p>}
                 <TextField
                   label="EndYear"
                   type="number"
                   varient="outlined"
                   sx={{ width: "300px", m: 1 }}
-                  {...register(`WorkExperience.${index}.EndYear`)}
-                />
+                  {...register('EndYear', {required:'This Field is required!'})}            
+                  />
+             {errors.EndYear && <p style={{color:'red'}}>{errors.EndYear.message}</p>}
                 {index > 0 && (
                   <Button
                   sx={{margin:'20px 0px 30px 0px'}}

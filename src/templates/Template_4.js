@@ -2,9 +2,16 @@ import React from 'react'
 import Container from "@mui/material/Container";
 import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
-
+import { useSelector } from "react-redux";
 
 const Template_4 = () => {
+  
+
+  const PersonalInfoData = useSelector((state) => state.personalInfo.personalInfoValues);
+  const workExpData = useSelector((state) => state.workExp.workData);
+  const educationData = useSelector((state)=> state.eduDetail.eduDetails);
+  const skillsData = useSelector((state)=> state.skills.skillDetails);
+
   return (
     <div>
         <Container
@@ -26,7 +33,7 @@ const Template_4 = () => {
             <div style={{ padding: "10px 10px", marginLeft:'30%'  }}>
               <div style={{ display: "flex" }}>
                 <Typography sx={{ fontSize: "25px", letterSpacing: 6 , color:'black'}}>
-                  DANI
+                  {PersonalInfoData.FirstName}
                 </Typography>
                 <Typography
                   sx={{
@@ -36,7 +43,7 @@ const Template_4 = () => {
                     color:'grey'
                   }}
                 >
-                  SCHWAIGER
+                  {PersonalInfoData.LastName}
                 </Typography>
               </div>
               <Typography sx={{ letterSpacing: 10, fontSize: "12px", color:'black' }}>
@@ -59,81 +66,106 @@ const Template_4 = () => {
           >
             <div style={{ width: "45%" }}>
               <Typography sx={{ fontSize: "10px" }}>
-                Email. abcd@gmail.com
+              Email : {PersonalInfoData.Email}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                M.No. 7964646477
+              Mobile No.: {PersonalInfoData.MobileNo}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                Add. kanpur uttarpradesh
+              Address : {PersonalInfoData.Address}
               </Typography>
-              <Typography sx={{ fontSize: "10px" }}>City. Kanpur</Typography>
+              <Typography sx={{ fontSize: "10px" }}>City : {PersonalInfoData.City}</Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                State. Uttar Pradesh
+              State : {PersonalInfoData.state}
               </Typography>
-              <Typography sx={{ fontSize: "10px" }}>PinCode. 271881</Typography>
+              <Typography sx={{ fontSize: "10px" }}>PinCode : {PersonalInfoData.PinCode}</Typography>
             </div>
             <hr style={{color:'#f4f4f7'}} />
             <div style={{ width: "45%" }}>
               <Typography>PROFILE</Typography>
               <p style={{ fontSize: "10px" }}>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla
-                itaque cupiditate dolore! Consequatur quae aut quo, natus
-                asperiores nihil dolores.
+               {PersonalInfoData.Objective}
               </p>
             </div>
           </Box>
           <hr style={{color:'#f4f4f7'}} />
           <Box sx={{ padding: "10px", display:'flex' }}>
             <div style={{ width: "45%" }}>
-              <Typography sx={{marginBottom:'20px'}}>EXPERIENCE</Typography>
-              <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
-                Web developer
-              </Typography>
-              <Typography sx={{ fontSize: "10px" }}>
-                AlmaBetter Institution Lorem ipsum dolor sit
-              </Typography>
-              <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                2020 -
-              </span>
-              <span style={{ fontSize: "10px", fontWeight: "bold" }}>2023</span>
+              {" "}
+              <Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
+              {workExpData &&
+                workExpData.map((info) => {
+                  return (
+                    <div style={{ marginTop: "10px" }}>
+                      <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
+                        {info.JobTitle}
+                      </Typography>
+                      <Typography sx={{ fontSize: "10px" }}>
+                        {info.OrganizationName}
+                      </Typography>
+                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        {info.StartYear} -
+                      </span>
+                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                        {info.EndYear}
+                      </span>
+                    </div>
+                  );
+                })}
             </div>
-
             <hr style={{color:'#f4f4f7'}}/>
             <Box sx={{width:'45%'}}>
-              <div>
-                <Typography  sx={{marginBottom:'20px'}}>EDUCATION</Typography>
-                <Typography sx={{ fontSize: "12px" }}>
-                  Bachelor of Science
-                </Typography>
-                <Typography sx={{ fontSize: "10px" }}>
-                  CSJMU Kanpur University
-                </Typography>
-                <Typography sx={{ fontSize: "10px" }}>BSc</Typography>
-                <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                  2020 -
-                </span>
-                <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                  2023
-                </span>
-              </div>
+            {
+              educationData && educationData.map((info)=>{
+                return(
+                  <div>
+                  <Typography sx={{ marginBottom: "20px" }}>{info.Type}</Typography>
+                  <Typography sx={{ fontSize: "12px" }}>
+                    {info.University}
+                  </Typography>
+                  <Typography sx={{ fontSize: "10px" }}>
+                    {info.Degree}
+                  </Typography>
+                  <Typography sx={{ fontSize: "10px" }}>BSc</Typography>
+                  <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    {info.StartYear} -
+                  </span>
+                  <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                    {info.EndYear}
+                  </span>
+                </div>
+                )
+              })
+             }
 
-              <hr style={{color:'#f4f4f7'}} />
-              <div style={{marginTop:'20px'}}>
-                <Typography  sx={{marginBottom:'20px'}}>SKILLS</Typography>
-                  <Stack sx={{marginLeft:'10px'}} spacing={1}>
-                   <li style={{fontSize:'11px', fontWeight:'bold',paddingLeft:'10px'}}>Python</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>JavaScript</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>HTML, CSS</li>
-                   <li  style={{fontSize:'11px', fontWeight:'bold', paddingLeft:'10px'}}>ReactJs</li>
-                  </Stack>
+              <hr style={{ color: "#f4f4f7" }} />
+              <div style={{ marginTop: "20px" }}>
+                <Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
+                <Stack sx={{ marginLeft: "10px" }} spacing={1}>
+                {
+                  skillsData && skillsData.map((info)=>{
+                    return (
+                      <li
+                      style={{
+                        fontSize: "11px",
+                        fontWeight: "bold",
+                        paddingLeft: "10px",
+                      }}
+                    >
+                      {info.skills}
+                    </li>
+                    )
+                  })
+                }
+                
+                </Stack>
               </div>
             </Box>
           </Box>
         </Box>
       </Container>
     </div>
-  )
-}
+  );
+};
 
 export default Template_4

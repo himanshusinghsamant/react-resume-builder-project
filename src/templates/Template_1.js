@@ -4,6 +4,7 @@ import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
 import { useSelector } from "react-redux";
 
+
 const Templates = () => {
   const PersonalInfoData = useSelector(
     (state) => state.personalInfo.personalInfoValues
@@ -65,22 +66,22 @@ const Templates = () => {
           <Box sx={{ padding: "10px", display: "flex" }}>
             <div style={{ width: "45%" }}>
               <Typography sx={{ fontSize: "10px" }}>
-                {PersonalInfoData.Email}
+              Email : {PersonalInfoData.Email}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                M.No. {PersonalInfoData.MobileNo}
+                Mobile No.: {PersonalInfoData.MobileNo}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                Add. {PersonalInfoData.Address}
+                Address : {PersonalInfoData.Address}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                City. {PersonalInfoData.City}
+                City : {PersonalInfoData.City}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                State. {PersonalInfoData.State}
+                State : {PersonalInfoData.State}
               </Typography>
               <Typography sx={{ fontSize: "10px" }}>
-                PinCode. {PersonalInfoData.PinCode}
+                PinCode : {PersonalInfoData.PinCode}
               </Typography>
             </div>
             <hr style={{ color: "#f4f4f7" }} />
@@ -115,7 +116,6 @@ const Templates = () => {
                 })}
             </div>
             <hr style={{ color: "#f4f4f7" }} />
-
             <Box sx={{ width: "45%" }}>
              {
               educationData && educationData.map((info)=>{
