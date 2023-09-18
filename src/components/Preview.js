@@ -11,8 +11,9 @@ import { useMyContext } from "../context/Context";
 
 
 const Preview = () => {
+
   const Navigate = useNavigate();
-  const {addData} = useMyContext()
+  const {addData, mode} = useMyContext()
 
   const style = {
     position: "fixed",
@@ -26,6 +27,7 @@ const Preview = () => {
     p: 4,
     zIndex: "200",
     borderRadius: "20px",
+    color: mode === 'dark' && 'black'
   };
 
   const PreviewResume = useSelector((state) => state.template.selectedTemplate);

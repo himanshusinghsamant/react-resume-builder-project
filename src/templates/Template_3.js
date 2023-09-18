@@ -3,10 +3,12 @@ import Container from "@mui/material/Container";
 import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
 import { useSelector } from 'react-redux';
+import { useMyContext } from '../context/Context';
 
 
 const Template_3 = () => {
 
+  const {mode} = useMyContext()
   const PersonalInfoData = useSelector((state) => state.personalInfo.personalInfoValues);
   const profileData = useSelector((state) =>{
     return state.profile.profileInfovalue});
@@ -21,7 +23,8 @@ const Template_3 = () => {
           marginTop: "80px",
           display: "flex",
           justifyContent: "center",
-          height:'600px'
+          height:'600px',
+          color: mode === 'dark' && 'black',
         }}
       >
         <Box sx={{ height: "100vh", backgroundColor: "white", width: "40%", border:'1px solid grey' }}>

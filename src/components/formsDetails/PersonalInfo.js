@@ -9,16 +9,16 @@ import { personalInfoAction } from "../../Redux/Index";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ProfileSection from "./ProfileSection";
-
-
+import { useMyContext } from "../../context/Context";
 
 const PersonalInfo = () => {
-
-  const Navigate = useNavigate()
-  const personalData = useSelector((state)=> state.personalInfo.personalInfoValues)
+  const { mode } = useMyContext();
+  const Navigate = useNavigate();
+  const personalData = useSelector(
+    (state) => state.personalInfo.personalInfoValues
+  );
   // const profileData = useSelector((state)=> state.profile.profileInfoValue)
-  const dispatch = useDispatch()
-
+  const dispatch = useDispatch();
 
   const preloadData = {
     FirstName: personalData.FirstName,
@@ -26,27 +26,48 @@ const PersonalInfo = () => {
     Email: personalData.Email,
     MobileNo: personalData.MobileNo,
     Address: personalData.Address,
-    City : personalData.City,
+    City: personalData.City,
     State: personalData.State,
     PinCode: personalData.PinCode,
     Objective: personalData.Objective,
-  }
+  };
 
-  const {register, handleSubmit, formState:{errors, isDirty, isValid} } = useForm({defaultValues:preloadData})
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isDirty, isValid },
+  } = useForm({ defaultValues: preloadData });
 
   // console.log(handleSubmit)
   // console.log(profileData)
 
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(personalInfoAction(data));
+    Navigate("/details-filling-page/education");
+  };
 
-  const onSubmit=(data)=>{
-    console.log(data)
-    dispatch(personalInfoAction(data))
-    Navigate('/details-filling-page/education')
-  }
- 
-  useEffect(()=>{
-    console.log(personalData)
-  },[personalData])
+  useEffect(() => {
+    console.log(personalData);
+  }, [personalData]);
+
+  const inputStyle = {
+    width: "300px",
+    m: 1,
+    backgroundColor: mode === 'light' ? 'white' : '#072340',
+    borderRadius: '10px',
+    '& .MuiInputBase-input': {
+      color: mode === 'light' ? 'black' : 'white',
+    },
+    '& label': {
+      color: mode === 'light' ? 'grey' : 'white',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: mode === 'light' ? 'grey' : 'white',
+      },
+    },
+  };
 
 
   return (
@@ -61,103 +82,124 @@ const PersonalInfo = () => {
           p: 3,
           boxShadow: "0 0 400px 1px",
           textAlign: "center",
-          borderRadius: "10px",         
+          borderRadius: "10px",
+          backgroundColor: mode === "light" ? "White" : "#072340",
+          color: mode === "light" ? "black" : "white",
         }}
       >
         <Box>
-          <ProfileSection/>
+          <ProfileSection />
         </Box>
         <div>
           <TextField
+            sx={inputStyle}
             label="FirstName"
             type="text"
             varient="outlined"
-            sx={{ width: "300px", m: 1, '&:hover:':{backgroundColor:'pink'} }}
-            {...register('FirstName', {required:'first name is required!'})}            
+            {...register("FirstName", { required: "first name is required!" })}
           />
-          {errors.FirstName && <p style={{color:'red'}}>{errors.FirstName.message}</p>}
-
+          {errors.FirstName && (
+            <p style={{ color: "red" }}>{errors.FirstName.message}</p>
+          )}
 
           <TextField
+            sx={inputStyle}
             label="LastName"
             type="text"
             varient="outlined"
-            sx={{ width: "300px", m: 1 }}
-            {...register('LastName', {required:'last name is required!'})}
+          
+            {...register("LastName", { required: "last name is required!" })}
           />
-          {errors.LastName && <p style={{color:'red'}}>{errors.LastName.message}</p>}
+          {errors.LastName && (
+            <p style={{ color: "red" }}>{errors.LastName.message}</p>
+          )}
 
           <TextField
+            sx={inputStyle}
             label="Email"
             type="text"
             varient="outlined"
-            sx={{ width: "300px", m: 1 }}
-            {...register('Email', {required:'email is required!'})}
+          
+            {...register("Email", { required: "email is required!" })}
           />
-            {errors.Email && <p style={{color:'red'}}>{errors.Email.message}</p>}
-
+          {errors.Email && (
+            <p style={{ color: "red" }}>{errors.Email.message}</p>
+          )}
 
           <TextField
+            sx={inputStyle}
             label="MobileNo"
             type="number"
             varient="outlined"
             InputProps={{
-              startAdornment:<InputAdornment position="start">+91 </InputAdornment>
+              startAdornment: (
+                <InputAdornment position="start">+91 </InputAdornment>
+              ),
             }}
-            sx={{ width: "300px", m: 1 }}
-            {...register('MobileNo', {required:'mobile no. is required!'})}
+          
+            {...register("MobileNo", { required: "mobile no. is required!" })}
           />
-            {errors.MobileNo && <p style={{color:'red'}}>{errors.MobileNo.message}</p>}
+          {errors.MobileNo && (
+            <p style={{ color: "red" }}>{errors.MobileNo.message}</p>
+          )}
 
           <TextField
+            sx={inputStyle}
             label="Address"
             type="text"
             varient="outlined"
-            sx={{ width: "85.2%", m: 1 }}
-            {...register('Address', {required:'address is required!'})}
+            {...register("Address", { required: "address is required!" })}
           />
-            {errors.Address && <p style={{color:'red'}}>{errors.Address.message}</p>}
-
+          {errors.Address && (
+            <p style={{ color: "red" }}>{errors.Address.message}</p>
+          )}
 
           <TextField
+            sx={inputStyle}
             label="City"
             type="text"
             varient="outlined"
-            sx={{ width: "300px", m: 1 }}
-            {...register('City', {required:'city is required!'})}
+          
+            {...register("City", { required: "city is required!" })}
           />
-            {errors.City && <p style={{color:'red'}}>{errors.City.message}</p>}
+          {errors.City && <p style={{ color: "red" }}>{errors.City.message}</p>}
 
           <TextField
+            sx={inputStyle}
             label="State"
             type="text"
             varient="outlined"
-            sx={{ width: "300px", m: 1 }}
-            {...register('State', {required:'state is required!'})}
+          
+            {...register("State", { required: "state is required!" })}
           />
-            {errors.State && <p style={{color:'red'}}>{errors.State.message}</p>}
-
+          {errors.State && (
+            <p style={{ color: "red" }}>{errors.State.message}</p>
+          )}
 
           <TextField
+            sx={inputStyle}
             label="PinCode"
             type="number"
             varient="outlined"
-            sx={{ width: "300px", m: 1 }}
-            {...register('PinCode', {required:'pin code is required!'})}
+          
+            {...register("PinCode", { required: "pin code is required!" })}
           />
-          {errors.PinCode && <p style={{color:"red"}}>{errors.PinCode.message}</p>}
+          {errors.PinCode && (
+            <p style={{ color: "red" }}>{errors.PinCode.message}</p>
+          )}
           <TextField
+            sx={inputStyle}
             label="Objective"
             type="text"
             varient="outlined"
             multiline
             rows={4}
-            sx={{ width: "85.2%", m: 1 }}
-            {...register('Objective', {required:'objective is required!'})}
+            {...register("Objective", { required: "objective is required!" })}
           />
         </div>
-        {errors.Objective && <p style={{color:'red'}}>{errors.Objective.message}</p>}
-
+        {errors.Objective && (
+          <p style={{ color: "red" }}>{errors.Objective.message}</p>
+        )}
 
         {/* <Button
           variant="contained"
@@ -171,9 +213,9 @@ const PersonalInfo = () => {
           Back
         </Button> */}
         <Button
-        disabled={!isDirty || !isValid}    
-        onClick={handleSubmit(onSubmit)}        
-        type="submit"
+          disabled={!isDirty || !isValid}
+          onClick={handleSubmit(onSubmit)}
+          type="submit"
           variant="contained"
           sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
         >

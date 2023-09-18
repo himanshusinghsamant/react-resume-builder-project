@@ -1,6 +1,8 @@
+import React from "react";
 import { useContext } from "react";
 import {createContext } from "react";
 import { useState, useEffect } from "react";
+
 
 const DataContext = createContext()
 
@@ -9,6 +11,22 @@ const DataContextPro=(props)=>{
 
     const [resumeTemplate, setResumetemplate] = useState();
     console.log(resumeTemplate)
+
+    const[mode, setMode] =useState('light')
+
+    const ToggleMode =()=>{
+      if(mode === 'light'){
+        setMode('dark')
+        document.body.style.backgroundColor = '#072340'
+        document.body.style.color = 'white'
+      }
+      else{
+        setMode('light')
+        document.body.style.backgroundColor = 'white'
+        document.body.style.color = 'black'
+
+      }
+    }
   
     useEffect(() => {
       // Get data from local storage when the component mounts
@@ -22,7 +40,7 @@ const DataContextPro=(props)=>{
     setResumetemplate(newItems)
     localStorage.setItem('dataArray', JSON.stringify(newItems))
   }
-  const contextValues ={addData, resumeTemplate}
+  const contextValues ={addData, resumeTemplate, ToggleMode, mode}
 
     return(
         <div>

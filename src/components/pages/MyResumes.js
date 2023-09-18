@@ -16,7 +16,7 @@ const MyResumes = () => {
 
   const [downFileName, setDownFileName] = useState("");
 
-  const { resumeTemplate } = useMyContext();
+  const { resumeTemplate, mode } = useMyContext();
 
   function handleDelete() {
     localStorage.clear();
@@ -47,6 +47,23 @@ const MyResumes = () => {
       });
   }
 
+  const inputStyle = {
+   
+    backgroundColor: mode === 'light' ? 'white' : '#072340',
+    borderRadius: '10px',
+    '& .MuiInputBase-input': {
+      color: mode === 'light' ? 'black' : 'white',
+    },
+    '& label': {
+      color: mode === 'light' ? 'grey' : 'white',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: mode === 'light' ? 'grey' : 'white',
+      },
+    },
+  };
+
   return (
     <div>
       {!resumeTemplate ? (
@@ -71,12 +88,12 @@ const MyResumes = () => {
             onClick={() => {
               Navigate("/");
             }}
-            sx={{ color: "skyblue", cursor:'pointer' }}
+            sx={{ color: "skyblue", cursor:'pointer',textDecoration:'underline' }}
           >
             Click here ?
           </Typography>
-          <Box>
-            <img src="./images/image2.jpg" alt="#" height={350} />
+          <Box sx={{mt:'20px'}}>
+            <img  style={{borderRadius:'50px', boxShadow: mode === 'dark' && '0px 0px 20px 5px grey', width:mode === 'light'?'400px': '300px'}} src="./images/image2.jpg" alt="#" />
           </Box>
         </Container>
       ) : (
@@ -98,6 +115,7 @@ const MyResumes = () => {
               }}
             >
               <TextField
+              sx={inputStyle}
                 onChange={onChange}
                 variant="outlined"
                 label="EnterFileName"

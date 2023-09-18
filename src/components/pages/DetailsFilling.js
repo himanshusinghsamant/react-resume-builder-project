@@ -11,8 +11,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
 import SchoolIcon from '@mui/icons-material/School';
 import BuildIcon from '@mui/icons-material/Build';
+import { useMyContext } from "../../context/Context";
 
 const DetailsFilling = () => {
+
+  const{mode}= useMyContext()
+
   return (
     <div>
       <Container sx={{ display: { md: "flex" }, mt: "70px" }}>
@@ -28,7 +32,7 @@ const DetailsFilling = () => {
             sx={{
               width: "300px",
               height: "220px",
-              backgroundColor: "white",
+              backgroundColor: {mode},
               borderRadius: "10px",
               boxShadow: "0 10px 30px 1px grey",
               p: "20px",
@@ -39,7 +43,7 @@ const DetailsFilling = () => {
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/personal-details"}
-                  style={{ textDecoration: "none", fontWeight: "bold", letterSpacing:2, display:'flex', alignItems:'center' }}
+                  style={{ textDecoration: "none", fontWeight: "bold", letterSpacing:2, display:'flex', alignItems:'center',color:mode === 'light' ? 'black' :'white' }}
                 >
                   <PersonIcon sx={{mr:'10px'}}/>
                   Personal Details
@@ -48,7 +52,7 @@ const DetailsFilling = () => {
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/education"}
-                  style={{ textDecoration: "none", fontWeight: "bold" ,letterSpacing:2,  display:'flex', alignItems:'center'}}
+                  style={{ textDecoration: "none", fontWeight: "bold" ,letterSpacing:2,  display:'flex', alignItems:'center',color:mode === 'light' ? 'black' :'white' }}
                 >
                   <SchoolIcon sx={{mr:'10px'}}/>
                   Education
@@ -57,7 +61,7 @@ const DetailsFilling = () => {
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/work-experience"}
-                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:2 ,  display:'flex', alignItems:'center'}}
+                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:2 ,  display:'flex', alignItems:'center',color:mode === 'light' ? 'black' :'white' }}
                 >
                   <WorkHistoryIcon sx={{mr:'10px'}}/>
                   Work Experience
@@ -66,7 +70,7 @@ const DetailsFilling = () => {
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/key-skills"}
-                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:2,  display:'flex', alignItems:'center' }}
+                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:2,  display:'flex', alignItems:'center',color:mode === 'light' ? 'black' :'white' }}
                 >
                   <BuildIcon sx={{mr:'10px'}}/>
                   Key Skills

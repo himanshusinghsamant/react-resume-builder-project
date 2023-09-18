@@ -8,6 +8,7 @@ import { keySkillsAction } from "../../Redux/Index";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useMyContext } from "../../context/Context";
 
 
 // const FormValues = {
@@ -18,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 const KeySkills = () => {
 
+  const {mode}= useMyContext()
   const Navigate = useNavigate()
   const dispatch = useDispatch()
   const skillsDetails = useSelector((state)=> state.skills.skillDetails)
@@ -46,6 +48,24 @@ const KeySkills = () => {
     Navigate('/preview')
   };
 
+  const inputStyle = {
+    width: { md: "400px" },
+    m: 1,
+    backgroundColor: mode === 'light' ? 'white' : '#072340',
+    borderRadius: '10px',
+    '& .MuiInputBase-input': {
+      color: mode === 'light' ? 'black' : 'white',
+    },
+    '& label': {
+      color: mode === 'light' ? 'grey' : 'white',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: mode === 'light' ? 'grey' : 'white',
+      },
+    },
+  };
+
   return (
     <div>
       <div>
@@ -67,7 +87,9 @@ const KeySkills = () => {
               Key Skills
             </Typography>
 
-            <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
+            <Divider sx={{ 
+              backgroundColor: mode === 'dark'&& 'rgb(151, 149, 149)',
+              ml: "26px", mb: "30px", width: "88%" }} />
 
             {fields.map((field, index) => {
               return (
@@ -76,10 +98,7 @@ const KeySkills = () => {
                     label="Addskills"
                     type="text"
                     varient="outlined"
-                    sx={{
-                      width: { md: "400px" },
-                      m: 1,
-                    }}
+                  sx={inputStyle}
                     {...register(`keySkills.${index}.skills`)}
                     required
                   />
@@ -106,7 +125,10 @@ const KeySkills = () => {
                 Add new
               </Button>
             </Box>
-            <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
+            <Divider sx={{ 
+              backgroundColor: mode === 'dark'&& 'rgb(151, 149, 149)',
+              ml: "26px", mb: "30px", width: "88%" }} />
+
             <Button
               variant="contained"
               onClick={()=>Navigate('/details-filling-page/work-experience')}
