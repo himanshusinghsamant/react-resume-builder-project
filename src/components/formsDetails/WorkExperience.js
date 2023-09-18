@@ -59,9 +59,10 @@ const WorkExperience = () => {
             boxShadow: "0 0 20px 1px",
             textAlign: "center",
             borderRadius: "10px",
+            marginTop:'80px'
           }}
         >
-          <Typography variant="h5" sx={{ mb: "40px", mt: "20px" }}>
+          <Typography variant="h5" sx={{ mb: "40px", mt: "20px",textTransform:"uppercase" }}>
             Work Experience
           </Typography>
 
@@ -69,8 +70,8 @@ const WorkExperience = () => {
             <div key={field.id}>
               <Box sx={{ width: "100%", textAlign: "start", ml: "40px",mt:'40px' }}>
                 <Typography
-                sx={{color:'grey', fontWeight:'bold',}}
-                >Experience / - {index+1}</Typography>
+                sx={{ fontWeight:'bold',fontFamily:'serif',fontSize:"m"}}
+                >Experience : {index+1}</Typography>
               </Box>
               <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
 
@@ -79,32 +80,37 @@ const WorkExperience = () => {
                   type="text"
                   varient="outlined"
                   sx={{
-                    width: "300px",
+                    width: "47%",
                     m: 1,
                   }}
-                  {...register(`WorkExperience.${index}.JobTitle`)}
-                />
+                  {...register('JobTitle', {required:'This Field is required!'})}            
+               />
+          {errors.JobTitle && <p style={{color:'red'}}>{errors.JobTitle.message}</p>}
+                 
                 <TextField
                   label="OrganizationName"
                   type="text"
                   varient="outlined"
-                  sx={{ width: "300px", m: 1 }}
-                  {...register(`WorkExperience.${index}.OrganizationName`)}
-                />
+                  sx={{ width: "47%", m: 1 }}
+                  {...register('OrganizationName', {required:'This Field is required!'})}            
+               />
+          {errors.OrganizationName && <p style={{color:'red'}}>{errors.OrganizationName.message}</p>}
                 <TextField
                   label="StartYear"
                   type="number"
                   varient="outlined"
-                  sx={{ width: "300px", m: 1 }}
-                  {...register(`WorkExperience.${index}.StartYear`)}
-                />
+                  sx={{ width: "47%", m: 1 }}
+                  {...register('StartYear', {required:'This Field is required!'})}            
+               />
+          {errors.StartYear && <p style={{color:'red'}}>{errors.StartYear.message}</p>}
                 <TextField
                   label="EndYear"
                   type="number"
                   varient="outlined"
-                  sx={{ width: "300px", m: 1 }}
-                  {...register(`WorkExperience.${index}.EndYear`)}
-                />
+                  sx={{ width: "47%", m: 1 }}
+                  {...register('EndYear', {required:'This Field is required!'})}            
+                  />
+             {errors.EndYear && <p style={{color:'red'}}>{errors.EndYear.message}</p>}
                 {index > 0 && (
                   <Button
                   sx={{margin:'20px 0px 30px 0px'}}
@@ -122,7 +128,7 @@ const WorkExperience = () => {
             onClick={()=> append({
               JobTitle:'', OrganizationName:'', StartYear:'', EndYear:''
             })}
-            variant="text" sx={{ fontWeight: "bold" }}>
+            variant="outlined" sx={{ fontWeight: "bold" }}>
               Add more
             </Button>
           </Box>

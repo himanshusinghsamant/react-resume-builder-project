@@ -23,7 +23,7 @@ const MyResumes = () => {
 
   return (
     <div>
-      {resumeList.length === 0 && <h1 style={{ marginTop: "100px" }}>This is my resumes component</h1>}
+      {resumeList.length === 0 && <h1 style={{ marginTop: "100px" ,textAlign:"center"} } >This is my resumes component</h1>}
       {Array.isArray(resumeList) ? 
        resumeList.map((resume, index) => {
         return (

@@ -61,9 +61,10 @@ const KeySkills = () => {
               boxShadow: "0 0 20px 1px",
               textAlign: "center",
               borderRadius: "10px",
+              marginTop:'80px'
             }}
           >
-            <Typography variant="h5" sx={{ mb: "40px", mt: "20px" }}>
+            <Typography variant="h5" sx={{ mb: "40px", mt: "20px" ,textTransform:'uppercase'}}>
               Key Skills
             </Typography>
 
@@ -77,10 +78,11 @@ const KeySkills = () => {
                     type="text"
                     varient="outlined"
                     sx={{
-                      width: { md: "400px" },
+                      width:"80%",
                       m: 1,
                     }}
                     {...register(`keySkills.${index}.skills`)}
+                    required
                   />
                   {index > 0 && (
                     <Button
@@ -99,7 +101,7 @@ const KeySkills = () => {
             <Box sx={{ width: "100%", mt: "10px", mb: "30px" }}>
               <Button
                 onClick={() => append({ skills: "" })}
-                variant="text"
+                variant="outlined"
                 sx={{ fontWeight: "bold" }}
               >
                 Add new

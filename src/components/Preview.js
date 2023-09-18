@@ -22,7 +22,7 @@ const Preview = () => {
     width: 400,
     bgcolor: "background.paper",
     border: "2px solid #000",
-    boxShadow: "0px 0px 500px 700px black",
+    boxShadow: "0px 200px 500px 70px green",
    p: 4,
     zIndex: "200",
     borderRadius:'20px'
@@ -39,7 +39,7 @@ const Preview = () => {
 
   setTimeout(() => {
     setDisplayMsg(false);
-  }, 5000);
+  }, 20000);
 
   return (
     <div>
@@ -59,16 +59,16 @@ const Preview = () => {
         <Box>
           {resumeTemplate.rTemp}
         </Box>
-        <Box sx={{ position: "absolute", top: "100px", left:'50px' , zIndex:'100'}}>
+        <Box sx={{ position: "absolute", top: "200px", left:'50px' , zIndex:'100'}}>
         
           <Fab 
           onClick={()=>{Navigate('/details-filling-page/key-skills')}}
-          sx={{fontWeight:'bold', letterSpacing: 4, marginRight:'15px'}} variant="extended" color="secondary" size="medium">
-            BACK
+          sx={{fontWeight:'bold', letterSpacing: 3, marginRight:'15px'}} variant="extended" color="primary" size="medium">
+            Edit
           </Fab>
           <Fab
           onClick={handleSaveClick}
-           sx={{fontWeight:'bold', letterSpacing: 4}} variant="extended" color="success" size="medium">
+           sx={{fontWeight:'bold', letterSpacing: 2}} variant="extended" color="success" size="medium">
             SAVE
           </Fab>
         </Box>

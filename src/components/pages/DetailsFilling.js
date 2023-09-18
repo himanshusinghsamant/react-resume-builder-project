@@ -1,12 +1,16 @@
 import React from "react";
 import "./style.css";
-import { Stack, Box, Paper, Container } from "@mui/material";
+import { Box, Paper, Container } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import PersonalInfo from "../formsDetails/PersonalInfo";
 import WorkExperience from "../formsDetails/WorkExperience";
 import Education from "../formsDetails/Education";
 import KeySkills from "../formsDetails/KeySkills";
+import PersonIcon from '@mui/icons-material/Person';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import SchoolIcon from '@mui/icons-material/School';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 
 const DetailsFilling = () => {
@@ -14,75 +18,95 @@ const DetailsFilling = () => {
   return (
     <div>
       <Container sx={{ display:{md:'flex'}, mt:'70px'}}>
-        <Box sx={{ width: "300px", height: "auto", mr:{md:'5%'}, ml:'20px',ml:{md:'0px'}}}>
-          <Stack
-            spacing={2}
+        <Box sx={{ width: "300px", height: "auto", mr:{md:'5%'},ml:{md:'0px'}}}>
+          <Paper             
             sx={{
               width: "300px",
               backgroundColor: "white",
+              
               borderRadius: "10px",
               boxShadow: "0 0 20px 0.1px ",
               p: "20px",
-              mt: "20px",
+              mt: "80px",
             }}
           >
-            <Paper
+            <Paper           
               sx={{
                 cursor: "pointer",
+                display:"flex",
+                textAlign:"center",
+                marginTop:"5px",
                 p: "5px",
-                fontWeight: "bold",
-                color: "gray",
+              
                 textDecoration: "none",
+                color: "black",
+                fontFamily:'sans-serif',
+                
+                textTransform:"uppercase"
               }}
               exact
              component={NavLink}
              to='/details-filling-page/personal-details'
-            >
-             
-              Personal Details
+             >
+             <PersonIcon sx= {{marginRight :"10px"}}/>  Personal Details
             </Paper>
             <Paper
               sx={{
                 cursor: "pointer",
+                display:"flex",
+                textAlign:"center",
+                marginTop:"5px",
                 p: "5px",
-                fontWeight: "bold",
-                color: "gray",
+               
+                color: "black",
+                fontFamily:'sans-serif',
+                
+                textTransform:"uppercase",
                 textDecoration: "none",
               }}
               exact
             component={NavLink}
             to='/details-filling-page/work-experience'
-            >
-             
-              Work Experience
+            ><WorkHistoryIcon sx= {{marginRight :"10px"}}/>  Work Experience
             </Paper>
             <Paper
               sx={{
                 cursor: "pointer",
+                display:"flex",
+                textAlign:"center",
+                marginTop:"5px",
                 p: "5px",
-                fontWeight: "bold",
-                color: "gray",
+              
+                color: "black",
+                fontFamily:'sans-serif',
+                
+                textTransform:"uppercase",
                 textDecoration: "none",
               }}
               component={NavLink}
               to="/details-filling-page/education"
-            >
-              Education
+            ><SchoolIcon sx= {{marginRight :"10px"}}/>  Education
             </Paper>
             <Paper
               sx={{
                 cursor: "pointer",
+                display:"flex",
+                textAlign:"center",
+                marginTop:"5px",
+                marginBottom:"5px",
                 p: "5px",
-                fontWeight: "bold",
-                color: "gray",
+               
+                color: "black",
+                fontFamily:'sans-serif',
+                
+                textTransform:"uppercase",
                 textDecoration: "none",
               }}
               component={NavLink}
               to="/details-filling-page/key-skills"
-            >
-              Key skills
+            ><AssignmentIcon sx= {{marginRight :"10px"}}/>  Key skills
             </Paper>
-          </Stack>
+          </Paper>
         </Box>
         <Routes>
           <Route exact path="/personal-details" element={<PersonalInfo />} />

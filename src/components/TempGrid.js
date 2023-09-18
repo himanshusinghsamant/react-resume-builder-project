@@ -33,7 +33,7 @@ const TempGrid = (props) => {
       <Box 
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
-      sx={{ cursor: "pointer", position: "relative" ,borderRadius:'10px'}}>
+      sx={{ cursor: "pointer", position: "relative" ,borderRadius:'10px',margin: "20px 10px"}}>
         <img
           style={{ height: "300px", width: "250px", borderRadius:'10px', boxShadow:'0px 0px 10px 2px grey' }}
           src={props.img.image}

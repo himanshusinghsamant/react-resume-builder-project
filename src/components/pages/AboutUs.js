@@ -21,24 +21,28 @@ const MediaIcons = (props)=>{
 const AboutUs = () => {
   return (
     <>
-   <Container>
-   <Grid sx={{display:'flex'}} container direction="row" alignItems="center" sx={{mt:8,}}>
-        <Grid item xs={12} sm={6} order={{xs:2,sm:1}}>
-            <Typography variant="h3" color="inherit" sx={{mb:5, fontFamily:'Segoe UI'}}  >
+   <Container  >
+   <Grid  container direction="row" alignItems="center" sx={{mt:8
+}}>
+        <Grid item xs={12}  lg={6} order={{xs:2,sm:1}}>
+            <Typography variant="h2" color="inherit" sx={{mb:5,mt:4, fontFamily:'Segoe UI'}}  >
                 Resume Builder
             </Typography>
-            <Typography variant='h8'  color="inherit" textTransform={'capitalize'}>
+            <Typography variant='h6'  color="inherit" textTransform={'capitalize'}>
             Welcome to our team! We are a group of five passionate individuals
-           <Typography sx={{color:"red"}}> KUNDAN, HIMANSHU, PRAGTI, ABHISHEK AND PRASAD.</Typography> who came together to turn our shared vision into reality. Our journey began with a simple idea - to empower job seekers like you with a user-friendly and fully responsive resume builder app. Using the power of React, we've crafted an application that simplifies the process of creating a standout resume.<br/><br/>
+           <Typography sx={{color:"red"}}> KUNDAN, HIMANSHU, PRAGTI AND PRASAD.</Typography> who came together to turn our shared vision into reality. Our journey began with a simple idea - to empower job seekers like you with a user-friendly and fully responsive resume builder app. Using the power of React, we've crafted an application that simplifies the process of creating a standout resume.<br/>
             Our aim : Empower job seekers with responsive, user-centric resumes. Your success starts here. Happy resume crafting! 🌟🚀📄
             </Typography>
         </Grid>
-        <Grid container item xs={12} sm={6} justifyContent="center" order={{xs:1,sm:2}}>
-            <Box  sx={{width:'40vw',display:'flex'}} component="img" src='./images/About.png' />
+        <Grid container item xs={12} sm={12} lg={6} justifyContent="center" order={{xs:1,sm:2}}>
+            <Box  sx={{width:'100%',marginLeft:"30%" ,display:'flex'}} component="img" src='./images/About.png' />
         </Grid>
     </Grid>
 
-    <Box sx={{display:'flex', flexDirection:"right"}}>
+    <Box sx={{display:'flex', flexDirection:"flex-end",
+width: "10%"
+
+}}>
     {SocialMediaImg && SocialMediaImg.map((img)=>{
         return (<MediaIcons img ={img} key={img.id}/>)
     })}

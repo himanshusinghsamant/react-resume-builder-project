@@ -15,11 +15,13 @@ const Education = () => {
 
   console.log(EducationDetails)
 
+
+
   const {
     register,
     handleSubmit,
     control,
-    formState: { errors, isDirty, isValid },
+    formState: { errors,isDirty, isValid },
   } = useForm({
     defaultValues: {
       eduDetails: [
@@ -57,9 +59,10 @@ const Education = () => {
             boxShadow: "0 0 20px 0.1px" ,
             textAlign: "center",
             borderRadius: "10px",
+            marginTop:'80px'
           }}
         >
-          <Typography variant="h5" sx={{ mb: "40px", mt: "20px" }}>
+          <Typography variant="h5" sx={{ mb: "40px", mt: "20px",textTransform:"uppercase" }}>
             Education
           </Typography>
 
@@ -69,8 +72,8 @@ const Education = () => {
             return (
               <div key={fields.id}>
                 <Typography
-                sx={{color:'grey', fontWeight:'bold', marginRight:'85%', marginTop:'40px'}} 
-                >Details\ - {index + 1}</Typography>
+                sx={{ fontWeight:'bold', marginRight:'85%',fontFamily:'serif', marginTop:'40px'}} 
+                >Details : {index + 1}</Typography>
                 <TextField
                   label="Type "
                   type="text"
@@ -79,40 +82,46 @@ const Education = () => {
                     width: "60%",
                     m: 1,
                   }}
-                  {...register(`eduDetails.${index}.Type`)}
-                />
+                 
+                  {...register('Type', {required:'This Field is required!'})}            
+               />
+          {errors.Type && <p style={{color:'red'}}>{errors.Type.message}</p>}
 
                 <TextField
                   label="University "
                   type="text"
                   varient="outlined"
                   sx={{
-                    width: "300px",
+                    width: "47%",
                     m: 1,
                   }}
-                  {...register(`eduDetails.${index}.University`)}
-                />
+                  {...register('University', {required:'This Field is required!'})}            
+                  />
+             {errors.University && <p style={{color:'red'}}>{errors.University.message}</p>}
                 <TextField
                   label="Degree"
                   type="text"
                   varient="outlined"
-                  sx={{ width: "300px", m: 1 }}
-                  {...register(`eduDetails.${index}.Degree`)}
-                />
+                  sx={{ width: "47%", m: 1 }}
+                  {...register('Degree', {required:'This Field is required!'})}            
+                  />
+             {errors.Degree && <p style={{color:'red'}}>{errors.Degree.message}</p>}
                 <TextField
                   label="StartYear"
                   type="number"
                   varient="outlined"
-                  sx={{ width: "300px", m: 1 }}
-                  {...register(`eduDetails.${index}.StartYear`)}
-                />
+                  sx={{ width: "47%", m: 1 }}
+                  {...register('StartYear', {required:'This Field is required!'})}            
+                  />
+             {errors.StartYear && <p style={{color:'red'}}>{errors.StartYear.message}</p>}
                 <TextField
                   label="EndYear"
                   type="number"
                   varient="outlined"
-                  sx={{ width: "300px", m: 1 }}
-                  {...register(`eduDetails.${index}.EndYear`)}
+                  sx={{ width: "47%", m: 1 }}
+                  {...register('EndYear', {required:'This Field is required'})}
                 />
+                {errors.EndYear && <p style={{color:'red'}}>{errors.EndYear.message}</p>}
                 {index > 0 && (
                   <Button
                   sx={{margin:'20px 0px 30px 0px'}}
@@ -135,7 +144,7 @@ const Education = () => {
                   EndYear: "",
                 })
               }
-              variant="text"
+              variant="outlined"
               sx={{ fontWeight: "bold" }}
             >
               Add more
@@ -156,7 +165,7 @@ const Education = () => {
           <Button
           disabled={!isDirty || !isValid}
           onClick={handleSubmit(onSubmit)}
-            variant="contained"
+          variant="contained"
             sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
           >
             Next

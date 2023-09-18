@@ -11,12 +11,15 @@ import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import DrawerComp from "./pages/DrawerComp";
 
+
 const NavBar = () => {
   const [value, setValue] = useState(0);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <AppBar position="fixed" color="">
+    <AppBar position="fixed" color=""
+
+    >
       <Toolbar>
         {isMatch ? (
           <>
@@ -49,6 +52,12 @@ const NavBar = () => {
               <Tab component={Link} exact to={'/'} label="Resume Templates" />
               <Tab component={Link} to={'/my-resumes'} label="My Resumes"   sx={{":hover":{color:"skyblue"}}} />
               <Tab component={Link} to={'/about-us'} label="About Us"   sx={{":hover":{color:"skyblue"}}} />
+
+
+
+
+
+
             </Tabs>
           </>
         )}
