@@ -1,6 +1,7 @@
 import React,{ useState } from 'react'
 import { Drawer,Typography,Divider, List, ListItemButton, ListItemText, IconButton } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
+import { Link } from 'react-router-dom';
 
 
 const DrawerComp = () => {
@@ -21,18 +22,18 @@ const DrawerComp = () => {
           />
           </Typography>
           <Divider />
-            <List sx={{marginBottom: "410px" }}>
+            <List sx={{marginBottom: "1000px" }}>
                 <ListItemButton  selected={selectedIndex === 0}
           onClick={(event) => handleListItemClick(event, 0)}>                    
-                        <ListItemText primary="Resume Templates" />                   
+                       <Link to="/"><ListItemText primary="Resume Templates" /> </Link>                   
                 </ListItemButton>
                 <ListItemButton selected={selectedIndex === 1}
           onClick={(event) => handleListItemClick(event, 1)}>                    
-                        <ListItemText primary="My Resumes" />                   
+                        <Link to="/my-resumes"><ListItemText primary="My Resumes" /> </Link>                
                 </ListItemButton>
                 <ListItemButton selected={selectedIndex === 2}
           onClick={(event) => handleListItemClick(event, 2)}>                   
-                        <ListItemText primary="About Us" />                    
+                       <Link to="/about-us"><ListItemText primary="About Us" /> </Link>                   
                 </ListItemButton>
             </List>           
         </Drawer>

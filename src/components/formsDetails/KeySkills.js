@@ -27,7 +27,7 @@ const KeySkills = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isDirty, isValid },
+    formState: { isDirty, isValid },
     control,
   } = useForm({
     defaultValues: {
@@ -81,6 +81,7 @@ const KeySkills = () => {
                       m: 1,
                     }}
                     {...register(`keySkills.${index}.skills`)}
+                    required
                   />
                   {index > 0 && (
                     <Button

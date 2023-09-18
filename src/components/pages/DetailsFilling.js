@@ -1,13 +1,16 @@
 import React from "react";
 import "./style.css";
-import { Stack, Box, Container } from "@mui/material";
+import { Box, Stack, Container } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import PersonalInfo from "../formsDetails/PersonalInfo";
 import WorkExperience from "../formsDetails/WorkExperience";
 import Education from "../formsDetails/Education";
 import KeySkills from "../formsDetails/KeySkills";
-import "./style.css";
+import PersonIcon from '@mui/icons-material/Person';
+import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
+import SchoolIcon from '@mui/icons-material/School';
+import BuildIcon from '@mui/icons-material/Build';
 
 const DetailsFilling = () => {
   return (
@@ -36,32 +39,36 @@ const DetailsFilling = () => {
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/personal-details"}
-                  style={{ textDecoration: "none", fontWeight: "bold", letterSpacing:3 }}
+                  style={{ textDecoration: "none", fontWeight: "bold", letterSpacing:2, display:'flex', alignItems:'center' }}
                 >
+                  <PersonIcon sx={{mr:'10px'}}/>
                   Personal Details
                 </NavLink>
               </li>
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/education"}
-                  style={{ textDecoration: "none", fontWeight: "bold" ,letterSpacing:3}}
+                  style={{ textDecoration: "none", fontWeight: "bold" ,letterSpacing:2,  display:'flex', alignItems:'center'}}
                 >
+                  <SchoolIcon sx={{mr:'10px'}}/>
                   Education
                 </NavLink>
               </li>
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/work-experience"}
-                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:3 }}
+                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:2 ,  display:'flex', alignItems:'center'}}
                 >
+                  <WorkHistoryIcon sx={{mr:'10px'}}/>
                   Work Experience
                 </NavLink>
               </li>
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/key-skills"}
-                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:3 }}
+                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:2,  display:'flex', alignItems:'center' }}
                 >
+                  <BuildIcon sx={{mr:'10px'}}/>
                   Key Skills
                 </NavLink>
               </li>

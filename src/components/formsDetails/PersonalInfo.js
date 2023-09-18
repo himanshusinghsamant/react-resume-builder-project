@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { Avatar, TextField } from "@mui/material";
+import { TextField, InputAdornment } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
 import { useEffect } from "react";
@@ -8,11 +8,15 @@ import { useDispatch } from "react-redux";
 import { personalInfoAction } from "../../Redux/Index";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ProfileSection from "./ProfileSection";
+
+
 
 const PersonalInfo = () => {
 
   const Navigate = useNavigate()
   const personalData = useSelector((state)=> state.personalInfo.personalInfoValues)
+  // const profileData = useSelector((state)=> state.profile.profileInfoValue)
   const dispatch = useDispatch()
 
 
@@ -29,6 +33,10 @@ const PersonalInfo = () => {
   }
 
   const {register, handleSubmit, formState:{errors, isDirty, isValid} } = useForm({defaultValues:preloadData})
+
+  // console.log(handleSubmit)
+  // console.log(profileData)
+
 
   const onSubmit=(data)=>{
     console.log(data)
@@ -53,25 +61,11 @@ const PersonalInfo = () => {
           p: 3,
           boxShadow: "0 0 400px 1px",
           textAlign: "center",
-          borderRadius: "10px",
+          borderRadius: "10px",         
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            mb: "25px",
-          }}
-        >
-          <Avatar
-            sx={{ mb: "10px", width: "70px", height: "70px" }}
-            alt="Travis Howard"
-            src="/static/images/avatar/2.jpg"
-          />
-          <Button variant="contained" color="success" sx={{height:'25px'}}>
-            Upload profile
-          </Button>
+        <Box>
+          <ProfileSection/>
         </Box>
         <div>
           <TextField
@@ -79,8 +73,7 @@ const PersonalInfo = () => {
             type="text"
             varient="outlined"
             sx={{ width: "300px", m: 1, '&:hover:':{backgroundColor:'pink'} }}
-            {...register('FirstName', {required:'first name is required!'})}
-            
+            {...register('FirstName', {required:'first name is required!'})}            
           />
           {errors.FirstName && <p style={{color:'red'}}>{errors.FirstName.message}</p>}
 
@@ -108,6 +101,9 @@ const PersonalInfo = () => {
             label="MobileNo"
             type="number"
             varient="outlined"
+            InputProps={{
+              startAdornment:<InputAdornment position="start">+91 </InputAdornment>
+            }}
             sx={{ width: "300px", m: 1 }}
             {...register('MobileNo', {required:'mobile no. is required!'})}
           />
@@ -148,8 +144,8 @@ const PersonalInfo = () => {
             varient="outlined"
             sx={{ width: "300px", m: 1 }}
             {...register('PinCode', {required:'pin code is required!'})}
-
           />
+          {errors.PinCode && <p style={{color:"red"}}>{errors.PinCode.message}</p>}
           <TextField
             label="Objective"
             type="text"
@@ -169,14 +165,14 @@ const PersonalInfo = () => {
             backgroundColor: "black",
             mt: "10px",
             fontWeight: "bold",
-            mr: "10px",
+            mr: "10px",            
           }}
         >
           Back
         </Button> */}
         <Button
         disabled={!isDirty || !isValid}    
-        onClick={handleSubmit(onSubmit)}
+        onClick={handleSubmit(onSubmit)}        
         type="submit"
           variant="contained"
           sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}

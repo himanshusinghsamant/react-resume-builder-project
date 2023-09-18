@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Divider, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { Button, Divider, MenuItem, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -13,7 +13,10 @@ import { useNavigate } from "react-router-dom";
 
 const Education = () => {
 
+  const [year, setYear] = useState()
+  const yearInfo = ["2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2022","2023","2024","Present"]
   const EducationDetails = useSelector((state)=> state.eduDetail.eduDetails)
+  console.log(EducationDetails)
   const dispatch = useDispatch()
   const Navigate = useNavigate()
 
@@ -22,7 +25,7 @@ const Education = () => {
     register,
     handleSubmit,
     control,
-    formState: { errors, isDirty, isValid },
+    formState: { errors,isDirty, isValid },
   } = useForm({
     defaultValues: {
       eduDetails: [
@@ -44,7 +47,8 @@ const Education = () => {
   });
 
   const onSubmit=(data)=>{
-    dispatch(educationDetailsAction(data.eduDetails))
+    const FormData = data.eduDetails
+    dispatch(educationDetailsAction(FormData))
     Navigate('/details-filling-page/work-experience')
 
   }
@@ -80,45 +84,67 @@ const Education = () => {
                 <TextField
                   label="Type "
                   type="text"
-                  varient="outlined"
+                  variant="outlined"
                   sx={{
                     width: "60%",
                     m: 1,
                   }}
-                  {...register(`eduDetails.${index}.Type`)}
-                />
+                 
+                  {...register(`eduDetails[${index}].Type`, {required:'This Field is required!'})}            
+               />
+          {errors.Type && <p style={{color:'red'}}>{errors.Type.message}</p>}
 
                 <TextField
                   label="University "
                   type="text"
-                  varient="outlined"
+                  variant="outlined"
                   sx={{
                     width: "300px",
                     m: 1,
                   }}
-                  {...register(`eduDetails.${index}.University`)}
-                />
+                  {...register(`eduDetails[${index}].University`, {required:'This Field is required!'})}            
+                  />
+             {errors.University && <p style={{color:'red'}}>{errors.University.message}</p>}
                 <TextField
                   label="Degree"
                   type="text"
-                  varient="outlined"
+                  variant="outlined"
                   sx={{ width: "300px", m: 1 }}
-                  {...register(`eduDetails.${index}.Degree`)}
-                />
+                  {...register(`eduDetails[${index}].Degree`, {required:'This Field is required!'})}            
+                  />
+             {errors.Degree && <p style={{color:'red'}}>{errors.Degree.message}</p>}
                 <TextField
                   label="StartYear"
                   type="number"
-                  varient="outlined"
+                  variant="outlined"
                   sx={{ width: "300px", m: 1 }}
-                  {...register(`eduDetails.${index}.StartYear`)}
-                />
+                  {...register(`eduDetails[${index}].StartYear`, {required:'This Field is required!'})}
+                  onChange={(e) => setYear(e.target.value)}
+                  select       
+                  >
+                    {yearInfo.map(year=> (
+                      <MenuItem value={year} key={year}>
+                        {year}
+                      </MenuItem>
+                    ))}
+                  </TextField>
+             {errors.StartYear && <p style={{color:'red'}}>{errors.StartYear.message}</p>}
                 <TextField
                   label="EndYear"
                   type="number"
-                  varient="outlined"
+                  variant="outlined"
                   sx={{ width: "300px", m: 1 }}
-                  {...register(`eduDetails.${index}.EndYear`)}
-                />
+                  {...register(`eduDetails[${index}].EndYear`, {required:'This Field is required'})}
+                  onChange={(e) => setYear(e.target.value)}
+                  select         
+                  >
+                    {yearInfo.map(year=> (
+                      <MenuItem value={year} key={year}>
+                        {year}
+                      </MenuItem>
+                    ))}
+                    </TextField>
+                {errors.EndYear && <p style={{color:'red'}}>{errors.EndYear.message}</p>}
                 {index > 0 && (
                   <Button
                   sx={{margin:'20px 0px 30px 0px'}}
@@ -163,7 +189,7 @@ const Education = () => {
           <Button
           disabled={!isDirty || !isValid}
           onClick={handleSubmit(onSubmit)}
-            variant="contained"
+          variant="contained"
             sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
           >
             Next

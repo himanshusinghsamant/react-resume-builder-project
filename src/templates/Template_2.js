@@ -8,6 +8,8 @@ const Template_2 = () => {
   const PersonalInfoData = useSelector(
     (state) => state.personalInfo.personalInfoValues
   );
+  const profileData = useSelector((state) =>{
+    return state.profile.profileInfovalue});
   const workExpData = useSelector((state) => state.workExp.workData);
   const educationData = useSelector((state) => state.eduDetail.eduDetails);
   const skillsData = useSelector((state) => state.skills.skillDetails);
@@ -33,15 +35,15 @@ const Template_2 = () => {
             <div style={{ padding: "10px 10px" }}>
               <div style={{ display: "flex" }}>
                 <Typography
-                  sx={{ fontSize: "25px", letterSpacing: 6, color: "white" }}
+                  sx={{ fontSize: "25px", letterSpacing: 3, color: "white" }}
                 >
                   {PersonalInfoData.FirstName}
                 </Typography>
                 <Typography
                   sx={{
                     fontSize: "25px",
-                    color: "grey",
-                    letterSpacing: 6,
+                    color: "yellow",
+                    letterSpacing: 3,
                     marginLeft: "10px",
                   }}
                 >
@@ -58,7 +60,7 @@ const Template_2 = () => {
               <img
                 style={{ width: "60px", height: "60px", borderRadius: "50%" }}
                 src={
-                  "https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
+                 profileData
                 }
                 alt="profile-img"
               />

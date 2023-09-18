@@ -4,14 +4,16 @@ import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
 import { useSelector } from "react-redux";
 
+
 const Templates = () => {
   const PersonalInfoData = useSelector(
     (state) => state.personalInfo.personalInfoValues
   );
+  const profileData = useSelector((state) =>{
+    return state.profile.profileInfovalue});
   const workExpData = useSelector((state) => state.workExp.workData);
-  const educationData = useSelector((state)=> state.eduDetail.eduDetails)
-  const skillsData = useSelector((state)=> state.skills.skillDetails)
-
+  const educationData = useSelector((state) => state.eduDetail.eduDetails)
+  const skillsData = useSelector((state) => state.skills.skillDetails)
 
   return (
     <div>
@@ -33,14 +35,14 @@ const Templates = () => {
           >
             <div style={{ padding: "10px 10px" }}>
               <div style={{ display: "flex" }}>
-                <Typography sx={{ fontSize: "25px", letterSpacing: 6 }}>
+                <Typography sx={{ fontSize: "25px", letterSpacing: 3 }}>
                   {PersonalInfoData.FirstName}
                 </Typography>
                 <Typography
                   sx={{
                     fontSize: "25px",
                     color: "grey",
-                    letterSpacing: 6,
+                    letterSpacing: 3,
                     marginLeft: "10px",
                   }}
                 >
@@ -54,9 +56,7 @@ const Templates = () => {
             <Box sx={{ position: "absolute", top: "40px", right: "20px" }}>
               <img
                 style={{ width: "60px", height: "60px", borderRadius: "50%" }}
-                src={
-                  "https://w7.pngwing.com/pngs/129/292/png-transparent-female-avatar-girl-face-woman-user-flat-classy-users-icon.png"
-                }
+                src={profileData}
                 alt="profile-img"
               />
             </Box>
@@ -143,22 +143,22 @@ const Templates = () => {
               <div style={{ marginTop: "20px" }}>
                 <Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
                 <Stack sx={{ marginLeft: "10px" }} spacing={1}>
-                {
-                  skillsData && skillsData.map((info)=>{
-                    return (
-                      <li
-                      style={{
-                        fontSize: "11px",
-                        fontWeight: "bold",
-                        paddingLeft: "10px",
-                      }}
-                    >
-                      {info.skills}
-                    </li>
-                    )
-                  })
-                }
-                
+                  {
+                    skillsData && skillsData.map((info) => {
+                      return (
+                        <li
+                          style={{
+                            fontSize: "11px",
+                            fontWeight: "bold",
+                            paddingLeft: "10px",
+                          }}
+                        >
+                          {info.skills}
+                        </li>
+                      )
+                    })
+                  }
+
                 </Stack>
               </div>
             </Box>
