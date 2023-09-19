@@ -18,6 +18,8 @@ const Templates = () => {
   const educationData = useSelector((state) => state.eduDetail.eduDetails)
   const skillsData = useSelector((state) => state.skills.skillDetails)
 
+
+
   return (
     <div>
       <Container
@@ -53,9 +55,14 @@ const Templates = () => {
                   {PersonalInfoData.LastName}
                 </Typography>
               </div>
-              <Typography sx={{ letterSpacing: 10, fontSize: "12px" }}>
-                WEB DEVELOPER
-              </Typography>
+              {workExpData?.map((elem)=>{
+                  return (
+                    <Typography sx={{ letterSpacing: 10, fontSize: "12px", textTransform:'uppercase' }}>
+                      {elem.JobTitle}
+                    </Typography>
+                  )
+                })}
+             
             </div>
             <Box sx={{ position: "absolute", top: "40px", right: "20px" }}>
               <img

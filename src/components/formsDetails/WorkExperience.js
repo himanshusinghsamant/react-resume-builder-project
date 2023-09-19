@@ -13,35 +13,25 @@ import { useMyContext } from "../../context/Context";
 const WorkExperience = () => {
   // eslint-disable-next-line no-unused-vars
   const { mode } = useMyContext();
-  const [year, setYear] = useState();
-  const yearInfo = [
-    "2000",
-    "2001",
-    "2002",
-    "2003",
-    "2004",
-    "2005",
-    "2006",
-    "2007",
-    "2008",
-    "2009",
-    "2010",
-    "2011",
-    "2012",
-    "2013",
-    "2014",
-    "2015",
-    "2016",
-    "2017",
-    "2018",
-    "2019",
-    "2020",
-    "2021",
-    "2022",
-    "2023",
-    "2024",
-    "Present",
-  ];
+
+  const currentYear = new Date().getFullYear();
+  const [startYear, setStartYear] = useState(currentYear);
+  const [endYear, setEndYear] = useState(currentYear);
+
+  const handleStartYearChange = (event) => {
+    const newStartYear = parseInt(event.target.value);
+    setStartYear(newStartYear);
+    // Ensure end year is greater than or equal to the selected start year
+    if (newStartYear > endYear) {
+      setEndYear(newStartYear);
+    }
+  };
+
+  const handleEndYearChange = (event) => {
+    const newEndYear = parseInt(event.target.value);
+    setEndYear(newEndYear);
+  };
+
 
   const Navigate = useNavigate();
   const {
@@ -73,7 +63,7 @@ const WorkExperience = () => {
   const onSubmit = (data) => {
     // console.log(data.WorkExperience)
     dispatch(workExpAction(data.WorkExperience));
-    Navigate("/details-filling-page/key-skills");
+    // Navigate("/details-filling-page/key-skills");
   };
 
   console.log(workData);
@@ -174,19 +164,20 @@ const WorkExperience = () => {
                 {...register(`WorkExperience[${index}].StartYear`, {
                   required: "This Field is required!",
                 })}
-                onChange={(e) => setYear(e.target.value)}
+                onChange={handleStartYearChange}
                 select
                 SelectProps={{ native: true }}
               >
-                {yearInfo.map((year) => (
-                  <option
-                    style={{ color: mode === "light" ? "black" : "black" }}
-                    value={year}
-                    key={year}
-                  >
-                    {year}
-                  </option>
-                ))}
+                 {Array.from(
+                    { length: currentYear - 1900 + 1 },
+                    (_, index) => (
+                      <option
+                      style={{ color: mode === "light" ? "black" : "black" }}
+                       key={index} value={currentYear - index}>
+                        {currentYear - index}
+                      </option>
+                    )
+                  )}
               </TextField>
               {errors.StartYear && (
                 <p style={{ color: "red" }}>{errors.StartYear.message}</p>
@@ -199,19 +190,20 @@ const WorkExperience = () => {
                 {...register(`WorkExperience[${index}].EndYear`, {
                   required: "This Field is required!",
                 })}
-                onChange={(e) => setYear(e.target.value)}
+                onChange={handleEndYearChange}
                 select
                 SelectProps={{ native: true }}
               >
-                {yearInfo.map((year) => (
-                  <option
-                    style={{ color: mode === "light" ? "black" : "black" }}
-                    value={year}
-                    key={year}
-                  >
-                    {year}
-                  </option>
-                ))}
+                {Array.from(
+                    { length: currentYear - startYear + 1 },
+                    (_, index) => (
+                      <option
+                      style={{ color: mode === "light" ? "black" : "black" }}
+                       key={index} value={startYear + index}>
+                        {startYear + index}
+                      </option>
+                    )
+                  )}
               </TextField>
               {errors.EndYear && (
                 <p style={{ color: "red" }}>{errors.EndYear.message}</p>

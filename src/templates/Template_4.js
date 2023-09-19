@@ -50,9 +50,13 @@ const Template_4 = () => {
                   {PersonalInfoData.LastName}
                 </Typography>
               </div>
-              <Typography sx={{ letterSpacing: 10, fontSize: "12px", color:'black' }}>
-                WEB DEVELOPER
-              </Typography>
+              {workExpData?.map((elem)=>{
+                  return (
+                    <Typography sx={{ letterSpacing: 10, fontSize: "12px", textTransform:'uppercase' }}>
+                      {elem.JobTitle}
+                    </Typography>
+                  )
+                })}
             </div>
             <Box sx={{ position: "absolute", top: "10px", left: "20px" }}>
               <img
@@ -119,6 +123,7 @@ const Template_4 = () => {
             </div>
             <hr style={{color:'#f4f4f7'}}/>
             <Box sx={{width:'45%'}}>
+            <Typography sx={{ marginBottom: "20px" }}>EDUCATION</Typography>
             {
               educationData && educationData.map((info)=>{
                 return(
