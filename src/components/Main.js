@@ -3,7 +3,6 @@ import { Container, Typography, Box } from "@mui/material";
 import { TempImg } from "../data/Data";
 import TempGrid from "./TempGrid";
 
-
 const Main = () => {
 	return (
 		<div sx={{ display: "flex", flexWrap: "wrap" }}>
@@ -34,8 +33,6 @@ const Main = () => {
 					flexWrap: "wrap",
 					justifyContent: "space-around",
 					alignItems: "center",
-				
-        
 				}}>
 				{TempImg &&
 					TempImg.map((img) => {

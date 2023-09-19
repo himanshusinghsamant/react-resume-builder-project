@@ -34,10 +34,13 @@ To get started with the Resume Builder App, follow these steps:
    ```bash
    git clone https://github.com/your-username/resume-builder-app.git
 
+   ```
 
- 1. Installation: Navigate to the project directory and install the required dependencies.
+1. Installation: Navigate to the project directory and install the required dependencies.
 
- cd resume-builder-app
+cd resume-builder-app
 npm install
 
-   ``` 
+```
+
+```

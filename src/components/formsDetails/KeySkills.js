@@ -3,12 +3,11 @@ import { Button, Divider, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useFieldArray, useForm } from "react-hook-form";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import { keySkillsAction } from "../../Redux/Index";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
 
 // const FormValues = {
 //   keySkills:{
@@ -17,121 +16,118 @@ import { useNavigate } from "react-router-dom";
 // }
 
 const KeySkills = () => {
+	const Navigate = useNavigate();
+	const dispatch = useDispatch();
+	const skillsDetails = useSelector((state) => state.skills.skillDetails);
 
-  const Navigate = useNavigate()
-  const dispatch = useDispatch()
-  const skillsDetails = useSelector((state)=> state.skills.skillDetails)
+	console.log(skillsDetails);
 
-  console.log(skillsDetails)
+	const {
+		register,
+		handleSubmit,
+		formState: { isDirty, isValid },
+		control,
+	} = useForm({
+		defaultValues: {
+			keySkills: [{ skills: "" }],
+		},
+	});
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isDirty, isValid },
-    control,
-  } = useForm({
-    defaultValues: {
-      keySkills: [{ skills: "" }],
-    },
-  });
+	const { fields, append, remove } = useFieldArray({
+		name: "keySkills",
+		control,
+	});
 
-  const { fields, append, remove } = useFieldArray({
-    name: "keySkills",
-    control,
-  });
+	const onSubmit = (data) => {
+		// console.log(data);
+		dispatch(keySkillsAction(data.keySkills));
+		Navigate("/preview");
+	};
 
-  const onSubmit = (data) => {
-    // console.log(data);
-    dispatch(keySkillsAction(data.keySkills))
-    Navigate('/preview')
-  };
+	return (
+		<div>
+			<div>
+				<>
+					<Box
+						container
+						component="form"
+						sx={{
+							width: "80%",
+							height: "auto",
+							m: 3,
+							p: 3,
+							boxShadow: "0 0 20px 1px",
+							textAlign: "center",
+							borderRadius: "10px",
+							marginTop: "80px",
+						}}>
+						<Typography
+							variant="h5"
+							sx={{ mb: "40px", mt: "20px", textTransform: "uppercase" }}>
+							Key Skills
+						</Typography>
 
-  return (
-    <div>
-      <div>
-        <>
-          <Box
-            container
-            component="form"
-            sx={{
-              width: "80%",
-              height: "auto",
-              m: 3,
-              p: 3,
-              boxShadow: "0 0 20px 1px",
-              textAlign: "center",
-              borderRadius: "10px",
-              marginTop:'80px'
-            }}
-          >
-            <Typography variant="h5" sx={{ mb: "40px", mt: "20px" ,textTransform:'uppercase'}}>
-              Key Skills
-            </Typography>
+						<Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
 
-            <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
-
-            {fields.map((field, index) => {
-              return (
-                <div key={field.id}>
-                  <TextField
-                    label="Addskills"
-                    type="text"
-                    varient="outlined"
-                    sx={{
-                      width:"80%",
-                      m: 1,
-                    }}
-                    {...register(`keySkills.${index}.skills`)}
-                    required
-                  />
-                  {index > 0 && (
-                    <Button
-                      sx={{ margin: "20px 0px 30px 0px" }}
-                      color="error"
-                      variant="outlined"
-                      endIcon={<DeleteIcon />}
-                      onClick={() => remove(index)}
-                    >
-                      Remove
-                    </Button>
-                  )}
-                </div>
-              );
-            })}
-            <Box sx={{ width: "100%", mt: "10px", mb: "30px" }}>
-              <Button
-                onClick={() => append({ skills: "" })}
-                variant="outlined"
-                sx={{ fontWeight: "bold" }}
-              >
-                Add new
-              </Button>
-            </Box>
-            <Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "black",
-                mt: "10px",
-                fontWeight: "bold",
-                mr: "10px",
-              }}
-            >
-              Back
-            </Button>
-            <Button
-            disabled={!isDirty || !isValid}
-              onClick={handleSubmit(onSubmit)}
-              variant="contained"
-              sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}
-            >
-              Preview
-            </Button>
-          </Box>
-        </>
-      </div>
-    </div>
-  );
+						{fields.map((field, index) => {
+							return (
+								<div key={field.id}>
+									<TextField
+										label="Addskills"
+										type="text"
+										varient="outlined"
+										sx={{
+											width: "80%",
+											m: 1,
+										}}
+										{...register(`keySkills.${index}.skills`)}
+										required
+									/>
+									{index > 0 && (
+										<Button
+											sx={{ margin: "20px 0px 30px 0px" }}
+											color="error"
+											variant="outlined"
+											endIcon={<DeleteIcon />}
+											onClick={() => remove(index)}>
+											Remove
+										</Button>
+									)}
+								</div>
+							);
+						})}
+						<Box sx={{ width: "100%", mt: "10px", mb: "30px" }}>
+							<Button
+								onClick={() => append({ skills: "" })}
+								variant="outlined"
+								sx={{ fontWeight: "bold" }}>
+								Add new
+							</Button>
+						</Box>
+						<Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
+						<Button
+							variant="contained"
+							onClick={() => Navigate("/details-filling-page/work-experience")}
+							sx={{
+								backgroundColor: "black",
+								mt: "10px",
+								fontWeight: "bold",
+								mr: "10px",
+							}}>
+							Back
+						</Button>
+						<Button
+							disabled={!isDirty || !isValid}
+							onClick={handleSubmit(onSubmit)}
+							variant="contained"
+							sx={{ backgroundColor: "black", mt: "10px", fontWeight: "bold" }}>
+							Preview
+						</Button>
+					</Box>
+				</>
+			</div>
+		</div>
+	);
 };
 
 export default KeySkills;
