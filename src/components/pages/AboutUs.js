@@ -56,7 +56,7 @@ const AboutUs = () => {
 							simplifies the process of creating a standout resume.
 							<br />
 							Our aim : Empower job seekers with responsive, user-centric
-							resumes. Your success starts here. Happy resume crafting! <Typography sx={{fontSize:"40px"}}>🌟🚀📄</Typography>
+							resumes. Your success starts here. Happy resume crafting!🌟🚀📄
 						</Typography>
 					</Grid>
 					<Grid
