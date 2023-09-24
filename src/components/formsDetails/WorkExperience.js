@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Divider, MenuItem, Typography } from "@mui/material";
+import { Button, Divider, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useDispatch } from "react-redux";
@@ -8,40 +8,36 @@ import { useForm, useFieldArray } from "react-hook-form";
 import { workExpAction } from "../../Redux/Index";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
+import { useMyContext } from "../../context/Context";
 
 const WorkExperience = () => {
-	// eslint-disable-next-line no-unused-vars
-	const [year, setYear] = useState();
-	const yearInfo = [
-		"2000",
-		"2001",
-		"2002",
-		"2003",
-		"2004",
-		"2005",
-		"2006",
-		"2007",
-		"2008",
-		"2009",
-		"2010",
-		"2011",
-		"2012",
-		"2013",
-		"2014",
-		"2015",
-		"2016",
-		"2017",
-		"2018",
-		"2019",
-		"2020",
-		"2021",
-		"2022",
-		"2023",
-		"2024",
-		"Present",
-	];
+	const { mode } = useMyContext();
 
+	const currentYear = new Date().getFullYear();
+	const [startYear, setStartYear] = useState(currentYear);
+	const [endYear, setEndYear] = useState(currentYear);
+
+	// This handleStartYearChange function Gives a Option To Select  a year from start year input field *******
+
+	const handleStartYearChange = (event) => {
+		const newStartYear = parseInt(event.target.value);
+		setStartYear(newStartYear);
+		// Ensure end year is greater than or equal to the selected start year
+		if (newStartYear > endYear) {
+			setEndYear(newStartYear);
+		}
+	};
+
+	// This handleEndYearChange function Gives a Option To Select  a year from end year input field *******
+
+	const handleEndYearChange = (event) => {
+		const newEndYear = parseInt(event.target.value);
+		setEndYear(newEndYear);
+	};
 	const Navigate = useNavigate();
+
+	// We are using useform Hook from React, This useform Hook is used to manage all forms states like register ,handleSubmit,error etc.***********************
+
 	const {
 		control,
 		register,
@@ -60,6 +56,8 @@ const WorkExperience = () => {
 		},
 	});
 
+	// This function Provides Functionality to control textfields by Adding New Field and removing selected ***************************************
+
 	const { fields, append, remove } = useFieldArray({
 		name: "WorkExperience",
 		control,
@@ -69,12 +67,29 @@ const WorkExperience = () => {
 	const workData = useSelector((state) => state.workExp.workData);
 
 	const onSubmit = (data) => {
-		// console.log(data.WorkExperience)
 		dispatch(workExpAction(data.WorkExperience));
 		Navigate("/details-filling-page/key-skills");
 	};
 
-	console.log(workData);
+	// This input style object is used  to styling inputfield*******************************
+
+	const inputStyle = {
+		width: "47%",
+		m: 1,
+		backgroundColor: mode === "light" ? "white" : "#072340",
+		borderRadius: "10px",
+		"& .MuiInputBase-input": {
+			color: mode === "light" ? "black" : "white",
+		},
+		"& label": {
+			color: mode === "light" ? "grey" : "white",
+		},
+		"& .MuiOutlinedInput-root": {
+			"& fieldset": {
+				borderColor: mode === "light" ? "grey" : "white",
+			},
+		},
+	};
 
 	return (
 		<div>
@@ -90,13 +105,15 @@ const WorkExperience = () => {
 						boxShadow: "0 0 20px 1px",
 						textAlign: "center",
 						borderRadius: "10px",
-						marginTop: "80px",
+						marginTop: "50px",
 					}}>
 					<Typography
 						variant="h5"
 						sx={{ mb: "40px", mt: "20px", textTransform: "uppercase" }}>
 						Work Experience
 					</Typography>
+
+					{/* This Fields came from useFieldArray to Map all the textfields *********************** */}
 
 					{fields.map((field, index) => (
 						<div key={field.id}>
@@ -107,25 +124,24 @@ const WorkExperience = () => {
 									ml: "40px",
 									mt: "40px",
 								}}>
-								<Typography
-									sx={{
-										fontWeight: "bold",
-										fontFamily: "serif",
-										fontSize: "m",
-									}}>
+								<Typography sx={{ fontWeight: "bold" }}>
 									Experience : {index + 1}
 								</Typography>
 							</Box>
-							<Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
+							<Divider
+								sx={{
+									backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
+									ml: "40px",
+									mb: "30px",
+									width: "88%",
+								}}
+							/>
 
 							<TextField
+								sx={inputStyle}
 								label="JobTitle"
 								type="text"
 								varient="outlined"
-								sx={{
-									width: "47%",
-									m: 1,
-								}}
 								{...register(`WorkExperience[${index}].JobTitle`, {
 									required: "This Field is required!",
 								})}
@@ -135,10 +151,10 @@ const WorkExperience = () => {
 							)}
 
 							<TextField
+								sx={inputStyle}
 								label="OrganizationName"
 								type="text"
 								varient="outlined"
-								sx={{ width: "47%", m: 1 }}
 								{...register(`WorkExperience[${index}].OrganizationName`, {
 									required: "This Field is required!",
 								})}
@@ -149,39 +165,50 @@ const WorkExperience = () => {
 								</p>
 							)}
 							<TextField
+								sx={inputStyle}
 								label="StartYear"
 								type="number"
 								varient="outlined"
-								sx={{ width: "47%", m: 1 }}
 								{...register(`WorkExperience[${index}].StartYear`, {
 									required: "This Field is required!",
 								})}
-								onChange={(e) => setYear(e.target.value)}
-								select>
-								{yearInfo.map((year) => (
-									<MenuItem value={year} key={year}>
-										{year}
-									</MenuItem>
+								onChange={handleStartYearChange}
+								select
+								SelectProps={{ native: true }}>
+								{Array.from({ length: currentYear - 1900 + 1 }, (_, index) => (
+									<option
+										style={{ color: mode === "light" ? "black" : "black" }}
+										key={index}
+										value={currentYear - index}>
+										{currentYear - index}
+									</option>
 								))}
 							</TextField>
 							{errors.StartYear && (
 								<p style={{ color: "red" }}>{errors.StartYear.message}</p>
 							)}
 							<TextField
+								sx={inputStyle}
 								label="EndYear"
 								type="number"
 								varient="outlined"
-								sx={{ width: "47%", m: 1 }}
 								{...register(`WorkExperience[${index}].EndYear`, {
 									required: "This Field is required!",
 								})}
-								onChange={(e) => setYear(e.target.value)}
-								select>
-								{yearInfo.map((year) => (
-									<MenuItem value={year} key={year}>
-										{year}
-									</MenuItem>
-								))}
+								onChange={handleEndYearChange}
+								select
+								SelectProps={{ native: true }}>
+								{Array.from(
+									{ length: currentYear - startYear + 1 },
+									(_, index) => (
+										<option
+											style={{ color: mode === "light" ? "black" : "black" }}
+											key={index}
+											value={startYear + index}>
+											{startYear + index}
+										</option>
+									)
+								)}
 							</TextField>
 							{errors.EndYear && (
 								<p style={{ color: "red" }}>{errors.EndYear.message}</p>
@@ -198,7 +225,7 @@ const WorkExperience = () => {
 							)}
 						</div>
 					))}
-					{/* ------------------------------------>>>  */}
+					
 
 					<Box sx={{ width: "100%", mt: "10px", mb: "30px" }}>
 						<Button
@@ -216,7 +243,14 @@ const WorkExperience = () => {
 						</Button>
 					</Box>
 
-					<Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
+					<Divider
+						sx={{
+							backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
+							ml: "40px",
+							mb: "30px",
+							width: "88%",
+						}}
+					/>
 					<Button
 						variant="contained"
 						onClick={() => Navigate("/details-filling-page/education")}

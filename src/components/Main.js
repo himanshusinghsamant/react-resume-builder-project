@@ -3,6 +3,8 @@ import { Container, Typography, Box } from "@mui/material";
 import { TempImg } from "../data/Data";
 import TempGrid from "./TempGrid";
 
+// Dashboard For Displaying  All Templates *********************************************
+
 const Main = () => {
 	return (
 		<div sx={{ display: "flex", flexWrap: "wrap" }}>
@@ -27,6 +29,8 @@ const Main = () => {
 					Select Template To Get Started
 				</Typography>
 			</Box>
+ {/* Passing all the tempalate images data to tempGrid Component as a Props ********************** */}
+
 			<Container
 				sx={{
 					display: "flex",

@@ -8,14 +8,10 @@ import { keySkillsAction } from "../../Redux/Index";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-// const FormValues = {
-//   keySkills:{
-//     skills: String
-//   }
-// }
+import { useMyContext } from "../../context/Context";
 
 const KeySkills = () => {
+	const { mode } = useMyContext();
 	const Navigate = useNavigate();
 	const dispatch = useDispatch();
 	const skillsDetails = useSelector((state) => state.skills.skillDetails);
@@ -33,19 +29,42 @@ const KeySkills = () => {
 		},
 	});
 
+	// This function Provides Functionality to control textfields by Adding New Field and removing selected ***************************************
+
 	const { fields, append, remove } = useFieldArray({
 		name: "keySkills",
 		control,
 	});
 
+	// This onSubmit Function is used to dispatch form data to redux store for further operation  also This function navigate user to the preview of created resume********************************
+
 	const onSubmit = (data) => {
-		// console.log(data);
 		dispatch(keySkillsAction(data.keySkills));
 		Navigate("/preview");
 	};
 
+	// This input style object is used  to styling inputfield*******************************
+
+	const inputStyle = {
+		width: "90%",
+		m: 1,
+		backgroundColor: mode === "light" ? "white" : "#072340",
+		borderRadius: "10px",
+		"& .MuiInputBase-input": {
+			color: mode === "light" ? "black" : "white",
+		},
+		"& label": {
+			color: mode === "light" ? "grey" : "white",
+		},
+		"& .MuiOutlinedInput-root": {
+			"& fieldset": {
+				borderColor: mode === "light" ? "grey" : "white",
+			},
+		},
+	};
+
 	return (
-		<div>
+		<div  className="keyResponsive">
 			<div>
 				<>
 					<Box
@@ -59,30 +78,41 @@ const KeySkills = () => {
 							boxShadow: "0 0 20px 1px",
 							textAlign: "center",
 							borderRadius: "10px",
-							marginTop: "80px",
+							marginTop: "50px",
 						}}>
 						<Typography
 							variant="h5"
-							sx={{ mb: "40px", mt: "20px", textTransform: "uppercase" }}>
+							sx={{ mb: "20px", mt: "20px", textTransform: "uppercase" }}>
 							Key Skills
 						</Typography>
 
-						<Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
+						
+					{/* This Fields came from useFieldArray to Map all the textfields *********************** */}
+
 
 						{fields.map((field, index) => {
 							return (
 								<div key={field.id}>
+									<Typography sx={{ fontWeight: "bold", marginRight: "73%" }}>
+										Skill : {index + 1}
+									</Typography>
+									<Divider
+										sx={{
+											backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
+											ml: "26px",
+											mb: "15px",
+											width: "88%",
+										}}
+									/>
 									<TextField
 										label="Addskills"
 										type="text"
 										varient="outlined"
-										sx={{
-											width: "80%",
-											m: 1,
-										}}
+										sx={inputStyle}
 										{...register(`keySkills.${index}.skills`)}
 										required
 									/>
+
 									{index > 0 && (
 										<Button
 											sx={{ margin: "20px 0px 30px 0px" }}
@@ -104,7 +134,15 @@ const KeySkills = () => {
 								Add new
 							</Button>
 						</Box>
-						<Divider sx={{ ml: "40px", mb: "30px", width: "88%" }} />
+						<Divider
+							sx={{
+								backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
+								ml: "26px",
+								mb: "30px",
+								width: "88%",
+							}}
+						/>
+
 						<Button
 							variant="contained"
 							onClick={() => Navigate("/details-filling-page/work-experience")}

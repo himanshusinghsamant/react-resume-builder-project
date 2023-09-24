@@ -1,10 +1,14 @@
 import { SET_TEMPLATE } from "../actionsTypes/SetTemplate";
 
+//  Here we are creating initial State object to receive values from TemplatesDetails *****************
+
 import { REMOVE_RESUME_TEMPLATES } from "../actionsTypes/SetTemplate";
 
 const initialState = {
 	selectedTemplate: null,
 };
+
+// This  setTemplateReducer function has two parameters one  is State which is storing  values getting from action and another  is Action which is getting data *********************
 
 export const setTemplateReducer = (state = initialState, action) => {
 	switch (action.type) {

@@ -6,6 +6,8 @@ import { keySkillsReducer } from "./reducers/KeySkillsReducer";
 import { setTemplateReducer } from "./reducers/SetTemplateReducer";
 import { removeResumeReducer } from "./reducers/SetTemplateReducer";
 import { profileReducer } from "./reducers/ProfileInfoReducer";
+ 
+// we are creating rootreducer to combine  all the reducers **************************
 
 const rootReducer = combineReducers({
 	profile: profileReducer,

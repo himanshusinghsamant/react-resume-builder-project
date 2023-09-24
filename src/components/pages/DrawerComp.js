@@ -10,17 +10,21 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
+import { useMyContext } from "../../context/Context";
+
+// HambergerMenu of Navbar for Mobile Width********************************************
 
 const DrawerComp = () => {
 	const [openDrawer, setopenDrawer] = useState(false);
 	const [selectedIndex, setSelectedIndex] = useState(0);
+const {mode}=useMyContext();
 
 	const handleListItemClick = (event, index) => {
 		setSelectedIndex(index);
 	};
 	return (
 		<React.Fragment>
-			<Drawer open={openDrawer} onClose={() => setopenDrawer(false)}>
+			<Drawer  open={openDrawer} onClose={() => setopenDrawer(false)}>
 				<Typography sx={{ marginRight: "auto" }} variant="h5" flexGrow={1}>
 					<img
 						src="https://api.sertifier.com/userdata/08daf47b-89e4-cd1d-208e-96834580c530/d747e244-cfe7-4a53-b0b4-47ad8e0d9ad4.png"
@@ -63,7 +67,7 @@ const DrawerComp = () => {
 			<IconButton
 				sx={{ color: "black", marginLeft: "auto" }}
 				onClick={() => setopenDrawer(!openDrawer)}>
-				<MenuIcon />
+				<MenuIcon sx={{ color: mode === "light" ? "black" : "white" }} />
 			</IconButton>
 		</React.Fragment>
 	);

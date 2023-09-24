@@ -9,14 +9,18 @@ import { personalInfoAction } from "../../Redux/Index";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ProfileSection from "./ProfileSection";
+import { useMyContext } from "../../context/Context";
 
 const PersonalInfo = () => {
+	const { mode } = useMyContext();
 	const Navigate = useNavigate();
 	const personalData = useSelector(
 		(state) => state.personalInfo.personalInfoValues
 	);
-	// const profileData = useSelector((state)=> state.profile.profileInfoValue)
+
 	const dispatch = useDispatch();
+
+	// This is preloaded Data  for Each Textfield*******************************
 
 	const preloadData = {
 		FirstName: personalData.FirstName,
@@ -30,14 +34,16 @@ const PersonalInfo = () => {
 		Objective: personalData.Objective,
 	};
 
+
+	// We are using useform Hook from React, This useform Hook is used to manage all forms states like register ,handleSubmit,error etc.***********************
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors, isDirty, isValid },
 	} = useForm({ defaultValues: preloadData });
 
-	// console.log(handleSubmit)
-	// console.log(profileData)
+
 
 	const onSubmit = (data) => {
 		console.log(data);
@@ -45,9 +51,26 @@ const PersonalInfo = () => {
 		Navigate("/details-filling-page/education");
 	};
 
-	useEffect(() => {
-		console.log(personalData);
-	}, [personalData]);
+	// This input style object is used  to styling inputfield*******************************
+
+
+	const inputStyle = {
+		width: "47%",
+		m: 1,
+		backgroundColor: mode === "light" ? "white" : "#072340",
+		borderRadius: "10px",
+		"& .MuiInputBase-input": {
+			color: mode === "light" ? "black" : "white",
+		},
+		"& label": {
+			color: mode === "light" ? "grey" : "white",
+		},
+		"& .MuiOutlinedInput-root": {
+			"& fieldset": {
+				borderColor: mode === "light" ? "grey" : "white",
+			},
+		},
+	};
 
 	return (
 		<>
@@ -59,20 +82,22 @@ const PersonalInfo = () => {
 					height: "auto",
 					m: 3,
 					p: 3,
-					boxShadow: "0 0 20px 0.1px",
+					boxShadow: "0 0 20px 2px",
 					textAlign: "center",
 					borderRadius: "10px",
-					marginTop: "80px",
+					marginTop: "50px",
+					backgroundColor: mode === "light" ? "White" : "#072340",
+					color: mode === "light" ? "black" : "white",
 				}}>
 				<Box>
 					<ProfileSection />
 				</Box>
 				<div>
 					<TextField
+						sx={inputStyle}
 						label="FirstName"
 						type="text"
 						varient="outlined"
-						sx={{ width: "43%", m: 1, "&:hover:": { backgroundColor: "pink" } }}
 						{...register("FirstName", { required: "first name is required!" })}
 					/>
 					{errors.FirstName && (
@@ -80,10 +105,10 @@ const PersonalInfo = () => {
 					)}
 
 					<TextField
+						sx={inputStyle}
 						label="LastName"
 						type="text"
 						varient="outlined"
-						sx={{ width: "43%", m: 1 }}
 						{...register("LastName", { required: "last name is required!" })}
 					/>
 					{errors.LastName && (
@@ -91,10 +116,10 @@ const PersonalInfo = () => {
 					)}
 
 					<TextField
+						sx={inputStyle}
 						label="Email"
 						type="text"
 						varient="outlined"
-						sx={{ width: "43%", m: 1 }}
 						{...register("Email", { required: "email is required!" })}
 					/>
 					{errors.Email && (
@@ -102,8 +127,8 @@ const PersonalInfo = () => {
 					)}
 
 					<TextField
-						erorText="Please enter only 12 digits number"
-						label="Mobile No"
+						sx={inputStyle}
+						label="MobileNo"
 						type="number"
 						varient="outlined"
 						InputProps={{
@@ -111,7 +136,6 @@ const PersonalInfo = () => {
 								<InputAdornment position="start">+91 </InputAdornment>
 							),
 						}}
-						sx={{ width: "43%", m: 1 }}
 						{...register("MobileNo", { required: "mobile no. is required!" })}
 					/>
 					{errors.MobileNo && (
@@ -119,10 +143,10 @@ const PersonalInfo = () => {
 					)}
 
 					<TextField
+						sx={inputStyle}
 						label="Address"
 						type="text"
 						varient="outlined"
-						sx={{ width: "88%", pt: "5px" }}
 						{...register("Address", { required: "address is required!" })}
 					/>
 					{errors.Address && (
@@ -130,19 +154,19 @@ const PersonalInfo = () => {
 					)}
 
 					<TextField
+						sx={inputStyle}
 						label="City"
 						type="text"
 						varient="outlined"
-						sx={{ width: "43%", m: 1 }}
 						{...register("City", { required: "city is required!" })}
 					/>
 					{errors.City && <p style={{ color: "red" }}>{errors.City.message}</p>}
 
 					<TextField
+						sx={inputStyle}
 						label="State"
 						type="text"
 						varient="outlined"
-						sx={{ width: "43%", m: 1 }}
 						{...register("State", { required: "state is required!" })}
 					/>
 					{errors.State && (
@@ -150,22 +174,22 @@ const PersonalInfo = () => {
 					)}
 
 					<TextField
+						sx={inputStyle}
 						label="PinCode"
 						type="number"
 						varient="outlined"
-						sx={{ width: "43%", m: 1 }}
 						{...register("PinCode", { required: "pin code is required!" })}
 					/>
 					{errors.PinCode && (
 						<p style={{ color: "red" }}>{errors.PinCode.message}</p>
 					)}
 					<TextField
+						sx={inputStyle}
 						label="Objective"
 						type="text"
 						varient="outlined"
 						multiline
 						rows={4}
-						sx={{ width: "85.2%", m: 1 }}
 						{...register("Objective", { required: "objective is required!" })}
 					/>
 				</div>
@@ -173,17 +197,7 @@ const PersonalInfo = () => {
 					<p style={{ color: "red" }}>{errors.Objective.message}</p>
 				)}
 
-				{/* <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "black",
-            mt: "10px",
-            fontWeight: "bold",
-            mr: "10px",            
-          }}
-        >
-          Back
-        </Button> */}
+		
 				<Button
 					disabled={!isDirty || !isValid}
 					onClick={handleSubmit(onSubmit)}

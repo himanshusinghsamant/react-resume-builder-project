@@ -3,8 +3,13 @@ import Container from "@mui/material/Container";
 import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
 import { useSelector } from "react-redux";
+import { useMyContext } from "../context/Context";
 
 const Template_2 = () => {
+
+	//  In this Section We are Getting all data with the help  of useSelector which is stored in redux store like personalInfo Data , EducationData , WorkExperienceData and KeyskillData **************
+
+	const { mode } = useMyContext();
 	const PersonalInfoData = useSelector(
 		(state) => state.personalInfo.personalInfoValues
 	);
@@ -16,15 +21,16 @@ const Template_2 = () => {
 	const skillsData = useSelector((state) => state.skills.skillDetails);
 
 	return (
-		<div>
+		<div className="Responsive">
 			<Container
 				sx={{
-					marginTop: "80px",
+					marginTop: "90px",
 					display: "flex",
 					justifyContent: "center",
-					height: "600px",
+					height: "550px",
+					color: mode === "dark" && "black",
 				}}>
-				<Box sx={{ height: "100vh", backgroundColor: "#f2f2fb", width: "40%" }}>
+				<Box sx={{ backgroundColor: "#f2f2fb", width: "400px" }}>
 					<Box
 						sx={{
 							height: "80px",
@@ -47,10 +53,18 @@ const Template_2 = () => {
 									{PersonalInfoData.LastName}
 								</Typography>
 							</div>
-							<Typography
-								sx={{ letterSpacing: 10, fontSize: "12px", color: "white" }}>
-								WEB DEVELOPER
-							</Typography>
+							{workExpData?.map((elem) => {
+								return (
+									<Typography
+										sx={{
+											letterSpacing: 10,
+											fontSize: "12px",
+											textTransform: "uppercase",
+										}}>
+										{elem.JobTitle}
+									</Typography>
+								);
+							})}
 						</div>
 						<Box sx={{ position: "absolute", top: "10px", right: "20px" }}>
 							<img
@@ -61,8 +75,14 @@ const Template_2 = () => {
 						</Box>
 					</Box>
 
-					<Box sx={{ padding: "10px", display: "flex" }}>
-						<div style={{ width: "45%" }}>
+					<Box
+						sx={{
+							padding: "10px",
+							display: "flex",
+							marginTop: "1px",
+							marginBottom: "-5px",
+						}}>
+						<div style={{ width: "200px" }}>
 							<Typography sx={{ fontSize: "10px" }}>
 								Email : {PersonalInfoData.Email}
 							</Typography>
@@ -83,15 +103,17 @@ const Template_2 = () => {
 							</Typography>
 						</div>
 						<hr style={{ color: "#f4f4f7" }} />
-						<div style={{ width: "45%" }}>
+						<div style={{ width: "170px", marginLeft: "5px" }}>
 							<Typography>PROFILE</Typography>
-							<p style={{ fontSize: "10px" }}>{PersonalInfoData.Objective}</p>
+							<p style={{ fontSize: "10px", wordWrap: "break-word" }}>
+								{PersonalInfoData.Objective}
+							</p>
 						</div>
 					</Box>
 					<hr style={{ color: "#f4f4f7" }} />
-					<Box sx={{ padding: "10px", display: "flex" }}>
-						<div style={{ width: "45%" }}>
-							<Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
+					<Box sx={{ paddingLeft: "10px", display: "flex" }}>
+						<div style={{ width: "200px" }}>
+							<Typography sx={{ marginBottom: "10px" }}>EXPERIENCE</Typography>
 							{workExpData &&
 								workExpData.map((info) => {
 									return (
@@ -114,13 +136,13 @@ const Template_2 = () => {
 						</div>
 
 						<hr style={{ color: "#f4f4f7" }} />
-						<Box sx={{ width: "45%" }}>
-							<Typography sx={{ marginBottom: "20px" }}>EDUCATION</Typography>
+						<Box sx={{ width: "175px", marginLeft: "10px" }}>
+							<Typography sx={{ marginBottom: "10px" }}>EDUCATION</Typography>
 							{educationData &&
 								educationData.map((info) => {
 									return (
 										<div>
-											<Typography sx={{ marginBottom: "20px" }}>
+											<Typography sx={{ marginBottom: "10px" }}>
 												{info.Type}
 											</Typography>
 											<Typography sx={{ fontSize: "12px" }}>
@@ -140,9 +162,9 @@ const Template_2 = () => {
 								})}
 
 							<hr style={{ color: "#f4f4f7" }} />
-							<div style={{ marginTop: "20px" }}>
+							<div style={{ marginTop: "10px" }}>
 								<Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
-								<Stack sx={{ marginLeft: "10px" }} spacing={1}>
+								<Stack sx={{ marginLeft: "-6px" }} spacing={1}>
 									{skillsData &&
 										skillsData.map((info) => {
 											return (

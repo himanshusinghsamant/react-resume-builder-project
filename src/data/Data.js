@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
 import Template1 from "../templates/Template_1";
 import Template2 from "../templates/Template_2";
 import Template3 from "../templates/Template_3";
 import Template4 from "../templates/Template_4";
+
+
+
+// This Array of objects is used to  store data of template Images and template components ***************
+
 
 export const TempImg = [
 	{
@@ -30,6 +34,9 @@ export const TempImg = [
 		rTemp: <Template4 />,
 	},
 ];
+
+// This Array of objects is used to store social media icons and their individual links*************************
+
 
 export const SocialMediaImg = [
 	{

@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Typography } from "@mui/material";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 import { Container } from "@mui/system";
 import Fab from "@mui/material/Fab";
@@ -10,22 +10,26 @@ import { SaveAltOutlined } from "@mui/icons-material";
 import { useMyContext } from "../context/Context";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
+// This is Preview Component of Your Resume Data  for particular  selected Tempalate******************
+
 const Preview = () => {
 	const Navigate = useNavigate();
-	const { addData } = useMyContext();
+	const { addData, mode } = useMyContext();
+	const theme = useTheme();
 
 	const style = {
 		position: "fixed",
 		top: "50%",
 		left: "50%",
 		transform: "translate(-50%, -50%)",
-		width: 400,
+		width: "25%",
 		bgcolor: "background.paper",
 		border: "2px solid #000",
-		boxShadow: "0px 200px 500px 70px green",
+		boxShadow: "0px 0px 600px 500px green",
 		p: 4,
 		zIndex: "200",
 		borderRadius: "20px",
+		color: mode === "dark" && "black",
 	};
 
 	const PreviewResume = useSelector((state) => state.template.selectedTemplate);
@@ -62,14 +66,21 @@ const Preview = () => {
 							</Box>
 						</div>
 					)}
-					<Container key={PreviewResume.id} sx={{ position: "relative" }}>
+
+					{/* container for Save and Edit Button (Save Button Effect to Save your Resume  and Edit button is make Changes in your resume )******************************* */}
+
+					<Container
+						xs={{ top: "1000px", left: "100px" }}
+						key={PreviewResume.id}
+						sx={{ position: "relative" }}>
 						<Box id="resume-pre">{PreviewResume.rTemp}</Box>
 						<Box
+							className="btnresponsive"
 							sx={{
 								height: "100px",
 								p: 2,
-								position: "absolute",
 								display: "flex",
+								position: "absolute",
 								flexDirection: "column-reverse",
 								justifyContent: "space-between",
 								top: "100px",
@@ -78,19 +89,20 @@ const Preview = () => {
 							}}>
 							<Fab
 								onClick={() => {
-									Navigate("/details-filling-page/key-skills");
+									Navigate("/details-filling-page/personal-details");
 								}}
 								sx={{
 									fontWeight: "bold",
 									letterSpacing: 3,
 									marginLeft: "5px",
-									size: "large",
+									size: "medium",
+									marginTop: "10px",
 								}}
 								variant="extended"
-								color="secondary"
+								color="error"
 								size="medium">
 								<KeyboardBackspaceIcon sx={{ marginRight: "5px" }} />
-								BACK
+								EDIT
 							</Fab>
 							<Fab
 								onClick={handleSaveClick}

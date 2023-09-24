@@ -4,8 +4,10 @@ import Button from "@mui/material/Button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux";
 import { setTemplateAction } from "../Redux/Index";
+
+
+//  This is tempGrid Box for displaying Designs of Different Tempalates**********************
 
 const TempGrid = (props) => {
 	const { rTemp, id } = props.img;
@@ -41,11 +43,13 @@ const TempGrid = (props) => {
 						height: "300px",
 						width: "250px",
 						borderRadius: "10px",
-						boxShadow: "0px 0px 10px 2px grey",
+						boxShadow: "0px 0px 15px 3px grey",
 					}}
 					src={props.img.image}
 					alt="tempImg"
 				/>
+   {/* Use Template button is  used To Select a Particular Tempalate *********************** */}
+
 				{showButton && (
 					<Button
 						onClick={onSubmit}

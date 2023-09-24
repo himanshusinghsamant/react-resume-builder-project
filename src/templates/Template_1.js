@@ -3,8 +3,14 @@ import Container from "@mui/material/Container";
 import { Box, Typography } from "@mui/material";
 import Stack from "@mui/system/Stack";
 import { useSelector } from "react-redux";
+import { useMyContext } from "../context/Context";
+import "../../src/App.css";
 
 const Templates = () => {
+
+	//  In this Section We are Getting all data with the help  of useSelector which is stored in redux store like personalInfo Data , EducationData , WorkExperienceData and KeyskillData **************
+
+	const { mode } = useMyContext();
 	const PersonalInfoData = useSelector(
 		(state) => state.personalInfo.personalInfoValues
 	);
@@ -16,16 +22,18 @@ const Templates = () => {
 	const skillsData = useSelector((state) => state.skills.skillDetails);
 
 	return (
-		<div>
+		<div className="Responsive">
 			<Container
 				sx={{
-					marginTop: "80px",
+					marginTop: "90px",
 					display: "flex",
 					justifyContent: "center",
-					height: "600px",
+					height: "550px",
+					width: "100%",
+
+					color: mode === "dark" && "black",
 				}}>
-				<Box
-					sx={{ minHeight: "100vh", backgroundColor: "#fbf4f5", width: "40%" }}>
+				<Box sx={{ backgroundColor: "#fbf4f5", width: "400px" }}>
 					<Box
 						sx={{
 							height: "80px",
@@ -47,9 +55,18 @@ const Templates = () => {
 									{PersonalInfoData.LastName}
 								</Typography>
 							</div>
-							<Typography sx={{ letterSpacing: 10, fontSize: "12px" }}>
-								WEB DEVELOPER
-							</Typography>
+							{workExpData?.map((elem) => {
+								return (
+									<Typography
+										sx={{
+											letterSpacing: 10,
+											fontSize: "12px",
+											textTransform: "uppercase",
+										}}>
+										{elem.JobTitle}
+									</Typography>
+								);
+							})}
 						</div>
 						<Box sx={{ position: "absolute", top: "40px", right: "20px" }}>
 							<img
@@ -61,7 +78,7 @@ const Templates = () => {
 					</Box>
 
 					<Box sx={{ padding: "10px", display: "flex" }}>
-						<div style={{ width: "45%" }}>
+						<div style={{ width: "360px" }}>
 							<Typography sx={{ fontSize: "10px" }}>
 								Email : {PersonalInfoData.Email}
 							</Typography>
@@ -82,14 +99,16 @@ const Templates = () => {
 							</Typography>
 						</div>
 						<hr style={{ color: "#f4f4f7" }} />
-						<div style={{ width: "45%" }}>
+						<div style={{ width: "300px	", marginLeft: "10px" }}>
 							<Typography>PROFILE</Typography>
-							<p style={{ fontSize: "10px" }}>{PersonalInfoData.Objective}</p>
+							<p style={{ fontSize: "10px", wordWrap: "break-word" }}>
+								{PersonalInfoData.Objective}
+							</p>
 						</div>
 					</Box>
 					<hr style={{ color: "#f4f4f7" }} />
-					<Box sx={{ padding: "10px", display: "flex" }}>
-						<div style={{ width: "45%" }}>
+					<Box sx={{ padding: "8px", display: "flex" }}>
+						<div style={{ width: "200px" }}>
 							<Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
 							{workExpData &&
 								workExpData.map((info) => {
@@ -113,13 +132,13 @@ const Templates = () => {
 						</div>
 						<hr style={{ color: "#f4f4f7" }} />
 
-						<Box sx={{ width: "45%" }}>
-							<Typography sx={{ marginBottom: "20px" }}>EDUCATION</Typography>
+						<Box sx={{ width: "170px", marginLeft: "10px" }}>
+							<Typography sx={{ marginBottom: "15px" }}>EDUCATION</Typography>
 							{educationData &&
 								educationData.map((info) => {
 									return (
 										<div>
-											<Typography sx={{ marginBottom: "20px" }}>
+											<Typography sx={{ marginBottom: "10px" }}>
 												{info.Type}
 											</Typography>
 											<Typography sx={{ fontSize: "12px" }}>
@@ -139,9 +158,9 @@ const Templates = () => {
 								})}
 
 							<hr style={{ color: "#f4f4f7" }} />
-							<div style={{ marginTop: "20px" }}>
-								<Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
-								<Stack sx={{ marginLeft: "10px" }} spacing={1}>
+							<div style={{ marginTop: "10px" }}>
+								<Typography sx={{ marginBottom: "10px" }}>SKILLS</Typography>
+								<Stack sx={{ marginLeft: "-10px" }} spacing={1}>
 									{skillsData &&
 										skillsData.map((info) => {
 											return (

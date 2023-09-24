@@ -4,6 +4,8 @@ import { Box } from "@mui/system";
 import { SocialMediaImg } from "../../data/Data";
 import { Link } from "react-router-dom";
 
+//  This Media Icons component  Displaying Social Media Icons********************************
+
 const MediaIcons = (props) => {
 	console.log(props.img);
 	return (
@@ -21,16 +23,18 @@ const MediaIcons = (props) => {
 	);
 };
 
+// About Us Content ***************************************************************************
+
 const AboutUs = () => {
 	return (
 		<>
 			<Container>
 				<Grid container direction="row" alignItems="center" sx={{ mt: 8 }}>
-					<Grid item xs={12} lg={6} order={{ xs: 2, sm: 1 }}>
+					<Grid item xs={12} lg={6} order={{ xs: 1, sm: 1 }}>
 						<Typography
 							variant="h2"
 							color="inherit"
-							sx={{ mb: 4, mt: 4, fontFamily: "Segoe UI",fontWeight:'500' }}>
+							sx={{ mb: 4, mt: 4, fontFamily: "Segoe UI", fontWeight: "500" }}>
 							Resume Builder
 						</Typography>
 						<Typography
@@ -44,11 +48,9 @@ const AboutUs = () => {
 									fontWeight: "bold",
 									color: "red",
 									letterSpacing: 2,
-								
 								}}>
-								{" "}
 								KUNDAN, HIMANSHU, PRAGATI AND PRASAD.
-							</Typography>{" "}
+							</Typography>
 							who came together to turn our shared vision into reality. Our
 							journey began with a simple idea - to empower job seekers like you
 							with a user-friendly and fully responsive resume builder app.
@@ -62,13 +64,18 @@ const AboutUs = () => {
 					<Grid
 						container
 						item
-						xs={12}
-						sm={12}
 						lg={6}
 						justifyContent="center"
-						order={{ xs: 1, sm: 2 }}>
+						order={{ xs: 2, sm: 2 }}>
 						<Box
-							sx={{ width: "100%", marginLeft: "30%", display: "flex" }}
+							sx={{
+								width: "80%",
+								marginLeft: "100px",
+								marginTop: "50px",
+								marginBottom: "50px",
+								borderRadius: "50px",
+								display: "flex",
+							}}
 							component="img"
 							src="./images/About.png"
 						/>

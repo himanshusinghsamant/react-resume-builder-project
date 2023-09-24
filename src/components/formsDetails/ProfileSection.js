@@ -3,17 +3,19 @@ import { Dialog } from "primereact/dialog";
 import Avatar from "react-avatar-edit";
 import { Box, Button } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { profileAction } from "../../Redux/Index";
 import profile from "../../Images/profile.png";
+import { useMyContext } from "../../context/Context";
+
 const ProfileSection = () => {
-	const profileData = useSelector((state) => state.profile.profileInfoValue);
-	console.log(profileData);
 
 	const dispatch = useDispatch();
 	const [dialogs, setdialogs] = useState(false);
 	const [imgCrop, setimgCrop] = useState(false);
 	const [storeImage, setstoreImage] = useState(null);
+	const { mode } = useMyContext();
+
+		// This Component Gives functionality of crop and upload selected image as profile picture **************
 
 	const onCrop = (view) => {
 		setimgCrop(view);
@@ -26,8 +28,6 @@ const ProfileSection = () => {
 		setdialogs(false);
 		dispatch(profileAction(imgCrop));
 	};
-	// console.log(storeImage)
-	// const profileimgShow = storeImage(imgCrop)
 
 	return (
 		<Box
@@ -50,26 +50,29 @@ const ProfileSection = () => {
 			<Button
 				onClick={() => setdialogs(true)}
 				variant="outlined"
-				sx={{ height: "25px", mt: "10px" }}>
+				sx={{
+					height: "25px",
+					mt: "10px",
+					color: mode === "light" ? "primary" : "white",
+				}}>
 				Upload profile
 			</Button>
-			<Dialog sm={2}
+			<Dialog
+				sm={2}
 				visible={dialogs}
 				style={{
 					top: "22%",
-					left:"45%",
-					border:"2px solid black",
+					left: "45%",
+					border: "2px solid black",
 					background: "white",
 					position: "absolute",
 					borderRadius: "20px",
 					Width: "50%",
 					height: "400px",
 					zIndex: "100",
-					boxShadow:"0 0 20px 0.1px green"
-					
+					boxShadow: "0 0 20px 0.1px green",
 				}}
-				
-				header={() => <p >UPDATE PROFILE</p>}
+				header={() => <p>UPDATE PROFILE</p>}
 				onHide={() => setdialogs(false)}>
 				<Box
 					sx={{
@@ -84,9 +87,9 @@ const ProfileSection = () => {
 							display: "flex",
 							flexDirection: "column",
 							alignItems: "center",
-						marginLeft:"15px"
+							marginLeft: "15px",
 						}}>
-						<Box 
+						<Box
 							sx={{
 								display: "flex",
 								justifyContent: "space-around",
@@ -94,7 +97,6 @@ const ProfileSection = () => {
 								width: "105%",
 								height: "350px",
 								marginTop: "-30px",
-							
 							}}>
 							<Avatar
 								width={380}
@@ -106,7 +108,6 @@ const ProfileSection = () => {
 								sx={{ width: "130px", marginLeft: "135px" }}
 								variant="contained"
 								onClick={() => {
-									// console.log(imgCrop)
 									saveImage();
 								}}>
 								Save

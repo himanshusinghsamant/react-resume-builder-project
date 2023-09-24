@@ -1,6 +1,7 @@
 import { SET_LOCAL_STORAGE_DATA } from "../actionsTypes/LocalStorageActionType";
 
-// src/store/actions/localStorageActions.js
+// Here we are creating  ( setLocalStorageData ) Action which Defines a type and receiving LocalStorageData as payload **********
+
 
 export const setLocalStorageData = (data) => {
 	return {

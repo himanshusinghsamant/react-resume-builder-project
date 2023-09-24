@@ -10,9 +10,26 @@ import Preview from "./components/Preview";
 import { Provider } from "react-redux";
 import store from "./Redux/Store";
 import DataContextPro from "./context/Context";
-// import Template_1 from './templates/Template_1'
+import { useEffect } from "react";
 
 function App() {
+	useEffect(() => {
+		// Function to clear localStorage when the page is reloaded
+		const clearLocalStorageOnReload = () => {
+			localStorage.clear();
+		};
+
+		// Attach the event listener
+
+		window.addEventListener("beforeunload", clearLocalStorageOnReload);
+
+		// Clean up the event listener when the component unmounts
+
+		return () => {
+			window.removeEventListener("beforeunload", clearLocalStorageOnReload);
+		};
+	}, []);
+
 	return (
 		<>
 			<BrowserRouter>
@@ -31,7 +48,6 @@ function App() {
 								<Route exact path="/my-resumes" element={<MyResume />} />
 								<Route exact path="/about-us" element={<AboutUs />} />
 							</Routes>
-							{/* <Template_1/> */}
 						</div>
 					</Provider>
 				</DataContextPro>
