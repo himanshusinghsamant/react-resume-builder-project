@@ -68,7 +68,6 @@ const ProfileSection = () => {
             <Box sx={{ display: "flex", justifyContent: "space-around", flexDirection: "column", width: "400px", height: "350px", marginTop: "-30px" }}>
               <Avatar width={380} height={300} onClose={onClose} onCrop={onCrop} />
               <Button sx={{ width: "130px", marginLeft: "135px" }} variant="contained" onClick={() => {
-                // console.log(imgCrop)
                 saveImage()
               }}>Save</Button>
             </Box>

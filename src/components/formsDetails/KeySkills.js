@@ -11,20 +11,16 @@ import { useNavigate } from "react-router-dom";
 import { useMyContext } from "../../context/Context";
 
 
-// const FormValues = {
-//   keySkills:{
-//     skills: String
-//   }
-// }
-
 const KeySkills = () => {
 
   const {mode}= useMyContext()
   const Navigate = useNavigate()
   const dispatch = useDispatch()
-  const skillsDetails = useSelector((state)=> state.skills.skillDetails)
+  const skillsData = useSelector((state)=> state.skills.skillDetails)
 
-  console.log(skillsDetails)
+  const preloadedData ={
+    keySkills: skillsData
+  }
 
   const {
     register,
@@ -32,9 +28,7 @@ const KeySkills = () => {
     formState: { isDirty, isValid },
     control,
   } = useForm({
-    defaultValues: {
-      keySkills: [{ skills: "" }],
-    },
+    defaultValues:  preloadedData,
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -43,7 +37,6 @@ const KeySkills = () => {
   });
 
   const onSubmit = (data) => {
-    // console.log(data);
     dispatch(keySkillsAction(data.keySkills))
     Navigate('/preview')
   };
@@ -97,7 +90,7 @@ const KeySkills = () => {
                   <TextField
                     label="Addskills"
                     type="text"
-                    varient="outlined"
+                    variant="outlined"
                   sx={inputStyle}
                     {...register(`keySkills.${index}.skills`)}
                     required

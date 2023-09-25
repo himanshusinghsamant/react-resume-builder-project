@@ -2,7 +2,7 @@ import { EDUCATION_DETAILS } from "../actionsTypes/EducationActTypes";
 
 
 const initialState ={
-    eduDetails : null
+    eduDetails : {}
 }
 
 export const educationDetReducer =(state = initialState, action)=>{

@@ -16,7 +16,6 @@ import LDtoggle from "./LDtoggle";
 
 
 const NavBar = () => {
-  // const [value, setValue] = useState(0);
   const { mode}= useMyContext()
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
@@ -48,9 +47,6 @@ const NavBar = () => {
 
             <Tabs
               sx={{ marginLeft: "auto" }}
-              // value={value}
-              // onChange={(e, value) => setValue(value)}
-              // indicatorColor="secondary"
             >
               <Tab
               sx={{color: mode==='light'? 'black': 'white'}}

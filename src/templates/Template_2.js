@@ -128,27 +128,23 @@ const Template_2 = () => {
             <hr style={{ color: "#f4f4f7" }} />
             <Box sx={{ width: "45%" }}>
             <Typography sx={{marginBottom:'20px'}}>EDUCATION</Typography>
-             {
-              educationData && educationData.map((info)=>{
-                return(
+         
                   <div>
-                  <Typography sx={{ marginBottom: "20px" }}>{info.Type}</Typography>
+                  <Typography sx={{ marginBottom: "20px" }}>{educationData.Type}</Typography>
                   <Typography sx={{ fontSize: "12px" }}>
-                    {info.University}
+                    {educationData.University}
                   </Typography>
                   <Typography sx={{ fontSize: "10px" }}>
-                    {info.Degree}
+                    {educationData.Degree}
                   </Typography>
                   <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    {info.StartYear} -
+                    {educationData.StartYear} -
                   </span>
                   <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    {info.EndYear}
+                    {educationData.EndYear}
                   </span>
                 </div>
-                )
-              })
-             }
+            
 
               <hr style={{ color: "#f4f4f7" }} />
               <div style={{ marginTop: "20px" }}>

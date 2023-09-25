@@ -31,12 +31,12 @@ const MyResumes = () => {
     const content = document.getElementById("resume-Temp");
     html2canvas(content)
       .then((canvas) => {
-        const imgData = canvas.toDataURL("image/png");
+        const imgData = canvas.toDataURL("image/jpeg");
         const pdf = new jsPDF("p", "px", "a4");
         var ratio = canvas.width / canvas.height;
-        var width = pdf.internal.pageSize.getWidth();
+        var width = pdf.internal.pageSize.getWidth()* 2.5;
         var height = width / ratio;
-        pdf.addImage(imgData, "JPEG", 0, 0, width, height);
+        pdf.addImage(imgData, "JPEG", -330,40, width, height);
         // pdf.output('dataurlnewwindow');
         pdf.save(`${downFileName}.pdf`);
 

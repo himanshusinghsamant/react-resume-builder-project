@@ -1,16 +1,14 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { Button, Divider, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import { useFieldArray, useForm } from "react-hook-form";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { useForm } from "react-hook-form";
 import { educationDetailsAction } from "../../Redux/Index";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useMyContext } from "../../context/Context";
-// import { useState } from "react";
-// import { useEffect } from "react";
+
 
 const Education = () => {
   const { mode } = useMyContext();
@@ -33,39 +31,36 @@ const Education = () => {
   };
 
   const EducationDetails = useSelector((state) => state.eduDetail.eduDetails);
-  console.log(EducationDetails);
+  console.log(EducationDetails)
+
+
   const dispatch = useDispatch();
   const Navigate = useNavigate();
+
+  const preloadedData ={
+    Type:EducationDetails.Type,
+    University:EducationDetails.University,
+    Degree:EducationDetails.Degree,
+    StartYear:EducationDetails.StartYear,
+    EndYear:EducationDetails.EndYear,
+  }
 
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors, isDirty, isValid },
   } = useForm({
-    defaultValues: {
-      eduDetails: [
-        {
-          Type: "",
-          University: "",
-          Degree: "",
-          StartYear: "",
-          EndYear: "",
-        },
-      ],
-    },
+    defaultValues : preloadedData,
   });
 
-  const { fields, remove, append } = useFieldArray({
-    name: "eduDetails",
-    control,
-  });
 
   const onSubmit = (data) => {
-    const FormData = data.eduDetails;
+    const FormData = data
     dispatch(educationDetailsAction(FormData));
     Navigate("/details-filling-page/work-experience");
   };
+
+
 
   const inputStyle = {
     width: "300px",
@@ -112,10 +107,8 @@ const Education = () => {
               width: "88%",
             }}
           />
-
-          {fields.map((fields, index) => {
-            return (
-              <div key={fields.id}>
+         
+              <div>
                 <Typography
                   sx={{
                     color: "grey",
@@ -124,14 +117,14 @@ const Education = () => {
                     marginTop: "40px",
                   }}
                 >
-                  Details\ - {index + 1}
+                  Details
                 </Typography>
                 <TextField
                   sx={inputStyle}
                   label="Type "
                   type="text"
                   variant="outlined"
-                  {...register(`eduDetails[${index}].Type`, {
+                  {...register('Type', {
                     required: "This Field is required!",
                   })}
                 />
@@ -144,9 +137,10 @@ const Education = () => {
                   label="University "
                   type="text"
                   variant="outlined"
-                  {...register(`eduDetails[${index}].University`, {
+                  {...register('University', {
                     required: "This Field is required!",
                   })}
+          
                 />
                 {errors.University && (
                   <p style={{ color: "red" }}>{errors.University.message}</p>
@@ -156,9 +150,10 @@ const Education = () => {
                   label="Degree"
                   type="text"
                   variant="outlined"
-                  {...register(`eduDetails[${index}].Degree`, {
+                  {...register('Degree', {
                     required: "This Field is required!",
                   })}
+               
                 />
                 {errors.Degree && (
                   <p style={{ color: "red" }}>{errors.Degree.message}</p>
@@ -168,9 +163,10 @@ const Education = () => {
                   label="StartYear"
                   type="number"
                   variant="outlined"
-                  {...register(`eduDetails[${index}].StartYear`, {
+                  {...register('StartYear', {
                     required: "This Field is required!",
                   })}
+               
                   onChange={handleStartYearChange}
                   select
                   SelectProps={{ native: true }}
@@ -195,9 +191,10 @@ const Education = () => {
                   label="EndYear"
                   type="number"
                   variant="outlined"
-                  {...register(`eduDetails[${index}].EndYear`, {
+                  {...register('EndYear', {
                     required: "This Field is required",
                   })}
+         
                   onChange={handleEndYearChange}
                   select
                   SelectProps={{ native: true }}
@@ -217,42 +214,14 @@ const Education = () => {
                 {errors.EndYear && (
                   <p style={{ color: "red" }}>{errors.EndYear.message}</p>
                 )}
-                {index > 0 && (
-                  <Button
-                    sx={{ margin: "20px 0px 30px 0px" }}
-                    color="error"
-                    variant="outlined"
-                    endIcon={<DeleteIcon />}
-                    onClick={() => remove(index)}
-                  >
-                    Remove
-                  </Button>
-                )}
               </div>
-            );
-          })}
-          <Box sx={{ width: "100%", mt: "10px", mb: "30px" }}>
-            <Button
-              onClick={() =>
-                append({
-                  Type: "",
-                  University: "",
-                  Degree: "",
-                  StartYear: "",
-                  EndYear: "",
-                })
-              }
-              variant="text"
-              sx={{ fontWeight: "bold" }}
-            >
-              Add more
-            </Button>
-          </Box>
+
           <Divider
             sx={{
               backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
               ml: "40px",
               mb: "30px",
+              mt: '20px',
               width: "88%",
             }}
           />

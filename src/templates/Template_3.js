@@ -35,7 +35,7 @@ const Template_3 = () => {
               position: "relative",
             }}
           >
-            <div style={{ padding: "10px 10px", marginLeft:'30%'  }}>
+            <div style={{ padding: "10px 10px", marginLeft:'20%'  }}>
               <div style={{ display: "flex" }}>
                 <Typography sx={{ fontSize: "25px", letterSpacing: 3 , color:'white'}}>
                   {PersonalInfoData.FirstName}
@@ -53,7 +53,7 @@ const Template_3 = () => {
               </div>
               {workExpData?.map((elem)=>{
                   return (
-                    <Typography sx={{ letterSpacing: 10, fontSize: "12px", textTransform:'uppercase' }}>
+                    <Typography sx={{ letterSpacing: 2, fontSize: "12px", textTransform:'uppercase' }}>
                       {elem.JobTitle}
                     </Typography>
                   )
@@ -127,26 +127,23 @@ const Template_3 = () => {
             <hr style={{color:'#f4f4f7'}}/>
             <Box sx={{width:'45%'}}>
               <Typography sx={{ marginBottom: "20px" }}>EDUCATION</Typography>
-            {educationData && educationData.map((info)=>{
-                return(
+          
                   <div>
                   <Typography sx={{ fontSize: "12px" }}>
-                  {info.Type}
+                  {educationData.Type}
                   </Typography>
                   <Typography sx={{ fontSize: "10px" }}>
-                  {info.University}
+                  {educationData.University}
                   </Typography>
-                  <Typography sx={{ fontSize: "10px" }}>{info.Degree}</Typography>
+                  <Typography sx={{ fontSize: "10px" }}>{educationData.Degree}</Typography>
                   <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    {info.StartYear} -
+                    {educationData.StartYear} -
                   </span>
                   <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                    {info.EndYear}
+                    {educationData.EndYear}
                   </span>
                 </div>
-                )
-              })
-             }
+             
 
               <hr style={{ color: "#f4f4f7" }} />
               <div style={{ marginTop: "20px" }}>

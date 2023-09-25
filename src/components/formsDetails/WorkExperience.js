@@ -11,12 +11,12 @@ import { useNavigate } from "react-router-dom";
 import { useMyContext } from "../../context/Context";
 
 const WorkExperience = () => {
-  // eslint-disable-next-line no-unused-vars
   const { mode } = useMyContext();
 
   const currentYear = new Date().getFullYear();
   const [startYear, setStartYear] = useState(currentYear);
   const [endYear, setEndYear] = useState(currentYear);
+  const WExperienceData = useSelector((state) => state.workExp.workData);
 
   const handleStartYearChange = (event) => {
     const newStartYear = parseInt(event.target.value);
@@ -32,6 +32,9 @@ const WorkExperience = () => {
     setEndYear(newEndYear);
   };
 
+  const preloadedData = {
+    WorkExperience: WExperienceData,
+  };
 
   const Navigate = useNavigate();
   const {
@@ -40,16 +43,7 @@ const WorkExperience = () => {
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm({
-    defaultValues: {
-      WorkExperience: [
-        {
-          JobTitle: "",
-          OrganizationName: "",
-          StartYear: "",
-          EndYear: "",
-        },
-      ],
-    },
+    defaultValues: preloadedData,
   });
 
   const { fields, append, remove } = useFieldArray({
@@ -61,9 +55,8 @@ const WorkExperience = () => {
   const workData = useSelector((state) => state.workExp.workData);
 
   const onSubmit = (data) => {
-    // console.log(data.WorkExperience)
     dispatch(workExpAction(data.WorkExperience));
-    // Navigate("/details-filling-page/key-skills");
+    Navigate("/details-filling-page/key-skills");
   };
 
   console.log(workData);
@@ -168,16 +161,15 @@ const WorkExperience = () => {
                 select
                 SelectProps={{ native: true }}
               >
-                 {Array.from(
-                    { length: currentYear - 1900 + 1 },
-                    (_, index) => (
-                      <option
-                      style={{ color: mode === "light" ? "black" : "black" }}
-                       key={index} value={currentYear - index}>
-                        {currentYear - index}
-                      </option>
-                    )
-                  )}
+                {Array.from({ length: currentYear - 1900 + 1 }, (_, index) => (
+                  <option
+                    style={{ color: mode === "light" ? "black" : "black" }}
+                    key={index}
+                    value={currentYear - index}
+                  >
+                    {currentYear - index}
+                  </option>
+                ))}
               </TextField>
               {errors.StartYear && (
                 <p style={{ color: "red" }}>{errors.StartYear.message}</p>
@@ -195,15 +187,17 @@ const WorkExperience = () => {
                 SelectProps={{ native: true }}
               >
                 {Array.from(
-                    { length: currentYear - startYear + 1 },
-                    (_, index) => (
-                      <option
+                  { length: currentYear - startYear + 1 },
+                  (_, index) => (
+                    <option
                       style={{ color: mode === "light" ? "black" : "black" }}
-                       key={index} value={startYear + index}>
-                        {startYear + index}
-                      </option>
-                    )
-                  )}
+                      key={index}
+                      value={startYear + index}
+                    >
+                      {startYear + index}
+                    </option>
+                  )
+                )}
               </TextField>
               {errors.EndYear && (
                 <p style={{ color: "red" }}>{errors.EndYear.message}</p>
@@ -224,30 +218,30 @@ const WorkExperience = () => {
           {/* ------------------------------------>>>  */}
 
           <Box sx={{ width: "100%", mt: "10px", mb: "30px" }}>
-            <Button
-              onClick={() =>
-                append({
-                  JobTitle: "",
-                  OrganizationName: "",
-                  StartYear: "",
-                  EndYear: "",
-                })
-              }
-              variant="text"
-              sx={{ fontWeight: "bold" }}
-            >
-              Add more
-            </Button>
+              <Button
+                onClick={() =>
+                  append({
+                    JobTitle: "",
+                    OrganizationName: "",
+                    StartYear: "",
+                    EndYear: "",
+                  })
+                }
+                variant="text"
+                sx={{ fontWeight: "bold" }}
+              >
+                Add more
+              </Button>
           </Box>
 
           <Divider
-                sx={{
-                  backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
-                  ml: "40px",
-                  mb: "30px",
-                  width: "88%",
-                }}
-                />
+            sx={{
+              backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
+              ml: "40px",
+              mb: "30px",
+              width: "88%",
+            }}
+          /> 
           <Button
             variant="contained"
             onClick={() => Navigate("/details-filling-page/education")}

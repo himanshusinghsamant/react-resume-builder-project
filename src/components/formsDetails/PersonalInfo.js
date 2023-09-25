@@ -2,7 +2,6 @@ import { Button } from "@mui/material";
 import { TextField, InputAdornment } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { personalInfoAction } from "../../Redux/Index";
@@ -17,7 +16,7 @@ const PersonalInfo = () => {
   const personalData = useSelector(
     (state) => state.personalInfo.personalInfoValues
   );
-  // const profileData = useSelector((state)=> state.profile.profileInfoValue)
+
   const dispatch = useDispatch();
 
   const preloadData = {
@@ -47,9 +46,7 @@ const PersonalInfo = () => {
     Navigate("/details-filling-page/education");
   };
 
-  useEffect(() => {
-    console.log(personalData);
-  }, [personalData]);
+
 
   const inputStyle = {
     width: "300px",
