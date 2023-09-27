@@ -7,15 +7,16 @@ import PersonalInfo from "../formsDetails/PersonalInfo";
 import WorkExperience from "../formsDetails/WorkExperience";
 import Education from "../formsDetails/Education";
 import KeySkills from "../formsDetails/KeySkills";
-import PersonIcon from '@mui/icons-material/Person';
-import WorkHistoryIcon from '@mui/icons-material/WorkHistory';
-import SchoolIcon from '@mui/icons-material/School';
-import BuildIcon from '@mui/icons-material/Build';
+import PersonIcon from "@mui/icons-material/Person";
+import WorkHistoryIcon from "@mui/icons-material/WorkHistory";
+import SchoolIcon from "@mui/icons-material/School";
+import BuildIcon from "@mui/icons-material/Build";
 import { useMyContext } from "../../context/Context";
 
-const DetailsFilling = () => {
+// This DetailFilling component is used to displaying detailsfilling pages**********************
 
-  const{mode}= useMyContext()
+const DetailsFilling = () => {
+  const { mode } = useMyContext();
 
   return (
     <div>
@@ -32,53 +33,84 @@ const DetailsFilling = () => {
             sx={{
               width: "300px",
               height: "220px",
-              backgroundColor: {mode},
+              backgroundColor: { mode },
               borderRadius: "10px",
-              boxShadow: "0 10px 30px 1px grey",
+              boxShadow: "0 0px 20px 2px ",
               p: "20px",
-              mt: "20px",
+              marginTop: "50px",
             }}
           >
             <ul className="ul-list">
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/personal-details"}
-                  style={{ textDecoration: "none", fontWeight: "bold", letterSpacing:2, display:'flex', alignItems:'center',color:mode === 'light' ? 'black' :'white' }}
+                  style={{
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    letterSpacing: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    color: mode === "light" ? "black" : "white",
+                  }}
                 >
-                  <PersonIcon sx={{mr:'10px'}}/>
+                  <PersonIcon sx={{ mr: "10px" }} />
                   Personal Details
                 </NavLink>
               </li>
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/education"}
-                  style={{ textDecoration: "none", fontWeight: "bold" ,letterSpacing:2,  display:'flex', alignItems:'center',color:mode === 'light' ? 'black' :'white' }}
+                  style={{
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    letterSpacing: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    color: mode === "light" ? "black" : "white",
+                  }}
                 >
-                  <SchoolIcon sx={{mr:'10px'}}/>
+                  <SchoolIcon sx={{ mr: "10px" }} />
                   Education
                 </NavLink>
               </li>
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/work-experience"}
-                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:2 ,  display:'flex', alignItems:'center',color:mode === 'light' ? 'black' :'white' }}
+                  style={{
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    letterSpacing: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    color: mode === "light" ? "black" : "white",
+                  }}
                 >
-                  <WorkHistoryIcon sx={{mr:'10px'}}/>
+                  <WorkHistoryIcon sx={{ mr: "10px" }} />
                   Work Experience
                 </NavLink>
               </li>
               <li className="list">
                 <NavLink
                   to={"/details-filling-page/key-skills"}
-                  style={{ textDecoration: "none", fontWeight: "bold",letterSpacing:2,  display:'flex', alignItems:'center',color:mode === 'light' ? 'black' :'white' }}
+                  style={{
+                    textDecoration: "none",
+                    fontWeight: "bold",
+                    letterSpacing: 2,
+                    display: "flex",
+                    alignItems: "center",
+                    color: mode === "light" ? "black" : "white",
+                  }}
                 >
-                  <BuildIcon sx={{mr:'10px'}}/>
+                  <BuildIcon sx={{ mr: "10px" }} />
                   Key Skills
                 </NavLink>
               </li>
             </ul>
           </Stack>
         </Box>
+
+        {/* Routes Path To particular form Sections ******************************* */}
+
         <Routes>
           <Route exact path="/personal-details" element={<PersonalInfo />} />
           <Route exact path="/work-experience" element={<WorkExperience />} />

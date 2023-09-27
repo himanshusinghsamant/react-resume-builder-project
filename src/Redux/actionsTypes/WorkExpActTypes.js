@@ -1,1 +1,0 @@
-export const WORK_EXPERIENCE = 'WORK_EXPERIENCE'

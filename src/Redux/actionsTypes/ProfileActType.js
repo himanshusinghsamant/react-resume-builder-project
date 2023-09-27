@@ -1,1 +1,0 @@
-export const PROFILE_INFO_VALUE = 'PROFILE_INFO_VALUE'

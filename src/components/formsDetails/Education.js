@@ -5,132 +5,140 @@ import { Box } from "@mui/system";
 import { useForm } from "react-hook-form";
 import { educationDetailsAction } from "../../Redux/Index";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useMyContext } from "../../context/Context";
 
 
 const Education = () => {
-  const { mode } = useMyContext();
-  const currentYear = new Date().getFullYear();
-  const [startYear, setStartYear] = useState(currentYear);
-  const [endYear, setEndYear] = useState(currentYear);
+	const { mode,educationField } = useMyContext();
+	const currentYear = new Date().getFullYear();
+	const [startYear, setStartYear] = useState(currentYear);
+	const [endYear, setEndYear] = useState(currentYear);
 
-  const handleStartYearChange = (event) => {
-    const newStartYear = parseInt(event.target.value);
-    setStartYear(newStartYear);
-    // Ensure end year is greater than or equal to the selected start year
-    if (newStartYear > endYear) {
-      setEndYear(newStartYear);
-    }
-  };
+	// This handleStartYearChange function Gives a Option To Select  a year from start year input field *******
 
-  const handleEndYearChange = (event) => {
-    const newEndYear = parseInt(event.target.value);
-    setEndYear(newEndYear);
-  };
+	const handleStartYearChange = (event) => {
+		const newStartYear = parseInt(event.target.value);
+		setStartYear(newStartYear);
+		// Ensure end year is greater than or equal to the selected start year
+		if (newStartYear > endYear) {
+			setEndYear(newStartYear);
+		}
+	};
 
-  const EducationDetails = useSelector((state) => state.eduDetail.eduDetails);
-  console.log(EducationDetails)
+	// This handleEndYearChange function Gives a Option To Select  a year from end year input field *******
+
+	const handleEndYearChange = (event) => {
+		const newEndYear = parseInt(event.target.value);
+		setEndYear(newEndYear);
+	};
+
+  // const EducationDetails = useSelector((state) => state.eduDetail.eduDetails);
 
 
   const dispatch = useDispatch();
   const Navigate = useNavigate();
 
-  const preloadedData ={
-    Type:EducationDetails.Type,
-    University:EducationDetails.University,
-    Degree:EducationDetails.Degree,
-    StartYear:EducationDetails.StartYear,
-    EndYear:EducationDetails.EndYear,
-  }
+  // const preloadedData ={
+  //   Type:EducationDetails.Type || '',
+  //   University:EducationDetails.University || '',
+  //   Degree:EducationDetails.Degree || '',
+  //   StartYear:EducationDetails.StartYear || '',
+  //   EndYear:EducationDetails.EndYear || '',
+  // }
 
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm({
-    defaultValues : preloadedData,
+    defaultValues : educationField,
   });
 
 
-  const onSubmit = (data) => {
-    const FormData = data
-    dispatch(educationDetailsAction(FormData));
-    Navigate("/details-filling-page/work-experience");
-  };
+	// This onSubmit Function is used to dispatch form data to redux store for further operation  also This function navigate user to next formfield******************
+
+	const onSubmit = (data) => {
+		const FormData = data;
+		dispatch(educationDetailsAction(FormData));
+		Navigate("/details-filling-page/work-experience");
+	};
 
 
 
-  const inputStyle = {
-    width: "300px",
-    m: 1,
-    backgroundColor: mode === "light" ? "white" : "#072340",
-    borderRadius: "10px",
-    "& .MuiInputBase-input": {
-      color: mode === "light" ? "black" : "white",
-    },
-    "& label": {
-      color: mode === "light" ? "grey" : "white",
-    },
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: mode === "light" ? "grey" : "white",
-      },
-    },
-  };
+	// This input style object is used  to styling inputfield*******************************
 
-  return (
-    <div>
-      <>
-        <Box
-          container
-          component="form"
-          sx={{
-            width: "80%",
-            height: "auto",
-            m: 3,
-            p: 3,
-            boxShadow: "0 0 400px 1px",
-            textAlign: "center",
-            borderRadius: "10px",
-          }}
-        >
-          <Typography variant="h5" sx={{ mb: "40px", mt: "20px" }}>
-            Education
-          </Typography>
-          <Divider
-            sx={{
-              backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
-              ml: "40px",
-              mb: "30px",
-              width: "88%",
-            }}
-          />
-         
-              <div>
-                <Typography
-                  sx={{
-                    color: "grey",
-                    fontWeight: "bold",
-                    marginRight: "85%",
-                    marginTop: "40px",
-                  }}
-                >
-                  Details
-                </Typography>
-                <TextField
-                  sx={inputStyle}
-                  label="Type "
-                  type="text"
-                  variant="outlined"
-                  {...register('Type', {
-                    required: "This Field is required!",
-                  })}
-                />
-                {errors.Type && (
-                  <p style={{ color: "red" }}>{errors.Type.message}</p>
-                )}
+	const inputStyle = {
+		width: "47%",
+		m: 1,
+		backgroundColor: mode === "light" ? "white" : "#072340",
+		borderRadius: "10px",
+		"& .MuiInputBase-input": {
+			color: mode === "light" ? "black" : "white",
+		},
+		"& label": {
+			color: mode === "light" ? "grey" : "white",
+		},
+		"& .MuiOutlinedInput-root": {
+			"& fieldset": {
+				borderColor: mode === "light" ? "grey" : "white",
+			},
+		},
+	};
+
+	return (
+		<div>
+			<>
+				<Box
+					container
+					component="form"
+					sx={{
+						width: "80%",
+						height: "auto",
+						m: 3,
+						p: 3,
+						boxShadow: "0 0 20px 0.1px",
+						textAlign: "center",
+						borderRadius: "10px",
+						marginTop: "50px",
+					}}>
+					<Typography
+						variant="h5"
+						sx={{ mb: "30px", mt: "20px", textTransform: "uppercase" }}>
+						Education
+					</Typography>
+
+							<div>
+								<Typography
+									sx={{
+										fontFamily: "sans-serif",
+										fontWeight: "bold",
+										marginRight: "75%",
+										marginTop: "20px",
+									}}>
+									Details :
+								</Typography>
+								<Divider
+									sx={{
+										backgroundColor: mode === "dark" && "rgb(151, 149, 149)",
+										ml: "40px",
+										mb: "30px",
+										width: "88%",
+									}}
+								/>
+								<TextField
+									sx={inputStyle}
+									label="Type "
+									type="text"
+									variant="outlined"
+									{...register('Type', {
+										required: "This Field is required!",
+									})}
+								/>
+								{errors.Type && (
+									<p style={{ color: "red" }}>{errors.Type.message}</p>
+								)}
 
                 <TextField
                   sx={inputStyle}

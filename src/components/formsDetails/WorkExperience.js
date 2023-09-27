@@ -3,7 +3,6 @@ import { Button, Divider, Typography } from "@mui/material";
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
 import { useForm, useFieldArray } from "react-hook-form";
 import { workExpAction } from "../../Redux/Index";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -11,12 +10,13 @@ import { useNavigate } from "react-router-dom";
 import { useMyContext } from "../../context/Context";
 
 const WorkExperience = () => {
-  const { mode } = useMyContext();
+  const { mode, workExpField } = useMyContext();
 
   const currentYear = new Date().getFullYear();
   const [startYear, setStartYear] = useState(currentYear);
   const [endYear, setEndYear] = useState(currentYear);
-  const WExperienceData = useSelector((state) => state.workExp.workData);
+
+  // This handleStartYearChange function Gives a Option To Select  a year from start year input field *******
 
   const handleStartYearChange = (event) => {
     const newStartYear = parseInt(event.target.value);
@@ -27,24 +27,26 @@ const WorkExperience = () => {
     }
   };
 
+  // This handleEndYearChange function Gives a Option To Select  a year from end year input field *******
+
   const handleEndYearChange = (event) => {
     const newEndYear = parseInt(event.target.value);
     setEndYear(newEndYear);
   };
-
-  const preloadedData = {
-    WorkExperience: WExperienceData,
-  };
-
   const Navigate = useNavigate();
+
+  // We are using useform Hook from React, This useform Hook is used to manage all forms states like register ,handleSubmit,error etc.***********************
+
   const {
     control,
     register,
     handleSubmit,
     formState: { errors, isDirty, isValid },
   } = useForm({
-    defaultValues: preloadedData,
+    defaultValues: workExpField,
   });
+
+  // This function Provides Functionality to control textfields by Adding New Field and removing selected ***************************************
 
   const { fields, append, remove } = useFieldArray({
     name: "WorkExperience",
@@ -52,17 +54,16 @@ const WorkExperience = () => {
   });
 
   const dispatch = useDispatch();
-  const workData = useSelector((state) => state.workExp.workData);
 
   const onSubmit = (data) => {
     dispatch(workExpAction(data.WorkExperience));
     Navigate("/details-filling-page/key-skills");
   };
 
-  console.log(workData);
+  // This input style object is used  to styling inputfield*******************************
 
   const inputStyle = {
-    width: "300px",
+    width: "47%",
     m: 1,
     backgroundColor: mode === "light" ? "white" : "#072340",
     borderRadius: "10px",
@@ -86,18 +87,24 @@ const WorkExperience = () => {
           container
           component="form"
           sx={{
-            width: "80%",
+            width: "100%",
             height: "auto",
             m: 3,
             p: 3,
-            boxShadow: "0 0 400px 1px",
+            boxShadow: "0 0 20px 1px",
             textAlign: "center",
             borderRadius: "10px",
+            marginTop: "50px",
           }}
         >
-          <Typography variant="h5" sx={{ mb: "40px", mt: "20px" }}>
+          <Typography
+            variant="h5"
+            sx={{ mb: "40px", mt: "20px", textTransform: "uppercase" }}
+          >
             Work Experience
           </Typography>
+
+          {/* This Fields came from useFieldArray to Map all the textfields *********************** */}
 
           {fields.map((field, index) => (
             <div key={field.id}>
@@ -109,8 +116,8 @@ const WorkExperience = () => {
                   mt: "40px",
                 }}
               >
-                <Typography sx={{ color: "grey", fontWeight: "bold" }}>
-                  Experience / - {index + 1}
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Experience : {index + 1}
                 </Typography>
               </Box>
               <Divider
@@ -215,23 +222,22 @@ const WorkExperience = () => {
               )}
             </div>
           ))}
-          {/* ------------------------------------>>>  */}
 
           <Box sx={{ width: "100%", mt: "10px", mb: "30px" }}>
-              <Button
-                onClick={() =>
-                  append({
-                    JobTitle: "",
-                    OrganizationName: "",
-                    StartYear: "",
-                    EndYear: "",
-                  })
-                }
-                variant="text"
-                sx={{ fontWeight: "bold" }}
-              >
-                Add more
-              </Button>
+            <Button
+              onClick={() =>
+                append({
+                  JobTitle: "",
+                  OrganizationName: "",
+                  StartYear: "",
+                  EndYear: "",
+                })
+              }
+              variant="outlined"
+              sx={{ fontWeight: "bold" }}
+            >
+              Add more
+            </Button>
           </Box>
 
           <Divider
@@ -241,7 +247,7 @@ const WorkExperience = () => {
               mb: "30px",
               width: "88%",
             }}
-          /> 
+          />
           <Button
             variant="contained"
             onClick={() => Navigate("/details-filling-page/education")}
