@@ -33,13 +33,14 @@ const Template_4 = () => {
         <Box
           sx={{
             backgroundColor: "#ebffdd",
-            width: "400px",
+            width: { xs: "80vw", sm: "45vw", md: "35vw" },
             border: "1px solid grey",
+            height:{md:'100vh'}
           }}
         >
           <Box
             sx={{
-              height: "80px",
+              height: "85px",
               backgroundColor: "white",
               position: "relative",
             }}
@@ -47,13 +48,14 @@ const Template_4 = () => {
             <div style={{ padding: "10px 10px", marginLeft: "90px" }}>
               <div style={{ display: "flex" }}>
                 <Typography
-                  sx={{ fontSize: "25px", letterSpacing: 3, color: "black" }}
+                  sx={{                     fontSize: { xs: "16px", sm: "16px", md: "25px" },
+                  letterSpacing: 3, color: "black" }}
                 >
                   {PersonalInfoData.FirstName}
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: "25px",
+                    fontSize: { xs: "16px", sm: "16px", md: "25px" },
                     letterSpacing: 3,
                     marginLeft: "10px",
                     color: "grey",
@@ -66,8 +68,8 @@ const Template_4 = () => {
                 return (
                   <Typography
                     sx={{
-                      letterSpacing: 10,
-                      fontSize: "12px",
+                      letterSpacing: { xs: 2, sm: 3, md: 6 },
+                      fontSize: { xs: "8px", sm: "10px", md: "12px" },
                       textTransform: "uppercase",
                     }}
                   >
@@ -86,7 +88,7 @@ const Template_4 = () => {
           </Box>
 
           <Box sx={{ padding: "10px", display: "flex" }}>
-            <div style={{ width: "350px" }}>
+            <div style={{ width: "45%" }}>
               <Typography sx={{ fontSize: "10px" }}>
                 Email : {PersonalInfoData.Email}
               </Typography>
@@ -107,7 +109,7 @@ const Template_4 = () => {
               </Typography>
             </div>
             <hr style={{ color: "#f4f4f7" }} />
-            <div style={{ width: "170px", marginLeft: "5px" }}>
+            <div style={{ width: "45%", marginLeft: "10px" }}>
               <Typography>PROFILE</Typography>
               <p style={{ fontSize: "10px", wordWrap: "break-word" }}>
                 {PersonalInfoData.Objective}
@@ -115,8 +117,8 @@ const Template_4 = () => {
             </div>
           </Box>
           <hr style={{ color: "#f4f4f7" }} />
-          <Box sx={{ padding: "10px", display: "flex" }}>
-            <div style={{ width: "210px" }}>
+          <Box sx={{ padding: "8px", display: "flex" }}>
+            <div style={{ width: "45%" }}>
               {" "}
               <Typography sx={{ marginBottom: "10px" }}>EXPERIENCE</Typography>
               {workExpData &&
@@ -140,8 +142,8 @@ const Template_4 = () => {
                 })}
             </div>
             <hr style={{ color: "#f4f4f7" }} />
-            <Box sx={{ width: "180px", marginLeft: "10px" }}>
-              <Typography sx={{ marginBottom: "10px" }}>EDUCATION</Typography>
+            <Box sx={{ width: "45%", marginLeft: "10px" }}>
+              <Typography sx={{ marginBottom: "15px" }}>EDUCATION</Typography>
     
                     <div>
                       <Typography sx={{ marginBottom: "20px" }}>
@@ -166,8 +168,8 @@ const Template_4 = () => {
 
               <hr style={{ color: "#f4f4f7" }} />
               <div style={{ marginTop: "10px" }}>
-                <Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
-                <Stack sx={{ marginLeft: "-5px" }} spacing={1}>
+                <Typography sx={{ marginBottom: "10px" }}>SKILLS</Typography>
+                <Stack sx={{ marginLeft: "5px" }}>
                   {skillsData &&
                     skillsData.map((info) => {
                       return (

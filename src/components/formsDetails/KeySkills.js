@@ -20,8 +20,9 @@ const KeySkills = () => {
     formState: { isDirty, isValid },
     control,
   } = useForm({
-    defaultValues: skillsField,
+    defaultValues: skillsField
   });
+
 
   // This function Provides Functionality to control textfields by Adding New Field and removing selected ***************************************
 
@@ -127,7 +128,7 @@ const KeySkills = () => {
                 variant="outlined"
                 sx={{ fontWeight: "bold" }}
               >
-                Add new
+                Add
               </Button>
             </Box>
             <Divider

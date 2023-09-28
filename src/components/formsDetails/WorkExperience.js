@@ -63,7 +63,7 @@ const WorkExperience = () => {
   // This input style object is used  to styling inputfield*******************************
 
   const inputStyle = {
-    width: "47%",
+    width: {xs : '93%', sm: '47%'},
     m: 1,
     backgroundColor: mode === "light" ? "white" : "#072340",
     borderRadius: "10px",
@@ -87,7 +87,7 @@ const WorkExperience = () => {
           container
           component="form"
           sx={{
-            width: "100%",
+            width:{xs:'80%', sm:'80%', md:'80%', lg:'100%'},
             height: "auto",
             m: 3,
             p: 3,
@@ -236,7 +236,7 @@ const WorkExperience = () => {
               variant="outlined"
               sx={{ fontWeight: "bold" }}
             >
-              Add more
+              Add
             </Button>
           </Box>
 

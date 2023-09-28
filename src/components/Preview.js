@@ -29,10 +29,10 @@ const Preview = () => {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "25%",
+    width: {sx:"100%",sm:'50%', md:'25%'},
     bgcolor: "background.paper",
     border: "2px solid #000",
-    boxShadow: "0px 0px 600px 500px green",
+    boxShadow: "0px 0px 600px 500px #8c3e3a",
     p: 4,
     zIndex: "200",
     borderRadius: "20px",
@@ -107,8 +107,8 @@ const Preview = () => {
                 position: "absolute",
                 flexDirection: "column-reverse",
                 justifyContent: "space-between",
-                top: "100px",
-                left: "50px",
+                top: {xs:"150px",sm:'150px', md:'100px'},
+                left: {xs:"0px",sm:'50px', md:'100px'},
                 zIndex: "100",
               }}
             >

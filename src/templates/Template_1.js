@@ -19,7 +19,7 @@ const Templates = () => {
   const workExpData = useSelector((state) => state.workExp.workData);
   const educationData = useSelector((state) => state.eduDetail.eduDetails);
   const skillsData = useSelector((state) => state.skills.skillDetails);
-console.log(educationData)
+  console.log(educationData);
 
   return (
     <div className="Responsive">
@@ -34,22 +34,33 @@ console.log(educationData)
           color: mode === "dark" && "black",
         }}
       >
-        <Box sx={{ backgroundColor: "#fbf4f5", width: "400px" }}>
+        <Box
+          sx={{
+            backgroundColor: "#fbf4f5",
+            width: { xs: "80vw", sm: "45vw", md: "35vw" },
+            height:{md:'100vh'}
+          }}
+        >
           <Box
             sx={{
-              height: "80px",
+              height: "85px",
               backgroundColor: "#f4c9c9",
               position: "relative",
             }}
           >
             <div style={{ padding: "10px 10px" }}>
               <div style={{ display: "flex" }}>
-                <Typography sx={{ fontSize: "25px", letterSpacing: 3 }}>
+                <Typography
+                  sx={{
+                    fontSize: { xs: "16px", sm: "16px", md: "25px" },
+                    letterSpacing: 3,
+                  }}
+                >
                   {PersonalInfoData.FirstName}
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: "25px",
+                    fontSize: { xs: "16px", sm: "16px", md: "25px" },
                     color: "grey",
                     letterSpacing: 3,
                     marginLeft: "10px",
@@ -62,8 +73,8 @@ console.log(educationData)
                 return (
                   <Typography
                     sx={{
-                      letterSpacing: 10,
-                      fontSize: "12px",
+                      letterSpacing: { xs: 2, sm: 3, md: 6 },
+                      fontSize: { xs: "8px", sm: "10px", md: "12px" },
                       textTransform: "uppercase",
                     }}
                   >
@@ -82,7 +93,7 @@ console.log(educationData)
           </Box>
 
           <Box sx={{ padding: "10px", display: "flex" }}>
-            <div style={{ width: "360px" }}>
+            <div style={{ width: "45%" }}>
               <Typography sx={{ fontSize: "10px" }}>
                 Email : {PersonalInfoData.Email}
               </Typography>
@@ -103,7 +114,7 @@ console.log(educationData)
               </Typography>
             </div>
             <hr style={{ color: "#f4f4f7" }} />
-            <div style={{ width: "300px	", marginLeft: "10px" }}>
+            <div style={{ width: "45%", marginLeft: "10px" }}>
               <Typography>PROFILE</Typography>
               <p style={{ fontSize: "10px", wordWrap: "break-word" }}>
                 {PersonalInfoData.Objective}
@@ -112,7 +123,7 @@ console.log(educationData)
           </Box>
           <hr style={{ color: "#f4f4f7" }} />
           <Box sx={{ padding: "8px", display: "flex" }}>
-            <div style={{ width: "200px" }}>
+            <div style={{ width: "45%" }}>
               <Typography sx={{ marginBottom: "20px" }}>EXPERIENCE</Typography>
               {workExpData &&
                 workExpData.map((info) => {
@@ -136,30 +147,31 @@ console.log(educationData)
             </div>
             <hr style={{ color: "#f4f4f7" }} />
 
-            <Box sx={{ width: "170px", marginLeft: "10px" }}>
+            <Box sx={{ width: "45%", marginLeft: "10px" }}>
               <Typography sx={{ marginBottom: "15px" }}>EDUCATION</Typography>
-          
-                    <div>
-                  <Typography sx={{ marginBottom: "20px" }}>{educationData.Type}</Typography>
-                      <Typography sx={{ fontSize: "12px" }}>
-                        {educationData.University}
-                      </Typography>
-                      <Typography sx={{ fontSize: "10px" }}>
-                        {educationData.Degree}
-                      </Typography>
-                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                        {educationData.StartYear} -
-                      </span>
-                      <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                        {educationData.EndYear}
-                      </span>
-                    </div>
-            
+
+              <div>
+                <Typography sx={{ marginBottom: "20px" }}>
+                  {educationData.Type}
+                </Typography>
+                <Typography sx={{ fontSize: "12px" }}>
+                  {educationData.University}
+                </Typography>
+                <Typography sx={{ fontSize: "10px" }}>
+                  {educationData.Degree}
+                </Typography>
+                <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                  {educationData.StartYear}-
+                </span>
+                <span style={{ fontSize: "10px", fontWeight: "bold" }}>
+                  {educationData.EndYear}
+                </span>
+              </div>
 
               <hr style={{ color: "#f4f4f7" }} />
               <div style={{ marginTop: "10px" }}>
                 <Typography sx={{ marginBottom: "10px" }}>SKILLS</Typography>
-                <Stack sx={{ marginLeft: "-10px" }} spacing={1}>
+                <Stack sx={{ marginLeft: "5px" }}>
                   {skillsData &&
                     skillsData.map((info) => {
                       return (
@@ -167,7 +179,7 @@ console.log(educationData)
                           style={{
                             fontSize: "11px",
                             fontWeight: "bold",
-                            paddingLeft: "10px",
+                            marginLeft: "10px",
                           }}
                         >
                           {info.skills}

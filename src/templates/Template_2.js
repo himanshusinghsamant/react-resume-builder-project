@@ -30,7 +30,7 @@ const Template_2 = () => {
           color: mode === "dark" && "black",
         }}
       >
-        <Box sx={{ backgroundColor: "#f2f2fb", width: "400px" }}>
+        <Box sx={{ backgroundColor: "#f2f2fb", width: { xs: "80vw", sm: "45vw", md: "35vw" },height:{md:'100vh'}}}>
           <Box
             sx={{
               height: "80px",
@@ -41,13 +41,13 @@ const Template_2 = () => {
             <div style={{ padding: "10px 10px" }}>
               <div style={{ display: "flex" }}>
                 <Typography
-                  sx={{ fontSize: "25px", letterSpacing: 3, color: "white" }}
+                  sx={{fontSize: { xs: "16px", sm: "16px", md: "25px" }, letterSpacing: 3, color: "white" }}
                 >
                   {PersonalInfoData.FirstName}
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: "25px",
+                    fontSize: { xs: "16px", sm: "16px", md: "25px" },
                     color: "yellow",
                     letterSpacing: 3,
                     marginLeft: "10px",
@@ -60,8 +60,8 @@ const Template_2 = () => {
                 return (
                   <Typography
                     sx={{
-                      letterSpacing: 10,
-                      fontSize: "12px",
+                      letterSpacing: { xs: 2, sm: 3, md: 6 },
+                      fontSize: { xs: "8px", sm: "10px", md: "12px" },
                       textTransform: "uppercase",
                     }}
                   >
@@ -87,7 +87,7 @@ const Template_2 = () => {
               marginBottom: "-5px",
             }}
           >
-            <div style={{ width: "200px" }}>
+            <div style={{padding:'10px', width: "45%" }}>
               <Typography sx={{ fontSize: "10px" }}>
                 Email : {PersonalInfoData.Email}
               </Typography>
@@ -108,7 +108,7 @@ const Template_2 = () => {
               </Typography>
             </div>
             <hr style={{ color: "#f4f4f7" }} />
-            <div style={{ width: "170px", marginLeft: "5px" }}>
+            <div style={{ width: "45%", marginLeft: "10px" }}>
               <Typography>PROFILE</Typography>
               <p style={{ fontSize: "10px", wordWrap: "break-word" }}>
                 {PersonalInfoData.Objective}
@@ -116,8 +116,8 @@ const Template_2 = () => {
             </div>
           </Box>
           <hr style={{ color: "#f4f4f7" }} />
-          <Box sx={{ paddingLeft: "10px", display: "flex" }}>
-            <div style={{ width: "200px" }}>
+          <Box sx={{ padding: "8px", display: "flex" }}>
+            <div style={{ width: "45%" }}>
               <Typography sx={{ marginBottom: "10px" }}>EXPERIENCE</Typography>
               {workExpData &&
                 workExpData.map((info) => {
@@ -141,7 +141,7 @@ const Template_2 = () => {
             </div>
 
             <hr style={{ color: "#f4f4f7" }} />
-            <Box sx={{ width: "175px", marginLeft: "10px" }}>
+            <Box sx={{ width: "45%", marginLeft: "10px" }}>
               <Typography sx={{ marginBottom: "10px" }}>EDUCATION</Typography>
           
                     <div>
@@ -155,7 +155,7 @@ const Template_2 = () => {
                         {educationData.Degree}
                       </Typography>
                       <span style={{ fontSize: "10px", fontWeight: "bold" }}>
-                        {educationData.StartYear} -
+                        {educationData.StartYear}-
                       </span>
                       <span style={{ fontSize: "10px", fontWeight: "bold" }}>
                         {educationData.EndYear}
@@ -164,8 +164,8 @@ const Template_2 = () => {
 
               <hr style={{ color: "#f4f4f7" }} />
               <div style={{ marginTop: "10px" }}>
-                <Typography sx={{ marginBottom: "20px" }}>SKILLS</Typography>
-                <Stack sx={{ marginLeft: "-6px" }} spacing={1}>
+                <Typography sx={{ marginBottom: "10px" }}>SKILLS</Typography>
+                <Stack sx={{ marginLeft: "5px" }}>
                   {skillsData &&
                     skillsData.map((info) => {
                       return (
