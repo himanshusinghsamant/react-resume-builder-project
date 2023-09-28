@@ -47,7 +47,7 @@ npm install
 
 ```
 
-**## Usage**
+## Usage
 
 - **Creating a Resume**: Click the "Create Resume" button to begin building your resume. Fill in your details, choose a template, and customize your resume content.
 
@@ -55,7 +55,7 @@ npm install
 
 - **Downloading a Resume**: Once you're satisfied with your resume, use the download options to export it in PDF format.
 
-**## Contributing**
+## Contributing
 
 - **Kundan (GitHub Profile)**
 - **Prasad (GitHub Profile)**
