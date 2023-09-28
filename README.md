@@ -54,9 +54,9 @@ npm install
 
 ## Contributing
 
+- **Himanshu ([GitHub Profile](https://github.com/himanshusinghsamant))**
 - **Kundan ([GitHub Profile](https://github.com/KundanGangurde))**
 - **Prasad ([GitHub Profile](https://github.com/Prasadchandwadkar))**
-- **Himanshu ([GitHub Profile](https://github.com/himanshusinghsamant))**
 - **Pragati ([GitHub Profile](https://github.com/SemicolonCoders))**
 
 -**Thank you for choosing our Resume Builder Website.** 
