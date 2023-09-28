@@ -35,17 +35,15 @@ Follow these instructions to set up and run the project on your local machine.:
 
 1. **Clone the Repository**: Clone this repository to your local machine.
 
-   ```bash
-   git clone [https://github.com/your-username/resume-builder-app.git](https://github.com/himanshusinghsamant/react-resume-builder-project.git)
+   bash
+   [https://github.com/your-username/resume-builder-app.git](https://github.com/himanshusinghsamant/react-resume-builder-project.git)
 
-   ```
+   
 
-1. Installation: Navigate to the project directory and install the required dependencies.
+1. **Installation**: Navigate to the project directory and install the required dependencies.
 
 cd resume-builder-app
 npm install
-
-```
 
 ## Usage
 
