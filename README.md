@@ -7,7 +7,6 @@
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#Creative)
 
 ## Introduction
 
@@ -61,3 +60,4 @@ npm install
 - **Pragati ([GitHub Profile](https://github.com/SemicolonCoders))**
 
 -**Thank you for choosing our Resume Builder Website.** 
+**Happy resume building! 📄✨**
