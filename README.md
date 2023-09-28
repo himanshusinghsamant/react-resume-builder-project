@@ -1,33 +1,37 @@
 # Resume Builder App
 
-Welcome to the Resume Builder App, a collaborative project developed by our team of five Members (Kundan, Pragati, Himanshu, Prasad ) using React. This application empowers users to create visually appealing and fully responsive resumes effortlessly. We're excited to share this project with you and provide guidance on its setup and usage.
-
 ## Table of Contents
 
+- [Introduction](#introduction)
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#Creative)
 
+## Introduction
+
+Welcome to the Resume Builder Website project! This project is developed by Kundan, Prasad, Himanshu, and Pragati to provide a user-friendly platform for creating and managing resumes. Whether you are a job seeker or someone helping others build their resumes, our website aims to streamline the process and make it more efficient.
+
 ## Features
 
-Our Resume Builder App offers the following key features:
+Our Resume Builder App(Website) offers the following key features:
 
-- **User-Friendly Interface**: An intuitive, easy-to-navigate interface for creating resumes.
+- **User-Friendly Interface**: The website offers an intuitive and easy-to-navigate interface for creating and editing resumes.
 
-- **Responsive Design**: Resumes generated with our app are fully responsive, ensuring they look great on all devices.
+- **Multiple Templates**: Choose from a variety of professionally designed resume templates to suit your preferences.
 
-- **React-Powered**: Built using React, providing a modern and efficient development experience.
+- **Customization**: Customize each section of your resume, including personal details, work experience, education, skills, and more.
 
-- **Customization**: Tailor your resume with various templates, fonts, and styling options.
+- **Real-Time Preview**: See a live preview of your resume as you make changes, ensuring it looks just the way you want it to.
+  
+- **Export Options**: Download your completed resume in PDF format, for easy sharing with potential employers.
 
-- **24/7 Support**: Dedicated support available around the clock to assist users with questions or issues.
-- **Redux** : We Use Latest Technology for this project Called "Redux"
+- **Responsive Design**: The website is responsive, ensuring it works well on both desktop and mobile devices.
 
 ## Getting Started
 
-To get started with the Resume Builder App, follow these steps:
+Follow these instructions to set up and run the project on your local machine.:
 
 1. **Clone the Repository**: Clone this repository to your local machine.
 
