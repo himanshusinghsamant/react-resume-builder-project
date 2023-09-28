@@ -1,4 +1,4 @@
-# Resume Builder App
+# Resume Builder App(Website)
 
 ## Table of Contents
 
@@ -47,4 +47,19 @@ npm install
 
 ```
 
-```
+**## Usage**
+
+- **Creating a Resume**: Click the "Create Resume" button to begin building your resume. Fill in your details, choose a template, and customize your resume content.
+
+- **Editing a Resume**: You can edit or update Created Resume,  from preview section.
+
+- **Downloading a Resume**: Once you're satisfied with your resume, use the download options to export it in PDF format.
+
+**## Contributing**
+
+- **Kundan (GitHub Profile)**
+- **Prasad (GitHub Profile)**
+- **Himanshu (GitHub Profile)**
+- **Pragati (GitHub Profile)**
+
+-**Thank you for choosing our Resume Builder Website.** 
