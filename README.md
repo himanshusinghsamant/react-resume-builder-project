@@ -37,18 +37,19 @@ Follow these instructions to set up and run the project on your local machine.:
    bash
    [https://github.com/your-username/resume-builder-app.git](https://github.com/himanshusinghsamant/react-resume-builder-project.git)
 
-   
-
-1. **Installation**: Navigate to the project directory and install the required dependencies.
+2. **Installation**: Navigate to the project directory and install the required dependencies.
 
 cd resume-builder-app
 npm install
 
+3. **Get Started**: Type "npm start" in terminal to get started.
+
+   
 ## Usage
 
-- **Creating a Resume**: Click the "Create Resume" button to begin building your resume. Fill in your details, choose a template, and customize your resume content.
+- **Creating a Resume**: Choose a template, Click the "USE TEMPLATE" button to begin building your resume. Fill in your details, and customize your resume content.
 
-- **Editing a Resume**: You can edit or update Created Resume,  from preview section.
+- **Editing a Resume**: You can edit or update Created Resume, from preview section.
 
 - **Downloading a Resume**: Once you're satisfied with your resume, use the download options to export it in PDF format.
 
