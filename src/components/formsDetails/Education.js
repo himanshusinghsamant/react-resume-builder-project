@@ -31,6 +31,7 @@ const Education = () => {
   const handleEndYearChange = (event) => {
     const newEndYear = parseInt(event.target.value);
     setEndYear(newEndYear);
+
   };
 
   // const EducationDetails = useSelector((state) => state.eduDetail.eduDetails);
@@ -164,6 +165,7 @@ const Education = () => {
             )}
             <TextField
               sx={inputStyle}
+              InputLabelProps={{ shrink: true }}
               label="StartYear"
               type="number"
               variant="outlined"
@@ -190,6 +192,7 @@ const Education = () => {
             )}
             <TextField
               sx={inputStyle}
+              InputLabelProps={{ shrink: true }}
               label="EndYear"
               type="number"
               variant="outlined"

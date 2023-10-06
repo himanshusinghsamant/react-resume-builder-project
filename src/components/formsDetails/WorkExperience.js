@@ -158,6 +158,7 @@ const WorkExperience = () => {
               )}
               <TextField
                 sx={inputStyle}
+                InputLabelProps={{ shrink: true }}
                 label="StartYear"
                 type="number"
                 varient="outlined"
@@ -183,6 +184,7 @@ const WorkExperience = () => {
               )}
               <TextField
                 sx={inputStyle}
+                InputLabelProps={{ shrink: true }}
                 label="EndYear"
                 type="number"
                 varient="outlined"

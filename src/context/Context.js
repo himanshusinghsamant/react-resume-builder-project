@@ -70,7 +70,7 @@ const DataContextPro = (props) => {
 
     // Update skillsField when SkillsData changes
     setSkillsField(SkillsPreloadedData)
-  }, [personalData,EducationData, WExperienceData, skillsData ]);
+  }, [personalData, EducationData, WExperienceData, skillsData ]);
 
 
 
