@@ -46,8 +46,8 @@ const DetailsFilling = () => {
                   to={"/details-filling-page/personal-details"}
                   style={{
                     textDecoration: "none",
-                    fontWeight: "bold",
-                    letterSpacing: 2,
+                    fontWeight: { xs: "medium", sm: "medium", md: "bold" },
+                    letterSpacing: { xs: 0, sm: 1, md: 2 },
                     display: "flex",
                     alignItems: "center",
                     color: mode === "light" ? "black" : "white",
@@ -62,8 +62,8 @@ const DetailsFilling = () => {
                   to={"/details-filling-page/education"}
                   style={{
                     textDecoration: "none",
-                    fontWeight: "bold",
-                    letterSpacing: 2,
+                    fontWeight: { xs: "medium", sm: "medium", md: "bold" },
+                    letterSpacing: { xs: 0, sm: 1, md: 2 },
                     display: "flex",
                     alignItems: "center",
                     color: mode === "light" ? "black" : "white",
@@ -78,8 +78,8 @@ const DetailsFilling = () => {
                   to={"/details-filling-page/work-experience"}
                   style={{
                     textDecoration: "none",
-                    fontWeight: "bold",
-                    letterSpacing: 2,
+                    fontWeight: { xs: "medium", sm: "medium", md: "bold" },
+                    letterSpacing: { xs: 0, sm: 1, md: 2 },
                     display: "flex",
                     alignItems: "center",
                     color: mode === "light" ? "black" : "white",
@@ -94,8 +94,8 @@ const DetailsFilling = () => {
                   to={"/details-filling-page/key-skills"}
                   style={{
                     textDecoration: "none",
-                    fontWeight: "bold",
-                    letterSpacing: 2,
+                    fontWeight: { xs: "medium", sm: "medium", md: "bold" },
+                    letterSpacing: { xs: 0, sm: 1, md: 2 },
                     display: "flex",
                     alignItems: "center",
                     color: mode === "light" ? "black" : "white",

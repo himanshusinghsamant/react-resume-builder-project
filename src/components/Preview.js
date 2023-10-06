@@ -84,7 +84,7 @@ const Preview = () => {
           )}
 
           {successMsg && (
-            <div style={{ position: "absolute", top: "80px", right: "10px" }}>
+            <div style={{ position: "absolute", top: "80px", right: "8px",zIndex:100}}>
               <Alert variant="filled" severity="success">
                 Your Resume is Successfully Saved —<strong> check it out!</strong>
               </Alert>
