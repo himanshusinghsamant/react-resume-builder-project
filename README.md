@@ -7,6 +7,7 @@
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Contributing](#contributing)
+- [WebLink](#weblink)
 
 ## Introduction
 
@@ -55,10 +56,14 @@ npm install
 
 ## Contributing
 
-- **Himanshu ([GitHub Profile](https://github.com/himanshusinghsamant))**
-- **Kundan ([GitHub Profile](https://github.com/KundanGangurde))**
-- **Prasad ([GitHub Profile](https://github.com/Prasadchandwadkar))**
-- **Pragati ([GitHub Profile](https://github.com/SemicolonCoders))**
+- **Himanshu singh Samant ([GitHub Profile](https://github.com/himanshusinghsamant))**
+- **Kundan Gangurde ([GitHub Profile](https://github.com/KundanGangurde))**
+- **Prasad Chandwadkar ([GitHub Profile](https://github.com/Prasadchandwadkar))**
+- **Pragati Srivastava ([GitHub Profile](https://github.com/SemicolonCoders))**
+
+## WebLink
+
+- **AlmaBetter Front-End Capstone Project** ([WebLink](https://react-resume-builder-project-8a25z1paj-himanshusinghsamant.vercel.app))
 
 -**Thank you for choosing our Resume Builder Website.** 
 **Happy resume building! 📄✨**
